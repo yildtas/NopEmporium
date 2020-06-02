@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "92kPWJj6eYUgiIW1w7wrL01V4mC48jdg8WBmgzok19mYA9zhwoUwjTNQyX67FvP6/mkRWo0rpu41AZxoPBrHew==",
+  "dgSpecHash": "xQmHbYQcQpiU/yvNGIc+hseHmZ4Qb7AVF6c15SXEX0mrDPrPzkfn3aw6Nl9Hu+haCj9XQFcqc+XTHvCFTZ/bTw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Misc.SendinBlue\\Nop.Plugin.Misc.SendinBlue.csproj",
+  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Misc.SendinBlue\\Nop.Plugin.Misc.SendinBlue.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",

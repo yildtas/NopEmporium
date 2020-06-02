@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "35OfGY4/+ZltVPPzWjQhVEd8ZNiUuUvHQJZrf3VSZEGqPrkAyjGV6t6xQKtBkj6O6cxnfiqnR22W4mZmmw+0Pw==",
+  "dgSpecHash": "2XltxO3buxNpynH7w1WNk0z/Ggld7Bk7U77iwPm8setlfmD3jzpCNXH3RlBjA1PjEUpfT1JX5wsT0AkJyJXpQg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Payments.CheckMoneyOrder\\Nop.Plugin.Payments.CheckMoneyOrder.csproj",
+  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Payments.CheckMoneyOrder\\Nop.Plugin.Payments.CheckMoneyOrder.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",

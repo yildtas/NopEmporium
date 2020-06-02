@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1z63rQJSJnx6ZX4eTY6n5HCvdk860+20u5au3AVvjl0kl24UkHuYkYHZuhGnmnLwRJb4tH/WtwdDVUj7q7jFdg==",
+  "dgSpecHash": "FId0HZTwjtjeWiMulh8F3byjabMxyJJrCI/TUJt+DgsSIiOB+Hmn0hqgXYs7V1xJceCLtVegaKXmnl/BmRxRWw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.ExternalAuth.Facebook\\Nop.Plugin.ExternalAuth.Facebook.csproj",
+  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.ExternalAuth.Facebook\\Nop.Plugin.ExternalAuth.Facebook.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",

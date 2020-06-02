@@ -12,3 +12,16 @@ C:\Users\yildi\Desktop\Nop-4.20\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcor
 C:\Users\yildi\Desktop\Nop-4.20\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.csproj.CopyComplete
 C:\Users\yildi\Desktop\Nop-4.20\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.dll
 C:\Users\yildi\Desktop\Nop-4.20\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.pdb
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Shipping.UPS\logo.jpg
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Shipping.UPS\plugin.json
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Shipping.UPS\Views\Configure.cshtml
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Shipping.UPS\Views\_ViewImports.cshtml
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.deps.json
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.pdb
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.csproj.CoreCompileInputs.cache
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.AssemblyInfoInputs.cache
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.AssemblyInfo.cs
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.csproj.CopyComplete
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.dll
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.pdb

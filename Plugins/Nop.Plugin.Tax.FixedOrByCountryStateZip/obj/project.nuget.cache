@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/aII0Y9L19OWwS/xZZSryxddLUH2AJqCycrNA+ppX3NL69smOAZ+3BfRGbYtB53guVElJJHs0sM+RIW6gODP4w==",
+  "dgSpecHash": "8I751b1M6aFC91v0lA1Gobbuen65/PpOuIlINm7LatrfFfv6/72V/TBMB72jG91mJQpEJ4A0Wvzhsk/vSGZYFQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Tax.FixedOrByCountryStateZip\\Nop.Plugin.Tax.FixedOrByCountryStateZip.csproj",
+  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Tax.FixedOrByCountryStateZip\\Nop.Plugin.Tax.FixedOrByCountryStateZip.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",

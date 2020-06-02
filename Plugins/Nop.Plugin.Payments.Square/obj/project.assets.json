@@ -15956,17 +15956,21 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yildi\\.nuget\\packages\\": {}
+    "C:\\Users\\yildi\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Payments.Square\\Nop.Plugin.Payments.Square.csproj",
+      "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Payments.Square\\Nop.Plugin.Payments.Square.csproj",
       "projectName": "Nop.Plugin.Payments.Square",
-      "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Payments.Square\\Nop.Plugin.Payments.Square.csproj",
+      "projectPath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Payments.Square\\Nop.Plugin.Payments.Square.csproj",
       "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Payments.Square\\obj\\",
+      "outputPath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Payments.Square\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -15981,8 +15985,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Presentation\\Nop.Web\\Nop.Web.csproj": {
-              "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Presentation\\Nop.Web\\Nop.Web.csproj"
+            "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj": {
+              "projectPath": "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj"
             }
           }
         }

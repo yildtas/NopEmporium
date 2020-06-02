@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VjGKE+K7VKOAJY9BsSEL5oKrEtf292HxeLufDppG5s92b7GljWMjNAWQtsbyfF4e0VUT3dgv311OetKNRmYDhg==",
+  "dgSpecHash": "kJ7nb+5sLbWlOb7C/eY1zR/Pc+sITifRBoNDysIld92fxMoBMLAhG2CbB/5r49LYxb2r7t2hqplc+CUT1IEjRA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Widgets.NivoSlider\\Nop.Plugin.Widgets.NivoSlider.csproj",
+  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Widgets.NivoSlider\\Nop.Plugin.Widgets.NivoSlider.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",

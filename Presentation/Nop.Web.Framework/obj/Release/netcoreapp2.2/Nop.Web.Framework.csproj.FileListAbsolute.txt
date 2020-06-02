@@ -1,0 +1,16 @@
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\bin\Release\netcoreapp2.2\Nop.Web.Framework.deps.json
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\bin\Release\netcoreapp2.2\Nop.Web.Framework.dll
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\bin\Release\netcoreapp2.2\Nop.Web.Framework.pdb
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\bin\Release\netcoreapp2.2\Nop.Core.dll
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\bin\Release\netcoreapp2.2\Nop.Data.dll
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\bin\Release\netcoreapp2.2\Nop.Services.dll
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\bin\Release\netcoreapp2.2\Nop.Core.pdb
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\bin\Release\netcoreapp2.2\Nop.Data.pdb
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\bin\Release\netcoreapp2.2\Nop.Services.pdb
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\obj\Release\netcoreapp2.2\Nop.Web.Framework.csprojAssemblyReference.cache
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\obj\Release\netcoreapp2.2\Nop.Web.Framework.csproj.CoreCompileInputs.cache
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\obj\Release\netcoreapp2.2\Nop.Web.Framework.AssemblyInfoInputs.cache
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\obj\Release\netcoreapp2.2\Nop.Web.Framework.AssemblyInfo.cs
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\obj\Release\netcoreapp2.2\Nop.Web.Framework.csproj.CopyComplete
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\obj\Release\netcoreapp2.2\Nop.Web.Framework.dll
+C:\FreeLance\NopEmporium\Presentation\Nop.Web.Framework\obj\Release\netcoreapp2.2\Nop.Web.Framework.pdb

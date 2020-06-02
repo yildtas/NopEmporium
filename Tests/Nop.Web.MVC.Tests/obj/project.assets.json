@@ -16949,17 +16949,21 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yildi\\.nuget\\packages\\": {}
+    "C:\\Users\\yildi\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "4.2.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Web.MVC.Tests\\Nop.Web.MVC.Tests.csproj",
+      "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Web.MVC.Tests\\Nop.Web.MVC.Tests.csproj",
       "projectName": "Nop.Web.MVC.Tests",
-      "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Web.MVC.Tests\\Nop.Web.MVC.Tests.csproj",
+      "projectPath": "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Web.MVC.Tests\\Nop.Web.MVC.Tests.csproj",
       "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Web.MVC.Tests\\obj\\",
+      "outputPath": "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Web.MVC.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -16974,11 +16978,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Presentation\\Nop.Web\\Nop.Web.csproj": {
-              "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Presentation\\Nop.Web\\Nop.Web.csproj"
+            "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj": {
+              "projectPath": "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj"
             },
-            "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Tests\\Nop.Tests.csproj": {
-              "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Tests\\Nop.Tests.csproj"
+            "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Tests\\Nop.Tests.csproj": {
+              "projectPath": "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Tests\\Nop.Tests.csproj"
             }
           }
         }

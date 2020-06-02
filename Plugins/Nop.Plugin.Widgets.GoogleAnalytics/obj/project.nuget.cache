@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bda6+LoNzc+r0E5k5OUv4KKZTBlZJxDsjSJhU08QZ9Z74l9lRlR8ABWF+BvUunWHfFwcHpWvMXQK5KgsZZQ72w==",
+  "dgSpecHash": "vhJmX+vzvA/D+6yTlGUBkl11TaskF/GTavhM5YlZm2uXaaDhwIkp3yr0lngJ90jjdELyi1Q9gjq/ck0RR4OQ+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Widgets.GoogleAnalytics\\Nop.Plugin.Widgets.GoogleAnalytics.csproj",
+  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Widgets.GoogleAnalytics\\Nop.Plugin.Widgets.GoogleAnalytics.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",

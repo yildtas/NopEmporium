@@ -15884,17 +15884,21 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yildi\\.nuget\\packages\\": {}
+    "C:\\Users\\yildi\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Widgets.NivoSlider\\Nop.Plugin.Widgets.NivoSlider.csproj",
+      "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Widgets.NivoSlider\\Nop.Plugin.Widgets.NivoSlider.csproj",
       "projectName": "Nop.Plugin.Widgets.NivoSlider",
-      "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Widgets.NivoSlider\\Nop.Plugin.Widgets.NivoSlider.csproj",
+      "projectPath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Widgets.NivoSlider\\Nop.Plugin.Widgets.NivoSlider.csproj",
       "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Widgets.NivoSlider\\obj\\",
+      "outputPath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Widgets.NivoSlider\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -15909,8 +15913,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
-              "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj"
+            "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
+              "projectPath": "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj"
             }
           }
         }

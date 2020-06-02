@@ -1,18 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj": {}
+    "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+    "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
       "version": "4.2.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj",
+        "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj",
         "projectName": "Nop.Core",
-        "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj",
+        "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj",
         "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\obj\\",
+        "outputPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

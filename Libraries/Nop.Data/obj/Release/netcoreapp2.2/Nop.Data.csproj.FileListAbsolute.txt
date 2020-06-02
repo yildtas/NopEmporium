@@ -1,0 +1,12 @@
+C:\FreeLance\NopEmporium\Libraries\Nop.Data\bin\Release\netcoreapp2.2\Nop.Data.deps.json
+C:\FreeLance\NopEmporium\Libraries\Nop.Data\bin\Release\netcoreapp2.2\Nop.Data.dll
+C:\FreeLance\NopEmporium\Libraries\Nop.Data\bin\Release\netcoreapp2.2\Nop.Data.pdb
+C:\FreeLance\NopEmporium\Libraries\Nop.Data\bin\Release\netcoreapp2.2\Nop.Core.dll
+C:\FreeLance\NopEmporium\Libraries\Nop.Data\bin\Release\netcoreapp2.2\Nop.Core.pdb
+C:\FreeLance\NopEmporium\Libraries\Nop.Data\obj\Release\netcoreapp2.2\Nop.Data.csprojAssemblyReference.cache
+C:\FreeLance\NopEmporium\Libraries\Nop.Data\obj\Release\netcoreapp2.2\Nop.Data.csproj.CoreCompileInputs.cache
+C:\FreeLance\NopEmporium\Libraries\Nop.Data\obj\Release\netcoreapp2.2\Nop.Data.AssemblyInfoInputs.cache
+C:\FreeLance\NopEmporium\Libraries\Nop.Data\obj\Release\netcoreapp2.2\Nop.Data.AssemblyInfo.cs
+C:\FreeLance\NopEmporium\Libraries\Nop.Data\obj\Release\netcoreapp2.2\Nop.Data.csproj.CopyComplete
+C:\FreeLance\NopEmporium\Libraries\Nop.Data\obj\Release\netcoreapp2.2\Nop.Data.dll
+C:\FreeLance\NopEmporium\Libraries\Nop.Data\obj\Release\netcoreapp2.2\Nop.Data.pdb

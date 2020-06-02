@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "phV5QQVMgnmyMay05tcsgOpdOpQDIwLdwfKM+wMr8Nrn0BDQ5nk6Un1JXJRz3tIN2LdF+t+tz3AyWbLEGt78Qg==",
+  "dgSpecHash": "TWsY2NCgQC2PScKOvn7GTNVR3wntTPwP/fYLlDXdx5beBjeUCX9OMNrZg0DHF72zpbY7aB29qJiMJ95Rs8eoOA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Core.Tests\\Nop.Core.Tests.csproj",
+  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Core.Tests\\Nop.Core.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",

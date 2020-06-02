@@ -1,18 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Tests\\Nop.Tests.csproj": {}
+    "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Tests\\Nop.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+    "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
       "version": "4.2.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj",
+        "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj",
         "projectName": "Nop.Core",
-        "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj",
+        "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj",
         "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\obj\\",
+        "outputPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -99,15 +102,18 @@
         }
       }
     },
-    "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Data\\Nop.Data.csproj": {
+    "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj": {
       "version": "4.2.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Data\\Nop.Data.csproj",
+        "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj",
         "projectName": "Nop.Data",
-        "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Data\\Nop.Data.csproj",
+        "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj",
         "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Data\\obj\\",
+        "outputPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -122,8 +128,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-                "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj"
+              "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+                "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj"
               }
             }
           }
@@ -170,15 +176,18 @@
         }
       }
     },
-    "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Services\\Nop.Services.csproj": {
+    "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj": {
       "version": "4.2.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Services\\Nop.Services.csproj",
+        "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj",
         "projectName": "Nop.Services",
-        "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Services\\Nop.Services.csproj",
+        "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj",
         "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Services\\obj\\",
+        "outputPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Services\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -193,11 +202,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-                "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj"
+              "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+                "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj"
               },
-              "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Data\\Nop.Data.csproj": {
-                "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Data\\Nop.Data.csproj"
+              "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj": {
+                "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj"
               }
             }
           }
@@ -260,15 +269,18 @@
         }
       }
     },
-    "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Tests\\Nop.Tests.csproj": {
+    "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Tests\\Nop.Tests.csproj": {
       "version": "4.2.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Tests\\Nop.Tests.csproj",
+        "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Tests\\Nop.Tests.csproj",
         "projectName": "Nop.Tests",
-        "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Tests\\Nop.Tests.csproj",
+        "projectPath": "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Tests\\Nop.Tests.csproj",
         "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Tests\\obj\\",
+        "outputPath": "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Tests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -283,11 +295,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-                "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj"
+              "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+                "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj"
               },
-              "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Services\\Nop.Services.csproj": {
-                "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Services\\Nop.Services.csproj"
+              "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj": {
+                "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj"
               }
             }
           }

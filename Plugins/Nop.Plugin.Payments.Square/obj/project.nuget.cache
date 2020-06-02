@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QUSJCkDot8S816bnulSoB+I8zO8FMUxlyBtR1oUia6QiP2klh/pM7Vz11W85nlvj2xs78Mz90BfH6o/F/KXXtw==",
+  "dgSpecHash": "W0owkQno14vshSTnwoSbtKctBavIiAwaxkxz+oA0DpPcPyCk/LC0DtI6ZTZGk647oppX+H3AQODR5tqm1B+1jA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Payments.Square\\Nop.Plugin.Payments.Square.csproj",
+  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Payments.Square\\Nop.Plugin.Payments.Square.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",
