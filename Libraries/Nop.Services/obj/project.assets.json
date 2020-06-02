@@ -15574,11 +15574,11 @@
   "project": {
     "version": "4.2.0",
     "restore": {
-      "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj",
+      "projectUniqueName": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Services\\Nop.Services.csproj",
       "projectName": "Nop.Services",
-      "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj",
+      "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Services\\Nop.Services.csproj",
       "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-      "outputPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Services\\obj\\",
+      "outputPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -15594,11 +15594,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-              "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj"
+            "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+              "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Core\\Nop.Core.csproj"
             },
-            "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj": {
-              "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj"
+            "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Data\\Nop.Data.csproj": {
+              "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Libraries\\Nop.Data\\Nop.Data.csproj"
             }
           }
         }

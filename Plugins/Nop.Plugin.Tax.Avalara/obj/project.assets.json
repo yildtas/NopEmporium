@@ -15905,11 +15905,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Tax.Avalara\\Nop.Plugin.Tax.Avalara.csproj",
+      "projectUniqueName": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Tax.Avalara\\Nop.Plugin.Tax.Avalara.csproj",
       "projectName": "Nop.Plugin.Tax.Avalara",
-      "projectPath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Tax.Avalara\\Nop.Plugin.Tax.Avalara.csproj",
+      "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Tax.Avalara\\Nop.Plugin.Tax.Avalara.csproj",
       "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-      "outputPath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Tax.Avalara\\obj\\",
+      "outputPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Tax.Avalara\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -15925,8 +15925,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj": {
-              "projectPath": "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj"
+            "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Presentation\\Nop.Web\\Nop.Web.csproj": {
+              "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Presentation\\Nop.Web\\Nop.Web.csproj"
             }
           }
         }

@@ -1,5 +1,5 @@
 ﻿{
   "DataProvider": "sqlserver",
-  "DataConnectionString": "Data Source=sql.athena.domainhizmetleri.com,1433;Initial Catalog=muzikkul_Emporium;Integrated Security=False;Persist Security Info=False;User ID=muzikkul_Emporium;Password=in!59g2T",
+  "DataConnectionString": "Data Source=.;Initial Catalog=NopEmporiumMegastore_4.2;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=123",
   "RawDataSettings": {}
 }

@@ -15961,11 +15961,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Payments.Square\\Nop.Plugin.Payments.Square.csproj",
+      "projectUniqueName": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Payments.Square\\Nop.Plugin.Payments.Square.csproj",
       "projectName": "Nop.Plugin.Payments.Square",
-      "projectPath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Payments.Square\\Nop.Plugin.Payments.Square.csproj",
+      "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Payments.Square\\Nop.Plugin.Payments.Square.csproj",
       "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-      "outputPath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Payments.Square\\obj\\",
+      "outputPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Payments.Square\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -15981,8 +15981,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj": {
-              "projectPath": "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj"
+            "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Presentation\\Nop.Web\\Nop.Web.csproj": {
+              "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Presentation\\Nop.Web\\Nop.Web.csproj"
             }
           }
         }

@@ -16954,11 +16954,11 @@
   "project": {
     "version": "4.2.0",
     "restore": {
-      "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Web.MVC.Tests\\Nop.Web.MVC.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Web.MVC.Tests\\Nop.Web.MVC.Tests.csproj",
       "projectName": "Nop.Web.MVC.Tests",
-      "projectPath": "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Web.MVC.Tests\\Nop.Web.MVC.Tests.csproj",
+      "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Web.MVC.Tests\\Nop.Web.MVC.Tests.csproj",
       "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-      "outputPath": "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Web.MVC.Tests\\obj\\",
+      "outputPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Web.MVC.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -16974,11 +16974,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj": {
-              "projectPath": "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj"
+            "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Presentation\\Nop.Web\\Nop.Web.csproj": {
+              "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Presentation\\Nop.Web\\Nop.Web.csproj"
             },
-            "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Tests\\Nop.Tests.csproj": {
-              "projectPath": "C:\\FreeLance\\NopEmporium\\Tests\\Nop.Tests\\Nop.Tests.csproj"
+            "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Tests\\Nop.Tests.csproj": {
+              "projectPath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Tests\\Nop.Tests\\Nop.Tests.csproj"
             }
           }
         }

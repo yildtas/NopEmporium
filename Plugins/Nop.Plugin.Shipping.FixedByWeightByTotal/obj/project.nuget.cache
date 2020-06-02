@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tAPdtRtYKwx4WpKVJLv+sayBblvsk726EoUpLatl4+PYKZ9YA6SOnRWRPx+EqIGNu8cd5ErY/rYbQfJJptD/iQ==",
+  "dgSpecHash": "LbNVkDSF9t6n+ZsTVEBwprhhU81ob/xop4tPAZUH/qrJXot7ywohFqoPIJNNmqVh0oY9fY/OF8Onpglv5SeEQw==",
   "success": true,
-  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Shipping.FixedByWeightByTotal\\Nop.Plugin.Shipping.FixedByWeightByTotal.csproj",
+  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Shipping.FixedByWeightByTotal\\Nop.Plugin.Shipping.FixedByWeightByTotal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",

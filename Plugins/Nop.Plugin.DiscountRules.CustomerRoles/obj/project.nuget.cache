@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AwREICfJfPY4G2GBSlR5uVj7MZfAaKW1H/c0G88qMGIRKNMihq4ntalhDUY3bucgZIz0iGZHWacXCh0yxlmBig==",
+  "dgSpecHash": "5UyrcCAbKn8GdbQ671x6KLQGTUcp8eLrMSJZRXG7jGCKSE8ufG1YTM/XN68Xg9ZxhhkY6NA4RWMxf+L1PfpPfA==",
   "success": true,
-  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.DiscountRules.CustomerRoles\\Nop.Plugin.DiscountRules.CustomerRoles.csproj",
+  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.DiscountRules.CustomerRoles\\Nop.Plugin.DiscountRules.CustomerRoles.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "h7rWin3lZ6Y8bppVhcLYl8kJ4qURWvMTKekBTUSWAyrf/MIkrcS6eBSeqTiiO/KXrij6M2Br05aqYg4V0YHPmA==",
+  "dgSpecHash": "O49CtAHIDy8mAqgzY29CkXIVrt+AbCxelyGZzsYLj3DzyqA1lKoLJfbNevkNq5aoDhEh9Zyr5EVMuihegMSCnA==",
   "success": true,
-  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Pickup.PickupInStore\\Nop.Plugin.Pickup.PickupInStore.csproj",
+  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Pickup.PickupInStore\\Nop.Plugin.Pickup.PickupInStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",

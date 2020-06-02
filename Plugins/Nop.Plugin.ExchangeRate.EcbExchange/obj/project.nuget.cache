@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FftbgZWChdGqICkGmoZ5Dyc1YxFdBCK0AUUSAQdEOQZavFb1qbJumg6T5oqVy7sB2bdl2MCrsi6ynujl70Artg==",
+  "dgSpecHash": "MUVymD1UFqZkaxhE1AlFnLfsRVqjYTXc4xlfFTsKwl/fZEkSy+xoGBTWgarvT7hw4tuG6bqBq0Z7l8zwjSaIVw==",
   "success": true,
-  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.ExchangeRate.EcbExchange\\Nop.Plugin.ExchangeRate.EcbExchange.csproj",
+  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.ExchangeRate.EcbExchange\\Nop.Plugin.ExchangeRate.EcbExchange.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",

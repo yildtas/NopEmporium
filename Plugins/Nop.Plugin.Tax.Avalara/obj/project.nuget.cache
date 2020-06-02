@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c9AZWQVqc55WtZAwdN3QscUwTnww9W1oyWb/zLOSGduOrX7r0nLApKdtgBI/8qeU3hyk0MKsRhmYVeckvKK9Rg==",
+  "dgSpecHash": "vwQSI7Zmm30jXR+Mat6fiG/ykOkKEkC9Z/Y8TmZ3K2dxl6B8n1SfIO3IW0MacXTUJlGjfIp7Y6bDHgShay4I5g==",
   "success": true,
-  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Tax.Avalara\\Nop.Plugin.Tax.Avalara.csproj",
+  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Tax.Avalara\\Nop.Plugin.Tax.Avalara.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",

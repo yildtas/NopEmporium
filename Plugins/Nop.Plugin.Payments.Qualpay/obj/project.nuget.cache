@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P/Mo88UZgUl8QxkTYeOQD5KsbTXK1J34xl/OTSm2hOdaTd2ljSrMIAsfRisGUnFvvEySdpI0DsC4VkQjFdzLDA==",
+  "dgSpecHash": "tMTyC2b1gbnksLXThv6tTVXZUu8sa58iqsscQZiom4M7WflWve7YoQy1z2Crh2d2ovEemsdspwo4ZU+02kJh1w==",
   "success": true,
-  "projectFilePath": "C:\\FreeLance\\NopEmporium\\Plugins\\Nop.Plugin.Payments.Qualpay\\Nop.Plugin.Payments.Qualpay.csproj",
+  "projectFilePath": "C:\\Users\\yildi\\Desktop\\Nop-4.20\\Plugins\\Nop.Plugin.Payments.Qualpay\\Nop.Plugin.Payments.Qualpay.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yildi\\.nuget\\packages\\autofac\\4.9.1\\autofac.4.9.1.nupkg.sha512",
     "C:\\Users\\yildi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\4.4.0\\autofac.extensions.dependencyinjection.4.4.0.nupkg.sha512",
