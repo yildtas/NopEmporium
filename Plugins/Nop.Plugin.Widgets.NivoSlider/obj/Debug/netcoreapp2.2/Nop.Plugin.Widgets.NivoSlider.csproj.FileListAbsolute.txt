@@ -33,7 +33,6 @@ C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Views\_
 C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.deps.json
 C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.dll
 C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.pdb
-C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\netcoreapp2.2\Nop.Plugin.Widgets.NivoSlider.csprojAssemblyReference.cache
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\netcoreapp2.2\Nop.Plugin.Widgets.NivoSlider.csproj.CoreCompileInputs.cache
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\netcoreapp2.2\Nop.Plugin.Widgets.NivoSlider.AssemblyInfoInputs.cache
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\netcoreapp2.2\Nop.Plugin.Widgets.NivoSlider.AssemblyInfo.cs

@@ -7,7 +7,6 @@ C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZ
 C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Nop.Plugin.Tax.FixedOrByCountryStateZip.deps.json
 C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Nop.Plugin.Tax.FixedOrByCountryStateZip.dll
 C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Nop.Plugin.Tax.FixedOrByCountryStateZip.pdb
-C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.FixedOrByCountryStateZip.csprojAssemblyReference.cache
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.FixedOrByCountryStateZip.csproj.CoreCompileInputs.cache
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.FixedOrByCountryStateZip.AssemblyInfoInputs.cache
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.FixedOrByCountryStateZip.AssemblyInfo.cs

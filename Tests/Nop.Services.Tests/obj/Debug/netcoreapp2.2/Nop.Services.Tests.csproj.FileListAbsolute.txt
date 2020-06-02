@@ -21,3 +21,4 @@ C:\FreeLance\NopEmporium\Tests\Nop.Services.Tests\obj\Debug\netcoreapp2.2\Nop.Se
 C:\FreeLance\NopEmporium\Tests\Nop.Services.Tests\obj\Debug\netcoreapp2.2\Nop.Services.Tests.dll
 C:\FreeLance\NopEmporium\Tests\Nop.Services.Tests\obj\Debug\netcoreapp2.2\Nop.Services.Tests.pdb
 C:\FreeLance\NopEmporium\Tests\Nop.Services.Tests\obj\Debug\netcoreapp2.2\Nop.Services.Tests.genruntimeconfig.cache
+C:\FreeLance\NopEmporium\Tests\Nop.Services.Tests\obj\Debug\netcoreapp2.2\Nop.Services.Tests.csprojAssemblyReference.cache

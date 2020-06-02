@@ -12,3 +12,4 @@ C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\n
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.CheckMoneyOrder.csproj.CopyComplete
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.CheckMoneyOrder.dll
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.CheckMoneyOrder.pdb
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.CheckMoneyOrder.csprojAssemblyReference.cache
