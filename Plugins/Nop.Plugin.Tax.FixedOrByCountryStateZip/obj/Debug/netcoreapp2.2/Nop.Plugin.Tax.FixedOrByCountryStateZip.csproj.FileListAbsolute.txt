@@ -1,0 +1,16 @@
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\logo.jpg
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\plugin.json
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Views\Configure.cshtml
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Views\_CountryStateZip.cshtml
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Views\_FixedRate.cshtml
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Views\_ViewImports.cshtml
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Nop.Plugin.Tax.FixedOrByCountryStateZip.deps.json
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Nop.Plugin.Tax.FixedOrByCountryStateZip.dll
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Nop.Plugin.Tax.FixedOrByCountryStateZip.pdb
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.FixedOrByCountryStateZip.csprojAssemblyReference.cache
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.FixedOrByCountryStateZip.csproj.CoreCompileInputs.cache
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.FixedOrByCountryStateZip.AssemblyInfoInputs.cache
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.FixedOrByCountryStateZip.AssemblyInfo.cs
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.FixedOrByCountryStateZip.csproj.CopyComplete
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.FixedOrByCountryStateZip.dll
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.FixedOrByCountryStateZip.pdb
