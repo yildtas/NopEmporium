@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Nop.Core;
 using Nop.Core.Domain.Orders;
-using Nop.Plugin.Api.Attributes;
 using Nop.Plugin.Api.Constants;
 using Nop.Plugin.Api.Delta;
 using Nop.Plugin.Api.DTOs.ShoppingCarts;
 using Nop.Plugin.Api.Factories;
+using Nop.Plugin.Api.Helpers;
 using Nop.Plugin.Api.JSON.ActionResults;
+using Nop.Plugin.Api.JSON.Serializers;
 using Nop.Plugin.Api.ModelBinders;
 using Nop.Plugin.Api.Models.ShoppingCartsParameters;
 using Nop.Plugin.Api.Services;
@@ -21,17 +21,13 @@ using Nop.Services.Media;
 using Nop.Services.Orders;
 using Nop.Services.Security;
 using Nop.Services.Stores;
-using Nop.Plugin.Api.Helpers;
-using Nop.Core;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 namespace Nop.Plugin.Api.Controllers
 {
-    using Microsoft.AspNetCore.Authentication.JwtBearer;
-    using Microsoft.AspNetCore.Mvc;
-    using DTOs.Errors;
-    using JSON.Serializers;
-
-    [ApiAuthorize(Policy = JwtBearerDefaults.AuthenticationScheme, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[ApiAuthorize(Policy = JwtBearerDefaults.AuthenticationScheme, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ShoppingCartItemsController : BaseApiController
     {
         private readonly IShoppingCartItemApiService _shoppingCartItemApiService;
@@ -77,18 +73,8 @@ namespace Nop.Plugin.Api.Controllers
             _storeContext = storeContext;
         }
 
-        /// <summary>
-        /// Receive a list of all shopping cart items
-        /// </summary>
-        /// <response code="200">OK</response>
-        /// <response code="400">Bad Request</response>
-        /// <response code="401">Unauthorized</response>
         [HttpGet]
         [Route("/api/shopping_cart_items")]
-        [ProducesResponseType(typeof(ShoppingCartItemsRootObject), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(string), (int)HttpStatusCode.Unauthorized)]
-        [ProducesResponseType(typeof(ErrorsRootObject), (int)HttpStatusCode.BadRequest)]
-        [GetRequestsErrorInterceptorActionFilter]
         public IActionResult GetShoppingCartItems(ShoppingCartItemsParametersModel parameters)
         {
             if (parameters.Limit < Configurations.MinLimit || parameters.Limit > Configurations.MaxLimit)
@@ -111,7 +97,7 @@ namespace Nop.Plugin.Api.Controllers
 
             var shoppingCartItemsDtos = shoppingCartItems.Select(shoppingCartItem =>
             {
-               return _dtoHelper.PrepareShoppingCartItemDTO(shoppingCartItem);
+                return _dtoHelper.PrepareShoppingCartItemDTO(shoppingCartItem);
             }).ToList();
 
             var shoppingCartsRootObject = new ShoppingCartItemsRootObject()
@@ -124,22 +110,8 @@ namespace Nop.Plugin.Api.Controllers
             return new RawJsonActionResult(json);
         }
 
-        /// <summary>
-        /// Receive a list of all shopping cart items by customer id
-        /// </summary>
-        /// <param name="customerId">Id of the customer whoes shopping cart items you want to get</param>
-        /// <param name="parameters"></param>
-        /// <response code="200">OK</response>
-        /// <response code="400">Bad Request</response>
-        /// <response code="404">Not Found</response>
-        /// <response code="401">Unauthorized</response>
         [HttpGet]
         [Route("/api/shopping_cart_items/{customerId}")]
-        [ProducesResponseType(typeof(ShoppingCartItemsRootObject), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(string), (int)HttpStatusCode.Unauthorized)]
-        [ProducesResponseType(typeof(ErrorsRootObject), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
-        [GetRequestsErrorInterceptorActionFilter]
         public IActionResult GetShoppingCartItemsByCustomerId(int customerId, ShoppingCartItemsForCustomerParametersModel parameters)
         {
             if (customerId <= Configurations.DefaultCustomerId)
@@ -183,13 +155,8 @@ namespace Nop.Plugin.Api.Controllers
         }
 
         [HttpPost]
-        [Route("/api/shopping_cart_items")]
-        [ProducesResponseType(typeof(ShoppingCartItemsRootObject), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(string), (int)HttpStatusCode.Unauthorized)]
-        [ProducesResponseType(typeof(ErrorsRootObject), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
-        [ProducesResponseType(typeof(string), 422)]
-        public IActionResult CreateShoppingCartItem([ModelBinder(typeof(JsonModelBinder<ShoppingCartItemDto>))] Delta<ShoppingCartItemDto> shoppingCartItemDelta)
+        [Route("/api/add_shopping_cart_items")]
+        public IActionResult CreateShoppingCartItem([ModelBinder(typeof(JsonModelBinder<ShoppingCartItemDto>))] Delta<ShoppingCartItemDto> shoppingCartItem)
         {
             // Here we display the errors if the validation has failed at some point.
             if (!ModelState.IsValid)
@@ -198,7 +165,7 @@ namespace Nop.Plugin.Api.Controllers
             }
 
             var newShoppingCartItem = _factory.Initialize();
-            shoppingCartItemDelta.Merge(newShoppingCartItem);
+            shoppingCartItem.Merge(newShoppingCartItem);
 
             // We know that the product id and customer id will be provided because they are required by the validator.
             // TODO: validate
@@ -216,7 +183,7 @@ namespace Nop.Plugin.Api.Controllers
                 return Error(HttpStatusCode.NotFound, "customer", "not found");
             }
 
-            var shoppingCartType = (ShoppingCartType)Enum.Parse(typeof(ShoppingCartType), shoppingCartItemDelta.Dto.ShoppingCartType);
+            var shoppingCartType = (ShoppingCartType)Enum.Parse(typeof(ShoppingCartType), shoppingCartItem.Dto.ShoppingCartType);
 
             if (!product.IsRental)
             {
@@ -224,13 +191,13 @@ namespace Nop.Plugin.Api.Controllers
                 newShoppingCartItem.RentalEndDateUtc = null;
             }
 
-            var attributesXml =_productAttributeConverter.ConvertToXml(shoppingCartItemDelta.Dto.Attributes, product.Id);
+            var attributesXml = _productAttributeConverter.ConvertToXml(shoppingCartItem.Dto.Attributes, product.Id);
 
             var currentStoreId = _storeContext.CurrentStore.Id;
 
             var warnings = _shoppingCartService.AddToCart(customer, product, shoppingCartType, currentStoreId, attributesXml, 0M,
                                         newShoppingCartItem.RentalStartDateUtc, newShoppingCartItem.RentalEndDateUtc,
-                                        shoppingCartItemDelta.Dto.Quantity ?? 1);
+                                        shoppingCartItem.Dto.Quantity ?? 1);
 
             if (warnings.Count > 0)
             {
@@ -241,30 +208,25 @@ namespace Nop.Plugin.Api.Controllers
 
                 return Error(HttpStatusCode.BadRequest);
             }
-            else {
+            else
+            {
                 // the newly added shopping cart item should be the last one
                 newShoppingCartItem = customer.ShoppingCartItems.LastOrDefault();
             }
 
-            // Preparing the result dto of the new product category mapping
-            var newShoppingCartItemDto = _dtoHelper.PrepareShoppingCartItemDTO(newShoppingCartItem);
-
-            var shoppingCartsRootObject = new ShoppingCartItemsRootObject();
-
-            shoppingCartsRootObject.ShoppingCartItems.Add(newShoppingCartItemDto);
-
-            var json = JsonFieldsSerializer.Serialize(shoppingCartsRootObject, string.Empty);
+            string json = JsonConvert.SerializeObject(shoppingCartItem.Dto, Formatting.Indented,
+                            new JsonSerializerSettings()
+                            {
+                                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                            });
 
             return new RawJsonActionResult(json);
         }
 
+
+
         [HttpPut]
         [Route("/api/shopping_cart_items/{id}")]
-        [ProducesResponseType(typeof(ShoppingCartItemsRootObject), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(string), (int)HttpStatusCode.Unauthorized)]
-        [ProducesResponseType(typeof(ErrorsRootObject), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
-        [ProducesResponseType(typeof(ErrorsRootObject), 422)]
         public IActionResult UpdateShoppingCartItem([ModelBinder(typeof(JsonModelBinder<ShoppingCartItemDto>))] Delta<ShoppingCartItemDto> shoppingCartItemDelta)
         {
             // Here we display the errors if the validation has failed at some point.
@@ -281,7 +243,7 @@ namespace Nop.Plugin.Api.Controllers
                 return Error(HttpStatusCode.NotFound, "shopping_cart_item", "not found");
             }
 
-            shoppingCartItemDelta.Merge(shoppingCartItemForUpdate);            
+            shoppingCartItemDelta.Merge(shoppingCartItemForUpdate);
 
             if (!shoppingCartItemForUpdate.Product.IsRental)
             {
@@ -328,11 +290,6 @@ namespace Nop.Plugin.Api.Controllers
 
         [HttpDelete]
         [Route("/api/shopping_cart_items/{id}")]
-        [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(string), (int)HttpStatusCode.Unauthorized)]
-        [ProducesResponseType(typeof(ErrorsRootObject), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
-        [GetRequestsErrorInterceptorActionFilter]
         public IActionResult DeleteShoppingCartItem(int id)
         {
             if (id <= 0)

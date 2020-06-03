@@ -21,43 +21,43 @@ namespace Nop.Plugin.Api.Models.ShoppingCartsParameters
         /// <summary>
         /// Show shopping cart items created after date (format: 2008-12-31 03:00)
         /// </summary>
-        [JsonProperty("created_at_min")]
+        [JsonProperty("CreatedAtMin")]
         public DateTime? CreatedAtMin { get; set; }
 
         /// <summary>
         /// Show shopping cart items created before date (format: 2008-12-31 03:00)
         /// </summary>
-        [JsonProperty("created_at_max")]
+        [JsonProperty("CreatedAtMax")]
         public DateTime? CreatedAtMax { get; set; }
 
         /// <summary>
         /// Show shopping cart items updated after date (format: 2008-12-31 03:00)
         /// </summary>
-        [JsonProperty("updated_at_min")]
+        [JsonProperty("UpdatedAtMin")]
         public DateTime? UpdatedAtMin { get; set; }
 
         /// <summary>
         /// Show shopping cart items updated before date (format: 2008-12-31 03:00)
         /// </summary>
-        [JsonProperty("updated_at_max")]
+        [JsonProperty("UpdatedAtMax")]
         public DateTime? UpdatedAtMax { get; set; }
 
         /// <summary>
         /// Amount of results (default: 50) (maximum: 250)
         /// </summary>
-        [JsonProperty("limit")]
+        [JsonProperty("Limit")]
         public int Limit { get; set; }
 
         /// <summary>
         /// Page to show (default: 1)
         /// </summary>
-        [JsonProperty("page")]
+        [JsonProperty("Page")]
         public int Page { get; set; }
 
         /// <summary>
         /// comma-separated list of fields to include in the response
         /// </summary>
-        [JsonProperty("fields")]
+        [JsonProperty("Fields")]
         public string Fields { get; set; }
     }
 }

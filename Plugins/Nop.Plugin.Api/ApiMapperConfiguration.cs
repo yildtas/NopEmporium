@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using IdentityServer4.EntityFramework.Entities;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Common;
 using Nop.Core.Domain.Customers;
@@ -56,7 +55,10 @@ namespace Nop.Plugin.Api
 
             CreateMap<Manufacturer, ManufacturerDto>();
 
-            CreateClientToClientApiModelMap();
+            CreateMap<Product, ProductDto>();
+
+
+            //CreateClientToClientApiModelMap();
 
             CreateAddressMap();
             CreateAddressDtoToEntityMap();
@@ -93,14 +95,14 @@ namespace Nop.Plugin.Api
                 .IgnoreAllNonExisting();
         }
 
-        private static void CreateClientToClientApiModelMap()
-        {
-            AutoMapperApiConfiguration.MapperConfigurationExpression.CreateMap<Client, ClientApiModel>()
-                .ForMember(x => x.ClientSecret, y => y.MapFrom(src => src.ClientSecrets.FirstOrDefault().Description))
-                .ForMember(x => x.RedirectUrl, y => y.MapFrom(src => src.RedirectUris.FirstOrDefault().RedirectUri))
-                .ForMember(x => x.AccessTokenLifetime, y => y.MapFrom(src => src.AccessTokenLifetime))
-                .ForMember(x => x.RefreshTokenLifetime, y => y.MapFrom(src => src.AbsoluteRefreshTokenLifetime));
-        }
+        //private static void CreateClientToClientApiModelMap()
+        //{
+        //    AutoMapperApiConfiguration.MapperConfigurationExpression.CreateMap<Client, ClientApiModel>()
+        //        .ForMember(x => x.ClientSecret, y => y.MapFrom(src => src.ClientSecrets.FirstOrDefault().Description))
+        //        .ForMember(x => x.RedirectUrl, y => y.MapFrom(src => src.RedirectUris.FirstOrDefault().RedirectUri))
+        //        .ForMember(x => x.AccessTokenLifetime, y => y.MapFrom(src => src.AccessTokenLifetime))
+        //        .ForMember(x => x.RefreshTokenLifetime, y => y.MapFrom(src => src.AbsoluteRefreshTokenLifetime));
+        //}
 
         private void CreateOrderEntityToOrderDtoMap()
         {
