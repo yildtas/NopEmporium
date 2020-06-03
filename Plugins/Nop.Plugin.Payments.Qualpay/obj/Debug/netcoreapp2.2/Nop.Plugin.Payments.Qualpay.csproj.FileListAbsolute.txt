@@ -117,3 +117,5 @@ C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Qualpay\obj\Debug\netcoreap
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Qualpay\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Qualpay.csproj.CopyComplete
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Qualpay\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Qualpay.dll
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Qualpay\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Qualpay.pdb
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Qualpay\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.deps.json
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Qualpay\Plugins\Payments.Manual\plugin.json

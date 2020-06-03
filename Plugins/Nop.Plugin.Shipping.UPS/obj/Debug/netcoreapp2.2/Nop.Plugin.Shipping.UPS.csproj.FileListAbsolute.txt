@@ -25,3 +25,4 @@ C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.csproj.CopyComplete
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.dll
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.pdb
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\netcoreapp2.2\Nop.Plugin.Shipping.UPS.csprojAssemblyReference.cache

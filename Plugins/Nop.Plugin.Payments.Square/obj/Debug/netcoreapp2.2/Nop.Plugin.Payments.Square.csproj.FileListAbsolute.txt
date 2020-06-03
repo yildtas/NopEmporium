@@ -111,3 +111,5 @@ C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Square\obj\Debug\netcoreapp
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Square\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Square.csproj.CopyComplete
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Square\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Square.dll
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Square\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Square.pdb
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Square\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.deps.json
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Square\Plugins\Payments.Manual\plugin.json

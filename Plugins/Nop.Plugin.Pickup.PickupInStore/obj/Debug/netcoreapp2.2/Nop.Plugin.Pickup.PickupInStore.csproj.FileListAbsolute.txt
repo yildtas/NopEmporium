@@ -30,4 +30,3 @@ C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\netco
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\netcoreapp2.2\Nop.Plugin.Pickup.PickupInStore.csproj.CopyComplete
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\netcoreapp2.2\Nop.Plugin.Pickup.PickupInStore.dll
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\netcoreapp2.2\Nop.Plugin.Pickup.PickupInStore.pdb
-C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\netcoreapp2.2\Nop.Plugin.Pickup.PickupInStore.csprojAssemblyReference.cache

@@ -133,3 +133,5 @@ C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.Avalara\obj\Debug\netcoreapp2.2\
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.Avalara\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.Avalara.csproj.CopyComplete
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.Avalara\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.Avalara.dll
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Tax.Avalara\obj\Debug\netcoreapp2.2\Nop.Plugin.Tax.Avalara.pdb
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.Avalara\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.deps.json
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Tax.Avalara\Plugins\Payments.Manual\plugin.json

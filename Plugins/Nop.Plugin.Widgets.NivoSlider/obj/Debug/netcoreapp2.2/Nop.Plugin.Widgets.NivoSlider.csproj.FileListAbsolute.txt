@@ -81,4 +81,3 @@ C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\netcore
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\netcoreapp2.2\Nop.Plugin.Widgets.NivoSlider.csproj.CopyComplete
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\netcoreapp2.2\Nop.Plugin.Widgets.NivoSlider.dll
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\netcoreapp2.2\Nop.Plugin.Widgets.NivoSlider.pdb
-C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\netcoreapp2.2\Nop.Plugin.Widgets.NivoSlider.csprojAssemblyReference.cache

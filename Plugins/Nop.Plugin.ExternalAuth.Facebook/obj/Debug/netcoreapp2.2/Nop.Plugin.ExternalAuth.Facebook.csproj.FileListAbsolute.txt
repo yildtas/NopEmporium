@@ -30,4 +30,3 @@ C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Debug\netc
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Debug\netcoreapp2.2\Nop.Plugin.ExternalAuth.Facebook.csproj.CopyComplete
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Debug\netcoreapp2.2\Nop.Plugin.ExternalAuth.Facebook.dll
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Debug\netcoreapp2.2\Nop.Plugin.ExternalAuth.Facebook.pdb
-C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Debug\netcoreapp2.2\Nop.Plugin.ExternalAuth.Facebook.csprojAssemblyReference.cache
