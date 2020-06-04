@@ -12,3 +12,17 @@ C:\NopEmporium\Libraries\Nop.Services\obj\Debug\netcoreapp2.2\Nop.Services.Assem
 C:\NopEmporium\Libraries\Nop.Services\obj\Debug\netcoreapp2.2\Nop.Services.csproj.CopyComplete
 C:\NopEmporium\Libraries\Nop.Services\obj\Debug\netcoreapp2.2\Nop.Services.dll
 C:\NopEmporium\Libraries\Nop.Services\obj\Debug\netcoreapp2.2\Nop.Services.pdb
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\bin\Debug\netcoreapp2.2\Nop.Services.deps.json
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\bin\Debug\netcoreapp2.2\Nop.Services.dll
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\bin\Debug\netcoreapp2.2\Nop.Services.pdb
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\bin\Debug\netcoreapp2.2\Nop.Core.dll
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\bin\Debug\netcoreapp2.2\Nop.Data.dll
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\bin\Debug\netcoreapp2.2\Nop.Core.pdb
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\bin\Debug\netcoreapp2.2\Nop.Data.pdb
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\obj\Debug\netcoreapp2.2\Nop.Services.csprojAssemblyReference.cache
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\obj\Debug\netcoreapp2.2\Nop.Services.AssemblyInfoInputs.cache
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\obj\Debug\netcoreapp2.2\Nop.Services.AssemblyInfo.cs
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\obj\Debug\netcoreapp2.2\Nop.Services.csproj.CoreCompileInputs.cache
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\obj\Debug\netcoreapp2.2\Nop.Services.csproj.CopyComplete
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\obj\Debug\netcoreapp2.2\Nop.Services.dll
+C:\FreeLance\NopEmporium\Libraries\Nop.Services\obj\Debug\netcoreapp2.2\Nop.Services.pdb

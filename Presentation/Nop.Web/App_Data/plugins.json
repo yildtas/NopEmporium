@@ -1,7 +1,5 @@
 ﻿{
   "InstalledPluginNames": [
-    "Nop.Plugin.Api",
-    "Nop.Plugin.Mobile.Api",
     "DiscountRequirement.MustBeAssignedToCustomerRole",
     "CurrencyExchange.ECB",
     "Misc.SendinBlue",
@@ -33,7 +31,8 @@
     "SevenSpikes.Nop.Plugins.RichBlog",
     "SevenSpikes.Nop.Plugins.SaleOfTheDay",
     "SevenSpikes.Nop.Plugins.SmartProductCollections",
-    "SevenSpikes.Theme.Emporium"
+    "SevenSpikes.Theme.Emporium",
+    "Nop.Plugin.Api"
   ],
   "PluginNamesToUninstall": [],
   "PluginNamesToDelete": [],

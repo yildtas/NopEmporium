@@ -3,14 +3,10 @@ using Nop.Plugin.Api.DTOs.Base;
 
 namespace Nop.Plugin.Api.DTOs
 {
-    [JsonObject(Title = "Attribute")]
-    public class ProductItemAttributeDto 
+    [JsonObject(Title = "attribute")]
+    public class ProductItemAttributeDto : BaseDto
     {
-        [JsonProperty("Key")]
-        public int Key { get; set; }
-
-        [JsonProperty("Value")]
+        [JsonProperty("value")]
         public string Value { get; set; }
-
     }
 }

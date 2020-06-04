@@ -9,7 +9,7 @@ using Nop.Plugin.Api.DTOs.Base;
 
 namespace Nop.Plugin.Api.DTOs.ShoppingCarts
 {
-    [JsonObject(Title = "ShoppingCartItem")]
+    [JsonObject(Title = "shopping_cart_item")]
     public class ShoppingCartItemDto : BaseDto
     {
         private int? _shoppingCartTypeId;
@@ -18,7 +18,7 @@ namespace Nop.Plugin.Api.DTOs.ShoppingCarts
         /// <summary>
         /// Gets or sets the selected attributes
         /// </summary>
-        [JsonProperty("ProductAttributes")]
+        [JsonProperty("product_attributes")]
         public List<ProductItemAttributeDto> Attributes
         {
             get
@@ -34,43 +34,43 @@ namespace Nop.Plugin.Api.DTOs.ShoppingCarts
         /// <summary>
         /// Gets or sets the price enter by a customer
         /// </summary>
-        [JsonProperty("CustomerEnteredPrice")]
+        [JsonProperty("customer_entered_price")]
         public decimal? CustomerEnteredPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the quantity
         /// </summary>
-        [JsonProperty("Quantity")]
+        [JsonProperty("quantity")]
         public int? Quantity { get; set; }
 
         /// <summary>
         /// Gets or sets the rental product start date (null if it's not a rental product)
         /// </summary>
-        [JsonProperty("RentalStartDateUtc")]
+        [JsonProperty("rental_start_date_utc")]
         public DateTime? RentalStartDateUtc { get; set; }
 
         /// <summary>
         /// Gets or sets the rental product end date (null if it's not a rental product)
         /// </summary>
-        [JsonProperty("RentalEndDateUtc")]
+        [JsonProperty("rental_end_date_utc")]
         public DateTime? RentalEndDateUtc { get; set; }
 
         /// <summary>
         /// Gets or sets the date and time of instance creation
         /// </summary>
-        [JsonProperty("CreatedOnUtc")]
+        [JsonProperty("created_on_utc")]
         public DateTime? CreatedOnUtc { get; set; }
 
         /// <summary>
         /// Gets or sets the date and time of instance update
         /// </summary>
-        [JsonProperty("UpdatedOnUtc")]
+        [JsonProperty("updated_on_utc")]
         public DateTime? UpdatedOnUtc { get; set; }
 
         /// <summary>
         /// Gets the log type
         /// </summary>
-        [JsonProperty("ShoppingCartType")]
+        [JsonProperty("shopping_cart_type")]
         public string ShoppingCartType
         {
             get
@@ -92,22 +92,22 @@ namespace Nop.Plugin.Api.DTOs.ShoppingCarts
             }
         }
 
-        [JsonProperty("ProductId")]
+        [JsonProperty("product_id")]
         public int? ProductId { get; set; }
 
         /// <summary>
         /// Gets or sets the product
         /// </summary>
-        [JsonProperty("Product")]
+        [JsonProperty("product")]
         public ProductDto ProductDto { get; set; }
 
-        [JsonProperty("CustomerId")]
+        [JsonProperty("customer_id")]
         public int? CustomerId { get; set; }
 
         /// <summary>
         /// Gets or sets the customer
         /// </summary>
-        [JsonProperty("Customer")]
+        [JsonProperty("customer")]
         public CustomerForShoppingCartItemDto CustomerDto { get; set; }
     }
 }

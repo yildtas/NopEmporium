@@ -185,25 +185,25 @@
             return url + query;
         }
 
-        //[DebuggerStepThrough]
-        //public static NameValueCollection ReadQueryStringAsNameValueCollection(this string url)
-        //{
-        //    if (url != null)
-        //    {
-        //        var idx = url.IndexOf('?');
-        //        if (idx >= 0)
-        //        {
-        //            url = url.Substring(idx + 1);
-        //        }
-        //        var query = QueryHelpers.ParseNullableQuery(url);
-        //        if (query != null)
-        //        {
-        //            return query.AsNameValueCollection();
-        //        }
-        //    }
+        [DebuggerStepThrough]
+        public static NameValueCollection ReadQueryStringAsNameValueCollection(this string url)
+        {
+            if (url != null)
+            {
+                var idx = url.IndexOf('?');
+                if (idx >= 0)
+                {
+                    url = url.Substring(idx + 1);
+                }
+                var query = QueryHelpers.ParseNullableQuery(url);
+                if (query != null)
+                {
+                    return query.AsNameValueCollection();
+                }
+            }
 
-        //    return new NameValueCollection();
-        //}
+            return new NameValueCollection();
+        }
 
         public static string GetOrigin(this string url)
         {

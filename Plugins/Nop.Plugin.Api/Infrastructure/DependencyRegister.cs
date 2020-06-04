@@ -41,9 +41,7 @@ namespace Nop.Plugin.Api.Infrastructure
 
         private void RegisterPluginServices(ContainerBuilder builder)
         {
-            //builder.RegisterType<ClientService>().As<IClientService>().InstancePerLifetimeScope();
-            
-            builder.RegisterType<AuthApiService>().As<IAuthApiService>().InstancePerLifetimeScope();
+            builder.RegisterType<ClientService>().As<IClientService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerApiService>().As<ICustomerApiService>().InstancePerLifetimeScope();
             builder.RegisterType<CategoryApiService>().As<ICategoryApiService>().InstancePerLifetimeScope();
             builder.RegisterType<ProductApiService>().As<IProductApiService>().InstancePerLifetimeScope();

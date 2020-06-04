@@ -1,4 +1,8 @@
-﻿using Nop.Core.Domain.Catalog;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Discounts;
 using Nop.Plugin.Api.Attributes;
 using Nop.Plugin.Api.Constants;
@@ -6,7 +10,6 @@ using Nop.Plugin.Api.Delta;
 using Nop.Plugin.Api.DTOs.Images;
 using Nop.Plugin.Api.DTOs.Products;
 using Nop.Plugin.Api.Factories;
-using Nop.Plugin.Api.Helpers;
 using Nop.Plugin.Api.JSON.ActionResults;
 using Nop.Plugin.Api.ModelBinders;
 using Nop.Plugin.Api.Models.ProductsParameters;
@@ -20,23 +23,16 @@ using Nop.Services.Media;
 using Nop.Services.Security;
 using Nop.Services.Seo;
 using Nop.Services.Stores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+using Nop.Plugin.Api.Helpers;
 
 namespace Nop.Plugin.Api.Controllers
 {
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Mvc;
     using DTOs.Errors;
     using JSON.Serializers;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Newtonsoft.Json;
-    using Nop.Core;
-    using Nop.Core.Domain.Media;
-    using Nop.Plugin.Api.Models.Catalog;
 
-    //[ApiAuthorize(Policy = JwtBearerDefaults.AuthenticationScheme, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [ApiAuthorize(Policy = JwtBearerDefaults.AuthenticationScheme, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ProductsController : BaseApiController
     {
         private readonly IProductApiService _productApiService;
@@ -47,14 +43,6 @@ namespace Nop.Plugin.Api.Controllers
         private readonly IProductTagService _productTagService;
         private readonly IProductAttributeService _productAttributeService;
         private readonly IDTOHelper _dtoHelper;
-        private readonly IAclService _aclService;
-        private readonly IStoreMappingService _storeMappingService;
-        private readonly ICategoryService _categoryService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IStoreContext _storeContext;
-        private readonly IWorkContext _workContext;
-        private readonly CatalogSettings _catalogSettings;
-        private readonly MediaSettings _mediaSettings;
 
         public ProductsController(IProductApiService productApiService,
                                   IJsonFieldsSerializer jsonFieldsSerializer,
@@ -72,13 +60,7 @@ namespace Nop.Plugin.Api.Controllers
                                   IManufacturerService manufacturerService,
                                   IProductTagService productTagService,
                                   IProductAttributeService productAttributeService,
-                                  IDTOHelper dtoHelper,
-                                  ICategoryService categoryService,
-                                  IHttpContextAccessor httpContextAccessor,
-                                  IStoreContext storeContext,
-                                  IWorkContext workContext,
-                                  CatalogSettings catalogSettings,
-                                  MediaSettings mediaSettings) : base(jsonFieldsSerializer, aclService, customerService, storeMappingService, storeService, discountService, customerActivityService, localizationService, pictureService)
+                                  IDTOHelper dtoHelper) : base(jsonFieldsSerializer, aclService, customerService, storeMappingService, storeService, discountService, customerActivityService, localizationService, pictureService)
         {
             _productApiService = productApiService;
             _factory = factory;
@@ -88,121 +70,6 @@ namespace Nop.Plugin.Api.Controllers
             _productService = productService;
             _productAttributeService = productAttributeService;
             _dtoHelper = dtoHelper;
-            _storeMappingService = storeMappingService;
-            _aclService = aclService;
-            _categoryService = categoryService;
-            _httpContextAccessor = httpContextAccessor;
-            _storeContext = storeContext;
-            _catalogSettings = catalogSettings;
-            _workContext = workContext;
-            _mediaSettings = mediaSettings;
-        }
-
-        [HttpPost]
-        [Route("/api/products_search")]
-        public IActionResult GetProductsByTerm([ModelBinder(typeof(JsonModelBinder<ProductDetailsModel>))] Delta<ProductDetailsModel> command)
-        {
-            if (string.IsNullOrWhiteSpace(command.Dto.Term) || command.Dto.Term.Length < _catalogSettings.ProductSearchTermMinimumLength)
-                return Content("");
-
-            //products
-            var productNumber = _catalogSettings.ProductSearchAutoCompleteNumberOfProducts > 0 ?
-                _catalogSettings.ProductSearchAutoCompleteNumberOfProducts : 10;
-
-            var products = _productService.SearchProducts(
-                storeId: _storeContext.CurrentStore.Id,
-                keywords: command.Dto.Term,
-                languageId: _workContext.WorkingLanguage.Id,
-                visibleIndividuallyOnly: true,
-                pageSize: productNumber);
-
-            var showLinkToResultSearch = _catalogSettings.ShowLinkToAllResultInSearchAutoComplete && (products.TotalCount > productNumber);
-
-            var models = _productApiService.PrepareProductOverviewModels(products, true, _catalogSettings.ShowProductImagesInSearchAutoComplete, _mediaSettings.AutoCompleteSearchThumbPictureSize).ToList();
-            var result = (from p in models
-                          select new
-                          {
-                              Id = p.Id,
-                              Label = p.Name,
-                              ShortDescription = p.ShortDescription,
-                              FullDescription = p.FullDescription,
-                              SeName = p.SeName,
-                              Sku = p.Sku,
-                              ProductUrl = Url.RouteUrl("Product", new { SeName = p.SeName }),
-                              ShowLinkToResultSearch = showLinkToResultSearch,
-                              ProductPrice = p.ProductPrice,
-                              ProductPicture = p.DefaultPictureModel,
-                              ProductTags = p.ProductTags,
-                              ThumbImageUrl = p.DefaultPictureModel == null ? string.Empty : p.DefaultPictureModel.ThumbImageUrl
-                          })
-                .ToList();
-
-            string json = JsonConvert.SerializeObject(result);
-
-            return new RawJsonActionResult(json);
-        }
-
-        [HttpPost]
-        [Route("/api/products_by_id")]
-        public IActionResult GetProductById([ModelBinder(typeof(JsonModelBinder<ProductDetailsModel>))] Delta<ProductDetailsModel> command)
-        {
-            if (command.Dto.ProductId <= 0)
-            {
-                return Error(HttpStatusCode.BadRequest, "productId", "invalid productId");
-            }
-
-            var product = _productService.GetProductById(command.Dto.ProductId);
-            if (product == null || product.Deleted)
-            {
-                return NotFound();
-            }
-
-            //model
-            var model = _productApiService.PrepareProductDetailsModel(product);
-           
-            //template
-
-            string json = JsonConvert.SerializeObject(model);
-
-            return new RawJsonActionResult(json);
-        }
-
-        [HttpPost]
-        [Route("/api/products_by_category_id")]
-        public IActionResult GetProductsByCategoryId([ModelBinder(typeof(JsonModelBinder<CatalogPagingFilteringModel>))] Delta<CatalogPagingFilteringModel> command)
-        {
-            var category = _categoryService.GetCategoryById(command.Dto.CategoryId);
-            if (category == null || category.Deleted)
-                return NotFound();
-
-            //model
-            var model = _productApiService.PrepareCategoryModel(category, command.Dto);
-
-            string json = JsonConvert.SerializeObject(model);
-
-            return new RawJsonActionResult(json);
-        }
-
-        [HttpGet]
-        [Route("/api/home_page_products")]
-        public IActionResult GetHomePageProducts()
-        {
-            var products = _productService.GetAllProductsDisplayedOnHomepage();
-            //ACL and store mapping
-            products = products.Where(p => _aclService.Authorize(p) && _storeMappingService.Authorize(p)).ToList();
-            //availability dates
-            products = products.Where(p => _productService.ProductIsAvailable(p)).ToList();
-
-            products = products.Where(p => p.VisibleIndividually).ToList();
-
-            if (!products.Any())
-                return Content("");
-
-            var model = _productApiService.PrepareProductOverviewModels(products, true, true, null).ToList();
-
-            var json = JsonConvert.SerializeObject(model);
-
-            return new RawJsonActionResult(json);
         }
 
         /// <summary>
@@ -233,7 +100,7 @@ namespace Nop.Plugin.Api.Controllers
                                                                         parameters.UpdatedAtMax, parameters.Limit, parameters.Page, parameters.SinceId, parameters.CategoryId,
                                                                         parameters.VendorName, parameters.PublishedStatus)
                                                 .Where(p => StoreMappingService.Authorize(p));
-
+            
             IList<ProductDto> productsAsDtos = allProducts.Select(product => _dtoHelper.PrepareProductDTO(product)).ToList();
 
             var productsRootObject = new ProductsRootObjectDto()
@@ -269,6 +136,46 @@ namespace Nop.Plugin.Api.Controllers
             };
 
             return Ok(productsCountRootObject);
+        }
+
+        /// <summary>
+        /// Retrieve product by spcified id
+        /// </summary>
+        /// <param name="id">Id of the product</param>
+        /// <param name="fields">Fields from the product you want your json to contain</param>
+        /// <response code="200">OK</response>
+        /// <response code="404">Not Found</response>
+        /// <response code="401">Unauthorized</response>
+        [HttpGet]
+        [Route("/api/products/{id}")]
+        [ProducesResponseType(typeof(ProductsRootObjectDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType(typeof(ErrorsRootObject), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
+        [GetRequestsErrorInterceptorActionFilter]
+        public IActionResult GetProductById(int id, string fields = "")
+        {
+            if (id <= 0)
+            {
+                return Error(HttpStatusCode.BadRequest, "id", "invalid id");
+            }
+
+            var product = _productApiService.GetProductById(id);
+
+            if (product == null)
+            {
+                return Error(HttpStatusCode.NotFound, "product", "not found");
+            }
+
+            var productDto = _dtoHelper.PrepareProductDTO(product);
+
+            var productsRootObject = new ProductsRootObjectDto();
+
+            productsRootObject.Products.Add(productDto);
+
+            var json = JsonFieldsSerializer.Serialize(productsRootObject, fields);
+
+            return new RawJsonActionResult(json);
         }
 
         [HttpPost]
@@ -488,8 +395,8 @@ namespace Nop.Plugin.Api.Controllers
                     var productAttributeMappingToUpdate = entityToUpdate.ProductAttributeMappings.FirstOrDefault(x => x.Id == productAttributeMappingDto.Id);
                     if (productAttributeMappingToUpdate != null)
                     {
-                        productDtoDelta.Merge(productAttributeMappingDto, productAttributeMappingToUpdate, false);
-
+                        productDtoDelta.Merge(productAttributeMappingDto,productAttributeMappingToUpdate,false);
+                       
                         _productAttributeService.UpdateProductAttributeMapping(productAttributeMappingToUpdate);
 
                         UpdateProductAttributeValues(productAttributeMappingDto, productDtoDelta);
@@ -497,7 +404,7 @@ namespace Nop.Plugin.Api.Controllers
                 }
                 else
                 {
-                    var newProductAttributeMapping = new ProductAttributeMapping { ProductId = entityToUpdate.Id };
+                    var newProductAttributeMapping = new ProductAttributeMapping {ProductId = entityToUpdate.Id};
 
                     productDtoDelta.Merge(productAttributeMappingDto, newProductAttributeMapping);
 
@@ -643,7 +550,7 @@ namespace Nop.Plugin.Api.Controllers
             _productService.UpdateProduct(product);
             _productService.UpdateHasDiscountsApplied(product);
         }
-
+        
         private void UpdateProductManufacturers(Product product, List<int> passedManufacturerIds)
         {
             // If no manufacturers specified then there is nothing to map 

@@ -4,7 +4,7 @@ namespace Nop.Plugin.Api.DTOs.Base
 {
     public abstract class BaseDto
     {
-        [JsonProperty("Id")]
+        [JsonProperty("id")]
         public int Id { get; set; }
     }
 }

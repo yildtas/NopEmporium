@@ -1,5 +1,6 @@
 ﻿namespace Nop.Plugin.Api
 {
+    using IdentityServer4.EntityFramework.DbContexts;
     using Microsoft.EntityFrameworkCore.Infrastructure;
     using Microsoft.EntityFrameworkCore.Migrations;
     using Nop.Core;
@@ -130,63 +131,63 @@
             //_webConfigMangerHelper.AddConfiguration();
         }
 
-        //public override void Uninstall()
-        //{
-        //    _objectContext.Uninstall();
+        public override void Uninstall()
+        {
+            _objectContext.Uninstall();
 
-        //    var persistedGrantMigrator = EngineContext.Current.Resolve<PersistedGrantDbContext>().GetService<IMigrator>();
-        //    persistedGrantMigrator.Migrate("0");
+            var persistedGrantMigrator = EngineContext.Current.Resolve<PersistedGrantDbContext>().GetService<IMigrator>();
+            persistedGrantMigrator.Migrate("0");
             
-        //    var configurationMigrator = EngineContext.Current.Resolve<ConfigurationDbContext>().GetService<IMigrator>();
-        //    configurationMigrator.Migrate("0");
+            var configurationMigrator = EngineContext.Current.Resolve<ConfigurationDbContext>().GetService<IMigrator>();
+            configurationMigrator.Migrate("0");
 
-        //    // TODO: Delete all resources
-        //    //locales
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Menu.ManageClients");
+            // TODO: Delete all resources
+            //locales
+            _localizationService.DeletePluginLocaleResource("Plugins.Api");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Menu.ManageClients");
 
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Menu.Title");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Menu.Settings.Title");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Menu.Clients.Title");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Menu.Docs.Title");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Menu.Title");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Menu.Settings.Title");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Menu.Clients.Title");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Menu.Docs.Title");
 
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Configure");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.GeneralSettings");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.EnableApi");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.EnableApi.Hint");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.AllowRequestsFromSwagger");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.AllowRequestsFromSwagger.Hint");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Configure");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.GeneralSettings");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.EnableApi");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.EnableApi.Hint");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.AllowRequestsFromSwagger");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.AllowRequestsFromSwagger.Hint");
 
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.Name");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.ClientId");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.ClientSecret");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.CallbackUrl");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.IsActive");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.AddNew");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.Edit");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.Created");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.Deleted");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Entities.Client.FieldValidationMessages.Name");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Entities.Client.FieldValidationMessages.ClientId");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Entities.Client.FieldValidationMessages.ClientSecret");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Entities.Client.FieldValidationMessages.CallbackUrl");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Settings.GeneralSettingsTitle");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Edit");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.BackToList");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.Name");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.ClientId");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.ClientSecret");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.CallbackUrl");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.IsActive");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.AddNew");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.Edit");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.Created");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.Deleted");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Entities.Client.FieldValidationMessages.Name");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Entities.Client.FieldValidationMessages.ClientId");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Entities.Client.FieldValidationMessages.ClientSecret");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Entities.Client.FieldValidationMessages.CallbackUrl");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Settings.GeneralSettingsTitle");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Edit");
+            _localizationService.DeletePluginLocaleResource("Plugins.Api.Admin.Client.BackToList");
 
-        //    _localizationService.DeletePluginLocaleResource("Api.WebHooks.CouldNotRegisterWebhook");
-        //    _localizationService.DeletePluginLocaleResource("Api.WebHooks.CouldNotRegisterDuplicateWebhook");
-        //    _localizationService.DeletePluginLocaleResource("Api.WebHooks.CouldNotUpdateWebhook");
-        //    _localizationService.DeletePluginLocaleResource("Api.WebHooks.CouldNotDeleteWebhook");
-        //    _localizationService.DeletePluginLocaleResource("Api.WebHooks.CouldNotDeleteWebhooks");
-        //    _localizationService.DeletePluginLocaleResource("Api.WebHooks.InvalidFilters");
+            _localizationService.DeletePluginLocaleResource("Api.WebHooks.CouldNotRegisterWebhook");
+            _localizationService.DeletePluginLocaleResource("Api.WebHooks.CouldNotRegisterDuplicateWebhook");
+            _localizationService.DeletePluginLocaleResource("Api.WebHooks.CouldNotUpdateWebhook");
+            _localizationService.DeletePluginLocaleResource("Api.WebHooks.CouldNotDeleteWebhook");
+            _localizationService.DeletePluginLocaleResource("Api.WebHooks.CouldNotDeleteWebhooks");
+            _localizationService.DeletePluginLocaleResource("Api.WebHooks.InvalidFilters");
 
-        //    base.Uninstall();
+            base.Uninstall();
 
-        //    // Changes to Web.Config trigger application restart.
-        //    // This doesn't appear to affect the uninstall function, but just to be safe we will made web.config changes after the plugin was uninstalled.
-        //    //_webConfigMangerHelper.RemoveConfiguration();
-        //}
+            // Changes to Web.Config trigger application restart.
+            // This doesn't appear to affect the uninstall function, but just to be safe we will made web.config changes after the plugin was uninstalled.
+            //_webConfigMangerHelper.RemoveConfiguration();
+        }
 
         public void ManageSiteMap(SiteMapNode rootNode)
         {

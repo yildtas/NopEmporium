@@ -11,12 +11,12 @@ namespace Nop.Plugin.Api.DTOs.Categories
             Categories = new List<CategoryDto>();
         }
 
-        [JsonProperty("Categories")]
+        [JsonProperty("categories")]
         public IList<CategoryDto> Categories { get; set; }
 
         public string GetPrimaryPropertyName()
         {
-            return "Categories";
+            return "categories";
         }
 
         public Type GetPrimaryPropertyType()

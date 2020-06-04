@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Nop.Core.Domain.Catalog;
-using Nop.Core.Domain.Orders;
 using Nop.Plugin.Api.Constants;
-using Nop.Plugin.Api.Models.Catalog;
 
 namespace Nop.Plugin.Api.Services
 {
@@ -21,14 +19,5 @@ namespace Nop.Plugin.Api.Services
         Product GetProductById(int productId);
 
         Product GetProductByIdNoTracking(int productId);
-
-        IEnumerable<ProductOverviewModel> PrepareProductOverviewModels(IEnumerable<Product> products,
-           bool preparePriceModel = true, bool preparePictureModel = true,
-           int? productThumbPictureSize = null, bool prepareSpecificationAttributes = false,
-           bool forceRedirectionAfterAddingToCart = false);
-
-        CategoryModel PrepareCategoryModel(Category category, CatalogPagingFilteringModel command);
-
-        ProductDetailsModel PrepareProductDetailsModel(Product product, ShoppingCartItem updatecartitem = null, bool isAssociatedProduct = false);
     }
 }

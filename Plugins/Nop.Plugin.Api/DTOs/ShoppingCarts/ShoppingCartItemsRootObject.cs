@@ -11,12 +11,12 @@ namespace Nop.Plugin.Api.DTOs.ShoppingCarts
             ShoppingCartItems = new List<ShoppingCartItemDto>();
         }
 
-        [JsonProperty("ShoppingCarts")]
+        [JsonProperty("shopping_carts")]
         public IList<ShoppingCartItemDto> ShoppingCartItems { get; set; }
 
         public string GetPrimaryPropertyName()
         {
-            return "ShoppingCarts";
+            return "shopping_carts";
         }
 
         public Type GetPrimaryPropertyType()

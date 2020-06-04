@@ -6,10 +6,10 @@ namespace Nop.Plugin.Api.DTOs.Images
     [ImageValidation]
     public class ImageDto
     {
-        [JsonProperty("Src")]
+        [JsonProperty("src")]
         public string Src { get; set; }
 
-        [JsonProperty("Attachment")]
+        [JsonProperty("attachment")]
         public string Attachment { get; set; }
 
         [JsonIgnore]

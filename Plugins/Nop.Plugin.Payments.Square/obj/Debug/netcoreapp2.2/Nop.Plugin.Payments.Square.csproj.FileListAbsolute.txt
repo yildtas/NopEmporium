@@ -1,0 +1,16 @@
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Square\Content\styles.css
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Square\logo.png
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Square\plugin.json
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Square\Views\Configure.cshtml
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Square\Views\PaymentInfo.cshtml
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Square\Views\_ViewImports.cshtml
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Square\Nop.Plugin.Payments.Square.deps.json
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Square\Nop.Plugin.Payments.Square.dll
+C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Payments.Square\Nop.Plugin.Payments.Square.pdb
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Square\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Square.csprojAssemblyReference.cache
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Square\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Square.AssemblyInfoInputs.cache
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Square\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Square.AssemblyInfo.cs
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Square\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Square.csproj.CoreCompileInputs.cache
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Square\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Square.csproj.CopyComplete
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Square\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Square.dll
+C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Payments.Square\obj\Debug\netcoreapp2.2\Nop.Plugin.Payments.Square.pdb
