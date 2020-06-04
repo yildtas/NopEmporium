@@ -1,0 +1,12 @@
+C:\NopEmporium\Libraries\Nop.Data\bin\Debug\netcoreapp2.2\Nop.Data.deps.json
+C:\NopEmporium\Libraries\Nop.Data\bin\Debug\netcoreapp2.2\Nop.Data.dll
+C:\NopEmporium\Libraries\Nop.Data\bin\Debug\netcoreapp2.2\Nop.Data.pdb
+C:\NopEmporium\Libraries\Nop.Data\bin\Debug\netcoreapp2.2\Nop.Core.dll
+C:\NopEmporium\Libraries\Nop.Data\bin\Debug\netcoreapp2.2\Nop.Core.pdb
+C:\NopEmporium\Libraries\Nop.Data\obj\Debug\netcoreapp2.2\Nop.Data.csprojAssemblyReference.cache
+C:\NopEmporium\Libraries\Nop.Data\obj\Debug\netcoreapp2.2\Nop.Data.csproj.CoreCompileInputs.cache
+C:\NopEmporium\Libraries\Nop.Data\obj\Debug\netcoreapp2.2\Nop.Data.AssemblyInfoInputs.cache
+C:\NopEmporium\Libraries\Nop.Data\obj\Debug\netcoreapp2.2\Nop.Data.AssemblyInfo.cs
+C:\NopEmporium\Libraries\Nop.Data\obj\Debug\netcoreapp2.2\Nop.Data.csproj.CopyComplete
+C:\NopEmporium\Libraries\Nop.Data\obj\Debug\netcoreapp2.2\Nop.Data.dll
+C:\NopEmporium\Libraries\Nop.Data\obj\Debug\netcoreapp2.2\Nop.Data.pdb
