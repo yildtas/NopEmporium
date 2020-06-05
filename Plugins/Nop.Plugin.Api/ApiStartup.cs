@@ -68,21 +68,21 @@ namespace Nop.Plugin.Api
             if (!dataSettings?.IsValid ?? true)
                 return;
 
-            // The default route templates for the Swagger docs and swagger - ui are "swagger/docs/{apiVersion}" and "swagger/ui/index#/{assetPath}" respectively.
-            //app.UseSwagger();
-            //app.UseSwaggerUI(options =>
-            //    {
-            //        //var currentAssembly = Assembly.GetAssembly(this.GetType());
-            //        //var currentAssemblyName = currentAssembly.GetName().Name;
+            //The default route templates for the Swagger docs and swagger - ui are "swagger/docs/{apiVersion}" and "swagger/ui/index#/{assetPath}" respectively.
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+                {
+                    //var currentAssembly = Assembly.GetAssembly(this.GetType());
+                    //var currentAssemblyName = currentAssembly.GetName().Name;
 
-            //        //Needeed for removing the "Try It Out" button from the post and put methods.
-            //        //http://stackoverflow.com/questions/36772032/swagger-5-2-3-supportedsubmitmethods-removed/36780806#36780806
+                    ////Needeed for removing the "Try It Out" button from the post and put methods.
+                    ////http://stackoverflow.com/questions/36772032/swagger-5-2-3-supportedsubmitmethods-removed/36780806#36780806
 
-            //        //options.InjectOnCompleteJavaScript($"{currentAssemblyName}.Scripts.swaggerPostPutTryItOutButtonsRemoval.js");
+                    //options.InjectOnCompleteJavaScript($"{currentAssemblyName}.Scripts.swaggerPostPutTryItOutButtonsRemoval.js");
 
-            //        options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            //    }
-            //);
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                }
+            );
 
             // This needs to be called here because in the plugin install method identity server is not yet registered.
             ApplyIdentityServerMigrations(app);
@@ -165,6 +165,12 @@ namespace Nop.Plugin.Api
             services.AddSingleton<IAuthorizationHandler, ValidSchemeAuthorizationPolicy>();
             services.AddSingleton<IAuthorizationHandler, ActiveClientAuthorizationPolicy>();
             services.AddSingleton<IAuthorizationHandler, RequestsFromSwaggerAuthorizationPolicy>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "My API", Version = "v1" });
+            });
+
         }
 
         private void AddTokenGenerationPipeline(IServiceCollection services)

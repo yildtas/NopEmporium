@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Nop.Core.Domain.Catalog;
 using Nop.Plugin.Api.Constants;
+using Nop.Plugin.Api.DTOs.Images;
 
 namespace Nop.Plugin.Api.Services
 {
@@ -16,5 +17,9 @@ namespace Nop.Plugin.Api.Services
 
         int GetCategoriesCount(DateTime? createdAtMin = null, DateTime? createdAtMax = null, DateTime? updatedAtMin = null, DateTime? updatedAtMax = null,
             bool? publishedStatus = null, int? productId = null);
+
+        void UpdatePicture(Category categoryEntityToUpdate, ImageDto imageDto);
+
+        void UpdateDiscounts(Category category, List<int> passedDiscountIds);
     }
 }

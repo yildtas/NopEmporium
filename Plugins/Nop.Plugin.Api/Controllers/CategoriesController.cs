@@ -33,7 +33,7 @@ namespace Nop.Plugin.Api.Controllers
     using DTOs.Errors;
     using JSON.Serializers;
 
-    //[ApiAuthorize(Policy = JwtBearerDefaults.AuthenticationScheme, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [ApiAuthorize(Policy = JwtBearerDefaults.AuthenticationScheme, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CategoriesController : BaseApiController
     {
         private readonly ICategoryApiService _categoryApiService;
@@ -211,7 +211,7 @@ namespace Nop.Plugin.Api.Controllers
             
             UpdateAclRoles(category, categoryDelta.Dto.RoleIds);
 
-            UpdateDiscounts(category, categoryDelta.Dto.DiscountIds);
+            _categoryApiService.UpdateDiscounts(category, categoryDelta.Dto.DiscountIds);
 
             UpdateStoreMappings(category, categoryDelta.Dto.StoreIds);
 
@@ -266,11 +266,11 @@ namespace Nop.Plugin.Api.Controllers
 
             _categoryService.UpdateCategory(category);
 
-            UpdatePicture(category, categoryDelta.Dto.Image);
+           _categoryApiService.UpdatePicture(category, categoryDelta.Dto.Image);
 
             UpdateAclRoles(category, categoryDelta.Dto.RoleIds);
 
-            UpdateDiscounts(category, categoryDelta.Dto.DiscountIds);
+            _categoryApiService.UpdateDiscounts(category, categoryDelta.Dto.DiscountIds);
 
             UpdateStoreMappings(category, categoryDelta.Dto.StoreIds);
 
@@ -325,66 +325,6 @@ namespace Nop.Plugin.Api.Controllers
             CustomerActivityService.InsertActivity("DeleteCategory", LocalizationService.GetResource("ActivityLog.DeleteCategory"), categoryToDelete);
 
             return new RawJsonActionResult("{}");
-        }
-
-        private void UpdatePicture(Category categoryEntityToUpdate, ImageDto imageDto)
-        {
-            // no image specified then do nothing
-            if (imageDto == null)
-                return;
-
-            Picture updatedPicture;
-            var currentCategoryPicture = PictureService.GetPictureById(categoryEntityToUpdate.PictureId);
-
-            // when there is a picture set for the category
-            if (currentCategoryPicture != null)
-            {
-                PictureService.DeletePicture(currentCategoryPicture);
-
-                // When the image attachment is null or empty.
-                if (imageDto.Binary == null)
-                {
-                    categoryEntityToUpdate.PictureId = 0;
-                }
-                else
-                {
-                    updatedPicture = PictureService.InsertPicture(imageDto.Binary, imageDto.MimeType, string.Empty);
-                    categoryEntityToUpdate.PictureId = updatedPicture.Id;
-                }
-            }
-            // when there isn't a picture set for the category
-            else
-            {
-                if (imageDto.Binary != null)
-                {
-                    updatedPicture = PictureService.InsertPicture(imageDto.Binary, imageDto.MimeType, string.Empty);
-                    categoryEntityToUpdate.PictureId = updatedPicture.Id;
-                }
-            }
-        }
-
-        private void UpdateDiscounts(Category category, List<int> passedDiscountIds)
-        {
-            if(passedDiscountIds == null)
-                return;
-
-            var allDiscounts = DiscountService.GetAllDiscounts(DiscountType.AssignedToCategories, showHidden: true);
-            foreach (var discount in allDiscounts)
-            {
-                if (passedDiscountIds.Contains(discount.Id))
-                {
-                    //new discount
-                    if (category.AppliedDiscounts.Count(d => d.Id == discount.Id) == 0)
-                        category.AppliedDiscounts.Add(discount);
-                }
-                else
-                {
-                    //remove discount
-                    if (category.AppliedDiscounts.Count(d => d.Id == discount.Id) > 0)
-                        category.AppliedDiscounts.Remove(discount);
-                }
-            }
-            _categoryService.UpdateCategory(category);
         }
     }
 }

@@ -275,6 +275,7 @@ namespace Nop.Web.Framework.Controllers
         /// </summary>
         /// <param name="panelName">Panel name to save</param>
         /// <param name="persistForTheNextRequest">A value indicating whether a message should be persisted for the next request. Pass null to ignore</param>
+        [ApiExplorerSettings(IgnoreApi = true)]
         public virtual void SaveSelectedPanelName(string tabName, bool persistForTheNextRequest = true)
         {
             //keep this method synchronized with
@@ -298,6 +299,7 @@ namespace Nop.Web.Framework.Controllers
         /// </summary>
         /// <param name="tabName">Tab name to save; empty to automatically detect it</param>
         /// <param name="persistForTheNextRequest">A value indicating whether a message should be persisted for the next request. Pass null to ignore</param>
+        [ApiExplorerSettings(IgnoreApi = true)]
         public virtual void SaveSelectedTabName(string tabName = "", bool persistForTheNextRequest = true)
         {
             //default root tab

@@ -47,9 +47,9 @@ namespace Nop.Plugin.Api.Helpers
                 }
 
                 // Required by Swagger
-                //AddAssemblyBinding(runtime, "Microsoft.AspNetCore.StaticFiles", "adb9793829ddae60", "0.0.0.0-2.0.0.0", "2.0.0.0");
-                //AddAssemblyBinding(runtime, "Microsoft.Extensions.FileProviders.Embedded", "adb9793829ddae60", "0.0.0.0-2.0.0.0", "2.0.0.0");
-                //AddAssemblyBinding(runtime, "Microsoft.AspNetCore.Mvc.Formatters.Json", "adb9793829ddae60", "0.0.0.0-2.0.0.0", "2.0.0.0");
+                AddAssemblyBinding(runtime, "Microsoft.AspNetCore.StaticFiles", "adb9793829ddae60", "0.0.0.0-2.0.0.0", "2.0.0.0");
+                AddAssemblyBinding(runtime, "Microsoft.Extensions.FileProviders.Embedded", "adb9793829ddae60", "0.0.0.0-2.0.0.0", "2.0.0.0");
+                AddAssemblyBinding(runtime, "Microsoft.AspNetCore.Mvc.Formatters.Json", "adb9793829ddae60", "0.0.0.0-2.0.0.0", "2.0.0.0");
 
                 // Required by WebHooks
                 AddAssemblyBinding(runtime, "Microsoft.AspNetCore.DataProtection.Abstractions", "adb9793829ddae60", "0.0.0.0-2.0.0.0", "2.0.0.0");
