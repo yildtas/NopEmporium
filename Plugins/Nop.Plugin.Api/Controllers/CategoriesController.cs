@@ -27,7 +27,7 @@ namespace Nop.Plugin.Api.Controllers
     using JSON.Serializers;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
 
-    //[ApiAuthorize(Policy = JwtBearerDefaults.AuthenticationScheme, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [ApiAuthorize(Policy = JwtBearerDefaults.AuthenticationScheme, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CategoriesController : BaseApiController
     {
         private readonly ICategoryApiService _categoryApiService;
