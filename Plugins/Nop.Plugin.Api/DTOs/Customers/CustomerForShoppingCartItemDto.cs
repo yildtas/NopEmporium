@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace Nop.Plugin.Api.DTOs.Customers
 {
     // We need this DTO object to avoid loop in the entity to dto mappings. The difference is the missing ShoppingCartItems collection.
-    [JsonObject(Title = "customers")]
+    [JsonObject(Title = "Customers")]
     public class CustomerForShoppingCartItemDto : BaseCustomerDto
     {
         private ICollection<AddressDto> _addresses;
@@ -14,19 +14,19 @@ namespace Nop.Plugin.Api.DTOs.Customers
         /// <summary>
         /// Default billing address
         /// </summary>
-        [JsonProperty("billing_address")]
+        [JsonProperty("BillingAddress")]
         public AddressDto BillingAddress { get; set; }
 
         /// <summary>
         /// Default shipping address
         /// </summary>
-        [JsonProperty("shipping_address")]
+        [JsonProperty("ShippingAddress")]
         public AddressDto ShippingAddress { get; set; }
 
         /// <summary>
         /// Gets or sets customer addresses
         /// </summary>
-        [JsonProperty("addresses")]
+        [JsonProperty("Addresses")]
         public ICollection<AddressDto> Addresses
         {
             get { return _addresses; }

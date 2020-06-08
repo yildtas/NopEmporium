@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Nop.Core.Data;
 using Nop.Core.Domain.Catalog;
-using Nop.Core.Domain.Discounts;
-using Nop.Core.Domain.Media;
 using Nop.Plugin.Api.Constants;
 using Nop.Plugin.Api.DataStructures;
-using Nop.Plugin.Api.DTOs.Images;
-using Nop.Services.Catalog;
-using Nop.Services.Discounts;
-using Nop.Services.Media;
 using Nop.Services.Stores;
 
 namespace Nop.Plugin.Api.Services
@@ -20,25 +14,14 @@ namespace Nop.Plugin.Api.Services
         private readonly IStoreMappingService _storeMappingService;
         private readonly IRepository<Category> _categoryRepository;
         private readonly IRepository<ProductCategory> _productCategoryMappingRepository;
-        private readonly IDiscountService _discountService;
-        private readonly IPictureService _pictureService;
-        private readonly ICategoryService _categoryService;
-
-
 
         public CategoryApiService(IRepository<Category> categoryRepository,
             IRepository<ProductCategory> productCategoryMappingRepository,
-            IStoreMappingService storeMappingService,
-            IDiscountService discountService,
-            IPictureService pictureService,
-            ICategoryService categoryService)
+            IStoreMappingService storeMappingService)
         {
             _categoryRepository = categoryRepository;
             _productCategoryMappingRepository = productCategoryMappingRepository;
             _storeMappingService = storeMappingService;
-            _discountService = discountService;
-            _pictureService = pictureService;
-            _categoryService = categoryService;
         }
 
         public IList<Category> GetCategories(IList<int> ids = null,
@@ -132,66 +115,5 @@ namespace Nop.Plugin.Api.Services
 
             return query;
         }
-
-        public void UpdatePicture(Category categoryEntityToUpdate, ImageDto imageDto)
-        {
-            // no image specified then do nothing
-            if (imageDto == null)
-                return;
-
-            Picture updatedPicture;
-            var currentCategoryPicture = _pictureService.GetPictureById(categoryEntityToUpdate.PictureId);
-
-            // when there is a picture set for the category
-            if (currentCategoryPicture != null)
-            {
-                _pictureService.DeletePicture(currentCategoryPicture);
-
-                // When the image attachment is null or empty.
-                if (imageDto.Binary == null)
-                {
-                    categoryEntityToUpdate.PictureId = 0;
-                }
-                else
-                {
-                    updatedPicture = _pictureService.InsertPicture(imageDto.Binary, imageDto.MimeType, string.Empty);
-                    categoryEntityToUpdate.PictureId = updatedPicture.Id;
-                }
-            }
-            // when there isn't a picture set for the category
-            else
-            {
-                if (imageDto.Binary != null)
-                {
-                    updatedPicture = _pictureService.InsertPicture(imageDto.Binary, imageDto.MimeType, string.Empty);
-                    categoryEntityToUpdate.PictureId = updatedPicture.Id;
-                }
-            }
-        }
-
-        public void UpdateDiscounts(Category category, List<int> passedDiscountIds)
-        {
-            if (passedDiscountIds == null)
-                return;
-
-            var allDiscounts = _discountService.GetAllDiscounts(DiscountType.AssignedToCategories, showHidden: true);
-            foreach (var discount in allDiscounts)
-            {
-                if (passedDiscountIds.Contains(discount.Id))
-                {
-                    //new discount
-                    if (category.AppliedDiscounts.Count(d => d.Id == discount.Id) == 0)
-                        category.AppliedDiscounts.Add(discount);
-                }
-                else
-                {
-                    //remove discount
-                    if (category.AppliedDiscounts.Count(d => d.Id == discount.Id) > 0)
-                        category.AppliedDiscounts.Remove(discount);
-                }
-            }
-            _categoryService.UpdateCategory(category);
-        }
-
     }
 }

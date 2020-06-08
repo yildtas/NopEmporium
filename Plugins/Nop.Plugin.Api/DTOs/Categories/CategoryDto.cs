@@ -8,7 +8,7 @@ using Nop.Plugin.Api.Validators;
 
 namespace Nop.Plugin.Api.DTOs.Categories
 {
-    [JsonObject(Title = "category")]
+    [JsonObject(Title = "Category")]
     public class CategoryDto : BaseDto
     {
         private ImageDto _imageDto;
@@ -17,13 +17,13 @@ namespace Nop.Plugin.Api.DTOs.Categories
         private List<int> _discountIds;
         private List<int> _roleIds;
 
-        [JsonProperty("name")]
+        [JsonProperty("Name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the localized names
         /// </summary>
-        [JsonProperty("localized_names")]
+        [JsonProperty("LocalizedNames")]
         public List<LocalizedNameDto> LocalizedNames
         {
             get
@@ -39,67 +39,67 @@ namespace Nop.Plugin.Api.DTOs.Categories
         /// <summary>
         /// Gets or sets the description
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("Description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets a value of used category template identifier
         /// </summary>
-        [JsonProperty("category_template_id")]
+        [JsonProperty("CategoryTemplateId")]
         public int? CategoryTemplateId { get; set; }
 
         /// <summary>
         /// Gets or sets the meta keywords
         /// </summary>
-        [JsonProperty("meta_keywords")]
+        [JsonProperty("MetaKeywords")]
         public string MetaKeywords { get; set; }
 
         /// <summary>
         /// Gets or sets the meta description
         /// </summary>
-        [JsonProperty("meta_description")]
+        [JsonProperty("MetaDescription")]
         public string MetaDescription { get; set; }
 
         /// <summary>
         /// Gets or sets the meta title
         /// </summary>
-        [JsonProperty("meta_title")]
+        [JsonProperty("MetaTitle")]
         public string MetaTitle { get; set; }
 
         /// <summary>
         /// Gets or sets the parent category identifier
         /// </summary>
-        [JsonProperty("parent_category_id")]
+        [JsonProperty("ParentCategoryId")]
         public int? ParentCategoryId { get; set; }
 
         /// <summary>
         /// Gets or sets the page size
         /// </summary>
-        [JsonProperty("page_size")]
+        [JsonProperty("PageSize")]
         public int? PageSize { get; set; }
 
         /// <summary>
         /// Gets or sets the available customer selectable page size options
         /// </summary>
-        [JsonProperty("page_size_options")]
+        [JsonProperty("PageSizeOptions")]
         public string PageSizeOptions { get; set; }
 
         /// <summary>
         /// Gets or sets the available price ranges
         /// </summary>
-        [JsonProperty("price_ranges")]
+        [JsonProperty("PriceRanges")]
         public string PriceRanges { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether to show the category on home page
         /// </summary>
-        [JsonProperty("show_on_home_page")]
+        [JsonProperty("ShowOnHomePage")]
         public bool? ShowOnHomePage { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether to include this category in the top menu
         /// </summary>
-        [JsonProperty("include_in_top_menu")]
+        [JsonProperty("IncludeInTopMenu")]
         public bool? IncludeInTopMenu { get; set; }
 
         /// <summary>
@@ -109,40 +109,40 @@ namespace Nop.Plugin.Api.DTOs.Categories
         /// if this property is set to false, then we do not need to load Applied Discounts navigation property
         /// </remarks>
         /// </summary>
-        [JsonProperty("has_discounts_applied")]
+        [JsonProperty("HasDiscountsApplied")]
         public bool? HasDiscountsApplied { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the entity is published
         /// </summary>
-        [JsonProperty("published")]
+        [JsonProperty("Published")]
         public bool? Published { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the entity has been deleted
         /// </summary>
-        [JsonProperty("deleted")]
+        [JsonProperty("Deleted")]
         public bool? Deleted { get; set; }
 
         /// <summary>
         /// Gets or sets the display order
         /// </summary>
-        [JsonProperty("display_order")]
+        [JsonProperty("DisplayOrder")]
         public int? DisplayOrder { get; set; }
 
         /// <summary>
         /// Gets or sets the date and time of instance creation
         /// </summary>
-        [JsonProperty("created_on_utc")]
+        [JsonProperty("CreatedOnUtc")]
         public DateTime? CreatedOnUtc { get; set; }
 
         /// <summary>
         /// Gets or sets the date and time of instance update
         /// </summary>
-        [JsonProperty("updated_on_utc")]
+        [JsonProperty("UpdatedOnUtc")]
         public DateTime? UpdatedOnUtc { get; set; }
 
-        [JsonProperty("role_ids")]
+        [JsonProperty("RoleIds")]
         public List<int> RoleIds
         {
             get
@@ -155,7 +155,7 @@ namespace Nop.Plugin.Api.DTOs.Categories
             }
         }
 
-        [JsonProperty("discount_ids")]
+        [JsonProperty("DiscountIds")]
         public List<int> DiscountIds
         {
             get
@@ -168,7 +168,7 @@ namespace Nop.Plugin.Api.DTOs.Categories
             }
         }
 
-        [JsonProperty("store_ids")]
+        [JsonProperty("StoreIds")]
         public List<int> StoreIds
         {
             get
@@ -181,7 +181,7 @@ namespace Nop.Plugin.Api.DTOs.Categories
             }
         }
 
-        [JsonProperty("image")]
+        [JsonProperty("Image")]
         public ImageDto Image {
             get
             {
@@ -193,7 +193,7 @@ namespace Nop.Plugin.Api.DTOs.Categories
             }
         }
 
-        [JsonProperty("se_name")]
+        [JsonProperty("SeName")]
         public string SeName { get; set; }
     }
 }

@@ -1,12 +1,5 @@
 C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Nop.Plugin.Api\logo.jpg
 C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Nop.Plugin.Api\plugin.json
-C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Nop.Plugin.Api\Views\Clients\ClientSettings.cshtml
-C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Nop.Plugin.Api\Views\Clients\Create.cshtml
-C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Nop.Plugin.Api\Views\Clients\CreateOrUpdate.cshtml
-C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Nop.Plugin.Api\Views\Clients\Edit.cshtml
-C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Nop.Plugin.Api\Views\Clients\List.cshtml
-C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Nop.Plugin.Api\Views\Settings.cshtml
-C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Nop.Plugin.Api\Views\_ViewImports.cshtml
 C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Nop.Plugin.Api\Nop.Plugin.Api.deps.json
 C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Nop.Plugin.Api\Nop.Plugin.Api.dll
 C:\FreeLance\NopEmporium\Presentation\Nop.Web\Plugins\Nop.Plugin.Api\Nop.Plugin.Api.pdb

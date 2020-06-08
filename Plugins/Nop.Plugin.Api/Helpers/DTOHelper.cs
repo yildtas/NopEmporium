@@ -1,22 +1,15 @@
-﻿using Nop.Core;
-using Nop.Core.Domain.Catalog;
+﻿using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Directory;
 using Nop.Core.Domain.Localization;
 using Nop.Core.Domain.Media;
 using Nop.Core.Domain.Orders;
-using Nop.Core.Domain.Stores;
 using Nop.Plugin.Api.DTOs.Categories;
-using Nop.Plugin.Api.DTOs.Customers;
 using Nop.Plugin.Api.DTOs.Images;
 using Nop.Plugin.Api.DTOs.Languages;
-using Nop.Plugin.Api.DTOs.OrderItems;
-using Nop.Plugin.Api.DTOs.Orders;
-using Nop.Plugin.Api.DTOs.Manufacturers;
 using Nop.Plugin.Api.DTOs.ProductAttributes;
 using Nop.Plugin.Api.DTOs.Products;
 using Nop.Plugin.Api.DTOs.ShoppingCarts;
 using Nop.Plugin.Api.DTOs.SpecificationAttributes;
-using Nop.Plugin.Api.DTOs.Stores;
 using Nop.Plugin.Api.MappingExtensions;
 using Nop.Plugin.Api.Services;
 using Nop.Services.Catalog;
@@ -26,7 +19,6 @@ using Nop.Services.Media;
 using Nop.Services.Security;
 using Nop.Services.Seo;
 using Nop.Services.Stores;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -154,22 +146,6 @@ namespace Nop.Plugin.Api.Helpers
             return categoryDto;
         }
 
-        public OrderDto PrepareOrderDTO(Order order)
-        {
-            var orderDto = order.ToDto();
-
-            orderDto.OrderItems = order.OrderItems.Select(PrepareOrderItemDTO).ToList();
-
-            var customerDto = _customerApiService.GetCustomerById(order.Customer.Id);
-
-            if (customerDto != null)
-            {
-                orderDto.Customer = customerDto.ToOrderCustomerDto();
-            }
-
-            return orderDto;
-        }
-
         public ShoppingCartItemDto PrepareShoppingCartItemDTO(ShoppingCartItem shoppingCartItem)
         {
             var dto = shoppingCartItem.ToDto();
@@ -177,30 +153,6 @@ namespace Nop.Plugin.Api.Helpers
             dto.CustomerDto = shoppingCartItem.Customer.ToCustomerForShoppingCartItemDto();
             dto.Attributes = _productAttributeConverter.Parse(shoppingCartItem.AttributesXml);
             return dto;
-        }
-
-        public OrderItemDto PrepareOrderItemDTO(OrderItem orderItem)
-        {
-            var dto = orderItem.ToDto();
-            dto.Product = PrepareProductDTO(orderItem.Product);
-            dto.Attributes = _productAttributeConverter.Parse(orderItem.AttributesXml);
-            return dto;
-        }
-
-        public StoreDto PrepareStoreDTO(Store store)
-        {
-            var storeDto = store.ToDto();
-
-            var primaryCurrency = _currencyService.GetCurrencyById(_currencySettings.PrimaryStoreCurrencyId);
-
-            if (!string.IsNullOrEmpty(primaryCurrency.DisplayLocale))
-            {
-                storeDto.PrimaryCurrencyDisplayLocale = primaryCurrency.DisplayLocale;
-            }
-
-            storeDto.LanguageIds = _languageService.GetAllLanguages(false, store.Id).Select(x => x.Id).ToList();
-
-            return storeDto;
         }
 
         public LanguageDto PrepateLanguageDto(Language language)
@@ -392,42 +344,6 @@ namespace Nop.Plugin.Api.Helpers
         public SpecificationAttributeDto PrepareSpecificationAttributeDto(SpecificationAttribute specificationAttribute)
         {
             return specificationAttribute.ToDto();
-        }
-        
-        public ManufacturerDto PrepareManufacturerDto(Manufacturer manufacturer)
-        {
-            var manufacturerDto = manufacturer.ToDto();
-
-            var picture = _pictureService.GetPictureById(manufacturer.PictureId);
-            var imageDto = PrepareImageDto(picture);
-
-            if (imageDto != null)
-            {
-                manufacturerDto.Image = imageDto;
-            }
-
-            manufacturerDto.SeName = _urlRecordService.GetSeName(manufacturer);
-            manufacturerDto.DiscountIds = manufacturer.AppliedDiscounts.Select(discount => discount.Id).ToList();
-            manufacturerDto.RoleIds = _aclService.GetAclRecords(manufacturer).Select(acl => acl.CustomerRoleId).ToList();
-            manufacturerDto.StoreIds = _storeMappingService.GetStoreMappings(manufacturer).Select(mapping => mapping.StoreId)
-                .ToList();
-
-            var allLanguages = _languageService.GetAllLanguages();
-
-            manufacturerDto.LocalizedNames = new List<LocalizedNameDto>();
-
-            foreach (var language in allLanguages)
-            {
-                var localizedNameDto = new LocalizedNameDto
-                {
-                    LanguageId = language.Id,
-                    LocalizedName = _localizationService.GetLocalized(manufacturer, x => x.Name, language.Id)
-                };
-
-                manufacturerDto.LocalizedNames.Add(localizedNameDto);
-            }
-
-            return manufacturerDto;
         }
     }
 }

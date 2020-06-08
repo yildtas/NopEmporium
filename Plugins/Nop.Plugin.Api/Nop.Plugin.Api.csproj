@@ -1,5 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <Description>This plugin allows you to access/create Nop resources outside of the system</Description>
@@ -21,14 +28,6 @@
   <ItemGroup>
     <None Remove="logo.jpg" />
     <None Remove="plugin.json" />
-    <None Remove="Views\Clients\ClientSettings.cshtml" />
-    <None Remove="Views\Clients\Create.cshtml" />
-    <None Remove="Views\Clients\CreateOrUpdate.cshtml" />
-    <None Remove="Views\Clients\Edit.cshtml" />
-    <None Remove="Views\Clients\List.cshtml" />
-    <None Remove="Views\Clients\_ViewStart.cshtml" />
-    <None Remove="Views\Settings.cshtml" />
-    <None Remove="Views\_ViewImports.cshtml" />
   </ItemGroup> 
   <ItemGroup>
     <Content Include="logo.jpg">
@@ -37,39 +36,11 @@
     <Content Include="plugin.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\Clients\ClientSettings.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Views\Clients\Create.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Views\Clients\CreateOrUpdate.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Views\Clients\Edit.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Views\Clients\List.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Views\Settings.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Views\_ViewImports.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup> 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="8.1.0" />
-    <PackageReference Include="IdentityServer4" Version="2.5.0-preview.3.10" />
-    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.5.0" />
-    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.5.0-preview.3.10" />
-    <PackageReference Include="IdentityServer4.EntityFramework.Storage" Version="2.5.0-preview.3.10" />
-    <PackageReference Include="IdentityServer4.Storage" Version="2.5.0-preview.3.10" />
     <PackageReference Include="Microsoft.AspNetCore.Rewrite" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="4.0.1" />
