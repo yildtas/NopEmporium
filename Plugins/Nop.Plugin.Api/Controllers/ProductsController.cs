@@ -37,7 +37,7 @@ namespace Nop.Plugin.Api.Controllers
     using Nop.Core.Domain.Media;
     using Nop.Plugin.Api.Models.Catalog;
 
-    [ApiAuthorize(Policy = JwtBearerDefaults.AuthenticationScheme, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[ApiAuthorize(Policy = JwtBearerDefaults.AuthenticationScheme, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ProductsController : BaseApiController
     {
         private readonly IProductApiService _productApiService;
