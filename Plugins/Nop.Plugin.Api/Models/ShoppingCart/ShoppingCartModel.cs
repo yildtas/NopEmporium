@@ -24,7 +24,7 @@ namespace Nop.Plugin.Api.Models.ShoppingCart
         [JsonProperty("CustomerId")]
         public int CustomerId { get; set; }
 
-        [JsonProperty("CustomerId")]
+        [JsonProperty("ShoppingCartId")]
         public int ShoppingCartId { get; set; }
 
         public int TotalProducts { get; set; }
