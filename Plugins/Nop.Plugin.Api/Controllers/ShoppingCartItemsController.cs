@@ -26,6 +26,8 @@ namespace Nop.Plugin.Api.Controllers
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Mvc;
     using Nop.Plugin.Api.Attributes;
+    using Nop.Plugin.Api.Models.ShoppingCart;
+    using Nop.Web.Framework.Mvc;
 
     //[ApiAuthorize(Policy = JwtBearerDefaults.AuthenticationScheme, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ShoppingCartItemsController : BaseApiController
@@ -140,6 +142,53 @@ namespace Nop.Plugin.Api.Controllers
                             });
 
             return new RawJsonActionResult(json);
+        }
+
+        [HttpPost]
+        [Route("/api/get_shopping_cart_items")]
+        public IActionResult GetShoppingCartItem([ModelBinder(typeof(JsonModelBinder<ShoppingCartModel>))] Delta<ShoppingCartModel> shoppingCartItem)
+        {
+            int customerId = shoppingCartItem.Dto.CustomerId;
+
+            var cart = _shoppingCartItemApiService.GetShoppingCart(customerId);
+
+            ShoppingCartModel model = new ShoppingCartModel();
+
+            model = _shoppingCartItemApiService.PrepareShoppingCartModel(customerId, model, cart);
+            model.OrderTotals = _shoppingCartItemApiService.PrepareOrderTotalsModel(customerId, cart, isEditable: false);
+
+            model.CustomerId = customerId;
+            string json = JsonConvert.SerializeObject(model);
+
+            return new RawJsonActionResult(json);
+
+        }
+
+        [HttpPost]
+        [Route("/api/get_shopping_cart_item_count")]
+        public IActionResult GetShoppingCartItemCount([ModelBinder(typeof(JsonModelBinder<ShoppingCartModel>))] Delta<ShoppingCartModel> shoppingCartItem)
+        {
+            int customerId = shoppingCartItem.Dto.CustomerId;
+
+            var cart = _shoppingCartItemApiService.GetShoppingCart(customerId);
+
+            ShoppingCartModel model = new ShoppingCartModel();
+            model.TotalProducts = cart.Sum(item => item.Quantity);
+
+            string json = JsonConvert.SerializeObject(model);
+
+            return new RawJsonActionResult(json);
+
+        }
+
+
+        [HttpPost]
+        [Route("/api/delete_shopping_cart_items")]
+        public virtual IActionResult DeleteShoppingCart([ModelBinder(typeof(JsonModelBinder<ShoppingCartModel>))] Delta<ShoppingCartModel> shoppingCartItem)
+        {
+            _shoppingCartService.DeleteShoppingCartItem(shoppingCartItem.Dto.ShoppingCartId);
+
+            return new NullJsonResult();
         }
     }
 }

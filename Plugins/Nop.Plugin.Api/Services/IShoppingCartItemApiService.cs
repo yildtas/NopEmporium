@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Nop.Core.Domain.Orders;
+﻿using Nop.Core.Domain.Orders;
 using Nop.Plugin.Api.Constants;
+using Nop.Plugin.Api.Models.ShoppingCart;
+using System;
+using System.Collections.Generic;
 
 namespace Nop.Plugin.Api.Services
 {
@@ -12,5 +13,13 @@ namespace Nop.Plugin.Api.Services
                                                     int page = Configurations.DefaultPageValue);
 
         ShoppingCartItem GetShoppingCartItem(int id);
+
+        IList<ShoppingCartItem> GetShoppingCart(int customerId,
+             int storeId = 0, int? productId = null, DateTime? createdFromUtc = null, DateTime? createdToUtc = null);
+
+        ShoppingCartModel PrepareShoppingCartModel(int customerId, ShoppingCartModel model,
+            IList<ShoppingCartItem> cart, bool isEditable = true, bool validateCheckoutAttributes = false);
+
+        OrderTotalsModel PrepareOrderTotalsModel(int customerId,IList<ShoppingCartItem> cart, bool isEditable);
     }
 }
