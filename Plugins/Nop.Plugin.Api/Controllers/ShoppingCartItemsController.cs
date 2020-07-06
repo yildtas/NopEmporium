@@ -77,7 +77,7 @@ namespace Nop.Plugin.Api.Controllers
 
         [HttpPost]
         [Route("/api/add_shopping_cart_items")]
-        public IActionResult CreateShoppingCartItem([ModelBinder(typeof(JsonModelBinder<ShoppingCartItemDto>))] Delta<ShoppingCartItemDto> shoppingCartItem)
+        public IActionResult AddShoppingCartItems([ModelBinder(typeof(JsonModelBinder<ShoppingCartItemDto>))] Delta<ShoppingCartItemDto> shoppingCartItem)
         {
             // Here we display the errors if the validation has failed at some point.
             if (!ModelState.IsValid)
@@ -145,8 +145,8 @@ namespace Nop.Plugin.Api.Controllers
         }
 
         [HttpPost]
-        [Route("/api/get_shopping_cart_items")]
-        public IActionResult GetShoppingCartItem([ModelBinder(typeof(JsonModelBinder<ShoppingCartModel>))] Delta<ShoppingCartModel> shoppingCartItem)
+        [Route("/api/get_shopping_cart_items_by_customer_id")]
+        public IActionResult GetShoppingCartItemsByCustomerId([ModelBinder(typeof(JsonModelBinder<ShoppingCartModel>))] Delta<ShoppingCartModel> shoppingCartItem)
         {
             int customerId = shoppingCartItem.Dto.CustomerId;
 
@@ -165,8 +165,8 @@ namespace Nop.Plugin.Api.Controllers
         }
 
         [HttpPost]
-        [Route("/api/get_shopping_cart_item_count")]
-        public IActionResult GetShoppingCartItemCount([ModelBinder(typeof(JsonModelBinder<ShoppingCartModel>))] Delta<ShoppingCartModel> shoppingCartItem)
+        [Route("/api/get_shopping_cart_items_count")]
+        public IActionResult GetShoppingCartItemsCount([ModelBinder(typeof(JsonModelBinder<ShoppingCartModel>))] Delta<ShoppingCartModel> shoppingCartItem)
         {
             int customerId = shoppingCartItem.Dto.CustomerId;
 
@@ -183,8 +183,8 @@ namespace Nop.Plugin.Api.Controllers
 
 
         [HttpPost]
-        [Route("/api/delete_shopping_cart_items")]
-        public virtual IActionResult DeleteShoppingCart([ModelBinder(typeof(JsonModelBinder<ShoppingCartModel>))] Delta<ShoppingCartModel> shoppingCartItem)
+        [Route("/api/delete_shopping_cart_item_by_id")]
+        public virtual IActionResult DeleteShoppingCartItemById([ModelBinder(typeof(JsonModelBinder<ShoppingCartModel>))] Delta<ShoppingCartModel> shoppingCartItem)
         {
             _shoppingCartService.DeleteShoppingCartItem(shoppingCartItem.Dto.ShoppingCartId);
 
