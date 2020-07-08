@@ -191,7 +191,7 @@ namespace Nop.Plugin.Api.Controllers
         {
             _shoppingCartService.DeleteShoppingCartItem(shoppingCartItem.Dto.ShoppingCartId);
 
-            return Ok();
+            return new RawJsonActionResult(true);
         }
 
         [HttpPost]
@@ -210,10 +210,10 @@ namespace Nop.Plugin.Api.Controllers
 
             if (warnings != null && warnings.Count > 0)
             {
-                return BadRequest(warnings);
+                return BadRequest(new RawJsonActionResult(warnings));
             }
 
-            return Ok();
+            return new RawJsonActionResult(true);
         }
     }
 }
