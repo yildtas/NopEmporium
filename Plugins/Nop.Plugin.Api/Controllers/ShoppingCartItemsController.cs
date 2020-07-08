@@ -25,6 +25,7 @@ namespace Nop.Plugin.Api.Controllers
     using JSON.Serializers;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Mvc;
+    using Nop.Core.Domain.Customers;
     using Nop.Plugin.Api.Attributes;
     using Nop.Plugin.Api.Models.ShoppingCart;
     using Nop.Web.Framework.Mvc;
@@ -39,6 +40,7 @@ namespace Nop.Plugin.Api.Controllers
         private readonly IProductAttributeConverter _productAttributeConverter;
         private readonly IDTOHelper _dtoHelper;
         private readonly IStoreContext _storeContext;
+        private readonly ICustomerService _customerService;
 
         public ShoppingCartItemsController(IShoppingCartItemApiService shoppingCartItemApiService,
             IJsonFieldsSerializer jsonFieldsSerializer,
@@ -73,6 +75,7 @@ namespace Nop.Plugin.Api.Controllers
             _productAttributeConverter = productAttributeConverter;
             _dtoHelper = dtoHelper;
             _storeContext = storeContext;
+            _customerService = customerService;
         }
 
         [HttpPost]
@@ -188,7 +191,29 @@ namespace Nop.Plugin.Api.Controllers
         {
             _shoppingCartService.DeleteShoppingCartItem(shoppingCartItem.Dto.ShoppingCartId);
 
-            return new NullJsonResult();
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("/api/update_shopping_cart_item_quantity_by_id")]
+        public virtual IActionResult UpdateShoppingCartItemQuantityById([ModelBinder(typeof(JsonModelBinder<ShoppingCartModel>))] Delta<ShoppingCartModel> shoppingCartModel)
+        {
+            int customerId = shoppingCartModel.Dto.CustomerId;
+
+            Customer customer = _customerService.GetCustomerById(customerId);
+
+            var cart = _shoppingCartItemApiService.GetShoppingCart(customerId);
+
+            ShoppingCartItem cartItem = cart.FirstOrDefault(c => c.Id == shoppingCartModel.Dto.ShoppingCartId);
+
+            var warnings = _shoppingCartItemApiService.UpdateShoppingCartItem(customer, cartItem.Id, cartItem.AttributesXml, cartItem.CustomerEnteredPrice, shoppingCartModel.Dto.Quantity);
+
+            if (warnings != null && warnings.Count > 0)
+            {
+                return BadRequest(warnings);
+            }
+
+            return Ok();
         }
     }
 }

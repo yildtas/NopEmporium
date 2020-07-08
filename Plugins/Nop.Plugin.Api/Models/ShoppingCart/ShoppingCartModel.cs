@@ -27,6 +27,9 @@ namespace Nop.Plugin.Api.Models.ShoppingCart
         [JsonProperty("ShoppingCartId")]
         public int ShoppingCartId { get; set; }
 
+        [JsonProperty("Quantity")]
+        public int Quantity { get; set; }
+
         public int TotalProducts { get; set; }
 
         public bool OnePageCheckoutEnabled { get; set; }

@@ -1,4 +1,5 @@
-﻿using Nop.Core.Domain.Orders;
+﻿using Nop.Core.Domain.Customers;
+using Nop.Core.Domain.Orders;
 using Nop.Plugin.Api.Constants;
 using Nop.Plugin.Api.Models.ShoppingCart;
 using System;
@@ -21,5 +22,11 @@ namespace Nop.Plugin.Api.Services
             IList<ShoppingCartItem> cart, bool isEditable = true, bool validateCheckoutAttributes = false);
 
         OrderTotalsModel PrepareOrderTotalsModel(int customerId,IList<ShoppingCartItem> cart, bool isEditable);
+
+        IList<string> UpdateShoppingCartItem(Customer customer,
+           int shoppingCartItemId, string attributesXml,
+           decimal customerEnteredPrice, int quantity = 1,
+           DateTime? rentalStartDate = null, DateTime? rentalEndDate = null,
+           bool resetCheckoutData = true);
     }
 }
