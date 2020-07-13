@@ -16,11 +16,11 @@ using Nop.Services.Seo;
 using Nop.Services.Stores;
 using Stripe;
 using System.Net;
+using Nop.Plugin.Api.Models.Payment;
+using Nop.Plugin.Api.JSON.Serializers;
 
 namespace Nop.Plugin.Api.Controllers
 {
-    using JSON.Serializers;
-    using Nop.Plugin.Api.Models.ShoppingCart;
 
     //[ApiAuthorize(Policy = JwtBearerDefaults.AuthenticationScheme, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PaymentController : BaseApiController
@@ -57,22 +57,21 @@ namespace Nop.Plugin.Api.Controllers
         [Route("/api/place_payment_by_customer_id")]
         public virtual IActionResult PlacePaymentByCustomerId([ModelBinder(typeof(JsonModelBinder<PaymentModel>))] Delta<PaymentModel> paymentModel)
         {
-
             StripeConfiguration.ApiKey = "sk_test_jqqXw7n0PjEISJ9gbu0YadNx";
 
-            var chargeOptions = new ChargeCreateOptions
+            ChargeCreateOptions chargeOptions = new ChargeCreateOptions
             {
-                Amount = 2000,
-                Currency = "usd",
+                Amount = paymentModel.Dto.Amount * 100,
+                Currency = paymentModel.Dto.Currency,
                 Source = paymentModel.Dto.StripeToken,
-                Description = "My First Test Charge (created for API docs)",
+                Description = paymentModel.Dto.Description,
                 ReceiptEmail = paymentModel.Dto.ReceiptEmail,
                 Customer = paymentModel.Dto.CustomerId
             };
 
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
-            var service = new ChargeService();
+            ChargeService service = new ChargeService();
 
             try
             {
@@ -80,11 +79,9 @@ namespace Nop.Plugin.Api.Controllers
             }
             catch (StripeException stripeException)
             {
-                //Debug.WriteLine(stripeException.Message);
-                return BadRequest();
+                return BadRequest(stripeException.Message);
             }
 
-            //return RedirectToAction("Confirmation");
             return Ok();
         }
     }

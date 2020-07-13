@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Newtonsoft.Json;
-using Nop.Core.Domain.Catalog;
-using Nop.Plugin.Api.Models.Media;
+﻿using Newtonsoft.Json;
 using Nop.Web.Framework.Models;
-using System.Collections.Generic;
 
-namespace Nop.Plugin.Api.Models.ShoppingCart
+namespace Nop.Plugin.Api.Models.Payment
 {
     [JsonObject(Title = "Payment")]
     public partial class PaymentModel : BaseNopModel
@@ -16,7 +12,7 @@ namespace Nop.Plugin.Api.Models.ShoppingCart
         }
 
         [JsonProperty("Amount")]
-        public double Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("CustomerId")]
         public string CustomerId { get; set; }
