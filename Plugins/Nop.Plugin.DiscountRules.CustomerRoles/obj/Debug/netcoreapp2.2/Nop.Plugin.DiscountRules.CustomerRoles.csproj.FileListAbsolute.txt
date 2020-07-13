@@ -12,3 +12,17 @@ C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debu
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.dll
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.pdb
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.csprojAssemblyReference.cache
+C:\NopEmporium\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\logo.jpg
+C:\NopEmporium\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\plugin.json
+C:\NopEmporium\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Views\Configure.cshtml
+C:\NopEmporium\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Views\_ViewImports.cshtml
+C:\NopEmporium\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Nop.Plugin.DiscountRules.CustomerRoles.deps.json
+C:\NopEmporium\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Nop.Plugin.DiscountRules.CustomerRoles.dll
+C:\NopEmporium\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Nop.Plugin.DiscountRules.CustomerRoles.pdb
+C:\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.csprojAssemblyReference.cache
+C:\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.AssemblyInfoInputs.cache
+C:\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.AssemblyInfo.cs
+C:\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.csproj.CoreCompileInputs.cache
+C:\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.csproj.CopyComplete
+C:\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.dll
+C:\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.pdb

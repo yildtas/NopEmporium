@@ -15856,23 +15856,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yildi\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\PRJ\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "4.2.0",
     "restore": {
-      "projectUniqueName": "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj",
+      "projectUniqueName": "C:\\NopEmporium\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj",
       "projectName": "Nop.Web.Framework",
-      "projectPath": "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj",
-      "packagesPath": "C:\\Users\\yildi\\.nuget\\packages\\",
-      "outputPath": "C:\\FreeLance\\NopEmporium\\Presentation\\Nop.Web.Framework\\obj\\",
+      "projectPath": "C:\\NopEmporium\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj",
+      "packagesPath": "C:\\Users\\PRJ\\.nuget\\packages\\",
+      "outputPath": "C:\\NopEmporium\\Presentation\\Nop.Web.Framework\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\yildi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\PRJ\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -15885,14 +15881,14 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-              "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj"
+            "C:\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+              "projectPath": "C:\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj"
             },
-            "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj": {
-              "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj"
+            "C:\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj": {
+              "projectPath": "C:\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj"
             },
-            "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj": {
-              "projectPath": "C:\\FreeLance\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj"
+            "C:\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj": {
+              "projectPath": "C:\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj"
             }
           }
         }
@@ -15930,10 +15926,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "db1a59f938b58472d65d20e0955ea7fffb07bd74"
+    "signature": ""
   },
   "compilationOptions": {},
   "targets": {
@@ -653,42 +653,14 @@
       },
       "System.Data.Common/4.3.0": {},
       "System.Diagnostics.DiagnosticSource/4.5.1": {},
-      "System.IO.FileSystem.AccessControl/4.5.0": {
-        "runtimeTargets": {
-          "runtime/win/lib/_._": {
-            "rid": "win",
-            "assetType": "runtime"
-          }
-        }
-      },
+      "System.IO.FileSystem.AccessControl/4.5.0": {},
       "System.Linq.Parallel/4.3.0": {},
-      "System.Net.NameResolution/4.3.0": {
-        "runtimeTargets": {
-          "runtime/unix/lib/_._": {
-            "rid": "unix",
-            "assetType": "runtime"
-          },
-          "runtime/win/lib/_._": {
-            "rid": "win",
-            "assetType": "runtime"
-          }
-        }
-      },
+      "System.Net.NameResolution/4.3.0": {},
       "System.Net.Security/4.3.0": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.3.0",
           "System.Threading.ThreadPool": "4.3.0",
           "runtime.native.System.Net.Security": "4.3.0"
-        },
-        "runtimeTargets": {
-          "runtime/unix/lib/_._": {
-            "rid": "unix",
-            "assetType": "runtime"
-          },
-          "runtime/win/lib/_._": {
-            "rid": "win",
-            "assetType": "runtime"
-          }
         }
       },
       "System.Net.Sockets/4.3.0": {},
