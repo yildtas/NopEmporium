@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qZ4uWwdzepCjWA+5Id66bz7d/Z7JsrzIAj5aWJ7QLrSFlBHX9mDwQd0wczHG2c1IX9eXM6+x74d64xSXaWumHg==",
+  "dgSpecHash": "7Er9CINhJUCx6+xW/qH2SSMkCXTY1PGK3uch2YAXo6WE+Uz7Ymwz1dF6Y7viya9e9F783ZBTJXbQSENntuQPEA==",
   "success": true,
   "projectFilePath": "C:\\NopEmporium\\Plugins\\Nop.Plugin.Payments.Qualpay\\Nop.Plugin.Payments.Qualpay.csproj",
   "expectedPackageFiles": [

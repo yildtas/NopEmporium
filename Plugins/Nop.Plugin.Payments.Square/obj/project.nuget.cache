@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "V7whuINqkepHKjomC+MmXD4BCHJh8OQbHcB6SdvaUOk44GLX/9cAX7yVeHDeA/OQm0sEwBOZwr/beB0h/jQ8Dg==",
+  "dgSpecHash": "VihPZLCZee0hZdxf/EzTXO+kPRrifNjynx/COa2gKaxKjkY6qE3O5XxIGBjenFxijrNLPES+VSZX1EGqKK7BXg==",
   "success": true,
   "projectFilePath": "C:\\NopEmporium\\Plugins\\Nop.Plugin.Payments.Square\\Nop.Plugin.Payments.Square.csproj",
   "expectedPackageFiles": [

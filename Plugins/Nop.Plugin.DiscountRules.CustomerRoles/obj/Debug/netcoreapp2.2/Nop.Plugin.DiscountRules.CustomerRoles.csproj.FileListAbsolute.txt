@@ -19,7 +19,6 @@ C:\NopEmporium\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Views\_V
 C:\NopEmporium\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Nop.Plugin.DiscountRules.CustomerRoles.deps.json
 C:\NopEmporium\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Nop.Plugin.DiscountRules.CustomerRoles.dll
 C:\NopEmporium\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Nop.Plugin.DiscountRules.CustomerRoles.pdb
-C:\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.csprojAssemblyReference.cache
 C:\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.AssemblyInfoInputs.cache
 C:\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.AssemblyInfo.cs
 C:\NopEmporium\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\netcoreapp2.2\Nop.Plugin.DiscountRules.CustomerRoles.csproj.CoreCompileInputs.cache

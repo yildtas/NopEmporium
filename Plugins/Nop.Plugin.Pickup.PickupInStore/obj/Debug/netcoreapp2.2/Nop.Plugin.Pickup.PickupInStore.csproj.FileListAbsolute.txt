@@ -25,7 +25,6 @@ C:\NopEmporium\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\Views\_ViewImpo
 C:\NopEmporium\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\Nop.Plugin.Pickup.PickupInStore.deps.json
 C:\NopEmporium\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\Nop.Plugin.Pickup.PickupInStore.dll
 C:\NopEmporium\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\Nop.Plugin.Pickup.PickupInStore.pdb
-C:\NopEmporium\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\netcoreapp2.2\Nop.Plugin.Pickup.PickupInStore.csprojAssemblyReference.cache
 C:\NopEmporium\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\netcoreapp2.2\Nop.Plugin.Pickup.PickupInStore.AssemblyInfoInputs.cache
 C:\NopEmporium\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\netcoreapp2.2\Nop.Plugin.Pickup.PickupInStore.AssemblyInfo.cs
 C:\NopEmporium\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\netcoreapp2.2\Nop.Plugin.Pickup.PickupInStore.csproj.CoreCompileInputs.cache

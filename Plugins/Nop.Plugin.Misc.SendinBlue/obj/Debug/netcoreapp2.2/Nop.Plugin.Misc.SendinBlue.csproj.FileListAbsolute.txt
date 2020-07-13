@@ -17,6 +17,8 @@ C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Misc.SendinBlue\obj\Debug\netcoreapp
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Misc.SendinBlue\obj\Debug\netcoreapp2.2\Nop.Plugin.Misc.SendinBlue.csproj.CopyComplete
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Misc.SendinBlue\obj\Debug\netcoreapp2.2\Nop.Plugin.Misc.SendinBlue.dll
 C:\FreeLance\NopEmporium\Plugins\Nop.Plugin.Misc.SendinBlue\obj\Debug\netcoreapp2.2\Nop.Plugin.Misc.SendinBlue.pdb
+C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\SendinBlue.ClientV3.45.dll
+C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\SendinBlueMarketingAutomation.dll
 C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\Content\styles.css
 C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\logo.jpg
 C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\plugin.json
@@ -24,8 +26,6 @@ C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\Views\Configure.csht
 C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\Views\PublicInfo.cshtml
 C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\Views\_ViewImports.cshtml
 C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\RestSharp.dll
-C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\SendinBlue.ClientV3.45.dll
-C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\SendinBlueMarketingAutomation.dll
 C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\Nop.Plugin.Misc.SendinBlue.deps.json
 C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\Nop.Plugin.Misc.SendinBlue.dll
 C:\NopEmporium\Presentation\Nop.Web\Plugins\Misc.SendinBlue\Nop.Plugin.Misc.SendinBlue.pdb

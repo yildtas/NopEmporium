@@ -59,6 +59,8 @@ namespace Nop.Plugin.Api.Controllers
         {
             StripeConfiguration.ApiKey = "sk_test_jqqXw7n0PjEISJ9gbu0YadNx";
 
+            string OrderId = "abcorder";
+
             ChargeCreateOptions chargeOptions = new ChargeCreateOptions
             {
                 Amount = paymentModel.Dto.Amount * 100,
@@ -66,7 +68,7 @@ namespace Nop.Plugin.Api.Controllers
                 Source = paymentModel.Dto.StripeToken,
                 Description = paymentModel.Dto.Description,
                 ReceiptEmail = paymentModel.Dto.ReceiptEmail,
-                Customer = paymentModel.Dto.CustomerId
+                //Customer = paymentModel.Dto.CustomerId
             };
 
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
@@ -82,7 +84,7 @@ namespace Nop.Plugin.Api.Controllers
                 return BadRequest(stripeException.Message);
             }
 
-            return Ok();
+            return Ok(OrderId);
         }
     }
 }
