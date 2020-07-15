@@ -15,7 +15,7 @@ namespace Nop.Plugin.Api.Models.Payment
         public int? Amount { get; set; }
 
         [JsonProperty("CustomerId")]
-        public string CustomerId { get; set; }
+        public int CustomerId { get; set; }
 
         [JsonProperty("StripeToken")] 
         public string StripeToken { get; set; }
