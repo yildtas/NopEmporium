@@ -110,44 +110,67 @@ namespace Nop.Plugin.Api.Controllers
 
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             ChargeService service = new ChargeService();
+            PlaceOrderResult orderResult = new PlaceOrderResult();
 
             try
             {
                 Charge stripeCharge = service.Create(chargeOptions);
 
-                Nop.Core.Domain.Customers.Customer customer = _customerService.GetCustomerById(paymentModel.Dto.CustomerId);
-
-                var cart = _shoppingCartService.GetShoppingCart(customer, ShoppingCartType.ShoppingCart, _storeContext.CurrentStore.Id);
-
-                ProcessPaymentRequest processPaymentRequest = new ProcessPaymentRequest();
-
-                GenerateOrderGuid(processPaymentRequest);
-                processPaymentRequest.StoreId = _storeContext.CurrentStore.Id;
-                processPaymentRequest.CustomerId = customer.Id;
-                processPaymentRequest.PaymentMethodSystemName = _genericAttributeService.GetAttribute<string>(customer,
-                    NopCustomerDefaults.SelectedPaymentMethodAttribute, _storeContext.CurrentStore.Id);
-                HttpContext.Session.Set<ProcessPaymentRequest>("OrderPaymentInfo", processPaymentRequest);
-
-                PlaceOrderResult orderResult = _paymentOrderProcessingService.PlaceOrder(processPaymentRequest);
-
-                if (orderResult.Errors != null && orderResult.Errors.Count > 0)
+                if (stripeCharge.Paid)
                 {
-                    string error = JsonConvert.SerializeObject(orderResult, Formatting.Indented, new JsonSerializerSettings
+                    Nop.Core.Domain.Customers.Customer customer = _customerService.GetCustomerById(paymentModel.Dto.CustomerId);
+
+                    var cart = _shoppingCartService.GetShoppingCart(customer, ShoppingCartType.ShoppingCart, _storeContext.CurrentStore.Id);
+
+                    ProcessPaymentRequest processPaymentRequest = new ProcessPaymentRequest();
+
+                    GenerateOrderGuid(processPaymentRequest);
+                    processPaymentRequest.StoreId = _storeContext.CurrentStore.Id;
+                    processPaymentRequest.CustomerId = customer.Id;
+                    processPaymentRequest.PaymentMethodSystemName = _genericAttributeService.GetAttribute<string>(customer,
+                        NopCustomerDefaults.SelectedPaymentMethodAttribute, _storeContext.CurrentStore.Id);
+                    HttpContext.Session.Set<ProcessPaymentRequest>("OrderPaymentInfo", processPaymentRequest);
+
+                    orderResult = _paymentOrderProcessingService.PlaceOrder(processPaymentRequest);
+
+                    if (orderResult.Errors != null && orderResult.Errors.Count > 0)
+                    {
+                        string error = JsonConvert.SerializeObject(orderResult, Formatting.Indented, new JsonSerializerSettings
+                        {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                        });
+
+                        return BadRequest(error);
+                    }
+
+                    string json = JsonConvert.SerializeObject(orderResult, Formatting.Indented, new JsonSerializerSettings
                     {
                         ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                     });
 
-                    return BadRequest(error);
+                    return Ok(json);
                 }
+                else
+                {
+                    orderResult.AddError(stripeCharge.FailureMessage);
+                    string stripeChargeResult = JsonConvert.SerializeObject(orderResult, Formatting.Indented, new JsonSerializerSettings
+                    {
+                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                    });
 
-                var json = JsonConvert.SerializeObject(orderResult.);
-
-                return Ok(json);
+                    return BadRequest(stripeChargeResult);
+                }
 
             }
             catch (StripeException stripeException)
             {
-                return BadRequest(stripeException.Message);
+                orderResult.AddError(stripeException.Message);
+                string stripeChargeResult = JsonConvert.SerializeObject(orderResult, Formatting.Indented, new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                });
+
+                return BadRequest(stripeChargeResult);
             }
         }
 
