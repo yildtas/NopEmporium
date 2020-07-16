@@ -1,5 +1,8 @@
-## Ignore Visual Studio temporary files, build results, and
 /Presentation/Nop.Web/wwwroot/images/thumbs
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
 */bin/*
 */obj/*
 .vs/*
@@ -8,10 +11,14 @@
 src/Presentation/Nop.Web/Content/
 src/.vs
 /Presentation/Nop.Web/Plugins/*
-/Plugins/*
-/Libraries/*
-/Presentation/*
-/Presentation/Nop.Web/*
-/Tests/*
-/Presentation/Nop.Web/wwwroot/*
-/Libraries/Nop.Services/*
+Plugins/*
+Libraries/*
+Presentation/*
+Presentation/Nop.Web/*
+Tests/*
+Presentation/Nop.Web/wwwroot/*
+Libraries/Nop.Services/*
+*.json
+*.cache
+src/Presentation/Nop.Web/Content/
+src/.vs
