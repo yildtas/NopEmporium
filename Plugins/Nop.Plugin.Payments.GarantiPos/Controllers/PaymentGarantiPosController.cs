@@ -613,13 +613,19 @@ public class PaymentGarantiPosController : BasePaymentController
     {
         if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             return await AccessDeniedDataTablesJson();
+
         var installments = await _paymentPosService.GetBankInstallmentList(searchModel.Page - 1, searchModel.PageSize);
-        return Json(await ModelExtensions.PrepareToGridAsync<InstallmentListModel, InstallmentModel, PaymentGarantiInstallment>(new InstallmentListModel(), searchModel, installments, () => installments.SelectAwait(async inst =>
+
+        var listModel = new InstallmentListModel();
+        var dataProjection = installments.Select(inst => new InstallmentModel
         {
-            var m = new InstallmentModel { Installment = inst.Installment, Rate = inst.Rate };
-            m.Id = inst.Id;
-            return m;
-        })));
+            Installment = inst.Installment,
+            Rate = inst.Rate,
+            Id = inst.Id
+        });
+
+        var gridModel = listModel.PrepareToGrid(searchModel, installments, () => dataProjection);
+        return Json(gridModel);
     }
 
     [Area("Admin")]
@@ -720,19 +726,21 @@ public class PaymentGarantiPosController : BasePaymentController
     {
         if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             return await AccessDeniedDataTablesJson();
+
         var installments = await _paymentPosService.GetBankInstallmentCategoryList(searchModel.Page - 1, searchModel.PageSize);
-        return Json(await ModelExtensions.PrepareToGridAsync<CategoryListModel, CategoryInstallmentModel, PaymentGarantiCategoryInstallment>(new CategoryListModel(), searchModel, installments, () => installments.SelectAwait(async inst =>
+
+        var listModel = new CategoryListModel();
+        var dataProjection = installments.Select(inst => new CategoryInstallmentModel
         {
-            var m = new CategoryInstallmentModel
-            {
-                Installment = inst.Installment,
-                Rate = inst.Rate,
-                CategoryName = inst.CategoryName,
-                CategoryId = inst.Id,
-                Id = inst.Id
-            };
-            return m;
-        })));
+            Installment = inst.Installment,
+            Rate = inst.Rate,
+            CategoryName = inst.CategoryName,
+            CategoryId = inst.Id,
+            Id = inst.Id
+        });
+
+        var gridModel = listModel.PrepareToGrid(searchModel, installments, () => dataProjection);
+        return Json(gridModel);
     }
 
     [Area("Admin")]
@@ -856,21 +864,23 @@ public class PaymentGarantiPosController : BasePaymentController
     {
         if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             return await AccessDeniedDataTablesJson();
-        var binList = await _bankBinService.GetBankBinPageList(searchModel.Page - 1, searchModel.PageSize);
-        return Json(await ModelExtensions.PrepareToGridAsync<BankBinListModel, BankBinModel, PaymentGarantiBin>(new BankBinListModel(), searchModel, binList, () => binList.SelectAwait(async bin =>
+
+        var bins = await _bankBinService.GetBankBinPageList(searchModel.Page - 1, searchModel.PageSize);
+
+        var listModel = new BankBinListModel();
+        var dataProjection = bins.Select(bin => new BankBinModel
         {
-            var m = new BankBinModel
-            {
-                BankCode = bin.BankCode,
-                BinNumber = bin.BinNumber,
-                CardAssociation = bin.CardAssociation,
-                CardType = bin.CardType,
-                BankName = bin.BankName,
-                Product = bin.Product,
-                Id = bin.Id
-            };
-            return m;
-        })));
+            BankCode = bin.BankCode,
+            BinNumber = bin.BinNumber,
+            CardAssociation = bin.CardAssociation,
+            CardType = bin.CardType,
+            BankName = bin.BankName,
+            Product = bin.Product,
+            Id = bin.Id
+        });
+
+        var gridModel = listModel.PrepareToGrid(searchModel, bins, () => dataProjection);
+        return Json(gridModel);
     }
 
     [Area("Admin")]
@@ -911,7 +921,7 @@ public class PaymentGarantiPosController : BasePaymentController
         return View("~/Plugins/Payments.GarantiPos/Views/BankBin/Create.cshtml", model);
     }
 
-    [Area("Admin")]
+    [Area ("Admin")]
     [AutoValidateAntiforgeryToken]
     [AuthorizeAdmin(false)]
     public async Task<IActionResult> EditAsync(int id)
