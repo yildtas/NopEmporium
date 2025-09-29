@@ -1,0 +1,88 @@
+# --- OS / IDE ---
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider / ReSharper
+.idea/
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# VS Code
+.vscode/
+
+# --- Build artifacts ---
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+TestResults/
+[Bb]uild[Ll]og.*
+
+# NuGet
+packages/
+!packages/build/
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+
+# Publish / dist
+publish/
+out/
+
+# Coverage
+*.coverage
+*.coveragexml
+*.opencover.xml
+
+# Node
+node_modules/
+
+# Secrets / certificates
+*.pfx
+*.snk
+*.key
+*.pem
+*.cer
+
+# Databases
+*.mdf
+*.ldf
+
+# Logs & temp files
+*.log
+*.tmp
+*.temp
+*.bak
+*.old
+*~
+*.swp
+*.swo
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# --- ASP.NET Core / config ---
+appsettings.Development.json
+**/Properties/PublishProfiles/*.pubxml.user
+**/*.pubxml.user
+
+# .NET static web assets
+**/*.staticwebassets*.json
+**/*.dswa.cache.json
+
+# --- nopCommerce specifics ---
+# Runtime data and generated content
+Presentation/Nop.Web/App_Data/
+Presentation/Nop.Web/wwwroot/bundles/
+Presentation/Nop.Web/wwwroot/images/thumbs/
+# Deployed plugin binaries/content under the web project
+Presentation/Nop.Web/Plugins/
+# Optional: local logs folder if present
+Presentation/Nop.Web/Logs/
