@@ -1,0 +1,61 @@
+﻿
+@model SearchInstallmentModel
+@{
+    Layout = "_AdminLayout";
+    //page title
+    ViewBag.PageTitle = T("Plugins.Payments.GarantiPos.Installment").Text;
+    //active menu item (system name)
+    NopHtml.SetActiveMenuItemSystemName("Installments");
+}
+<div class="content-header clearfix">
+    <h1 class="float-left">
+        @T("Plugins.Payments.GarantiPos.Installment")
+    </h1>
+    <div class="float-right">
+        <a asp-action="InstallmentCreate" asp-controller="PaymentGarantiPos"  class="btn btn-primary">
+            <i class="fas fa-plus-square"></i>
+            @T("Admin.Common.AddNew")
+        </a>
+    </div>
+</div>
+<section class="content">
+    <div class="container-fluid">
+        <div class="form-horizontal">
+            <div class="cards-group">
+                <div class="card card-default">
+                    <div class="card-body">
+                        @await Html.PartialAsync("Table", new DataTablesModel
+                        {
+                            Name = "Installments-grid",
+                            UrlRead = new DataUrl("InstallmentGridList", "PaymentGarantiPos", null),
+                            Length = Model.PageSize,
+                            LengthMenu = Model.AvailablePageSizes,
+                            ColumnCollection = new List<ColumnProperty>
+                            {
+
+                                new ColumnProperty(nameof(InstallmentModel.Installment))
+                                {
+                        Title = T("Plugins.Payments.GarantiPos.Installment.Installment").Text,
+                                    Width = "300"
+                                },
+
+                                new ColumnProperty(nameof(InstallmentModel.Rate))
+                                {
+                        Title = T("Plugins.Payments.GarantiPos.Installment.Rate").Text,
+                                      Width = "300"
+                                },
+                                new ColumnProperty(nameof(InstallmentModel.Id))
+                                {
+                                    Title = T("Admin.Common.Edit").Text,
+                                    Width = "50",
+                                    ClassName =  NopColumnClassDefaults.Button,
+                                    Render = new RenderButtonEdit(new DataUrl("InstallmentEdit"))
+                                }
+                            }
+                        })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

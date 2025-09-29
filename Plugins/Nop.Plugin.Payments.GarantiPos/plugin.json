@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Garanti Pos",
+  "SystemName": "Payments.GarantiPos",
+  "Version": "1.00",
+  "SupportedVersions": [ "4.70" ],
+  "Author": "Yıldırım Taşdemir",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.GarantiPos.dll",
+  "Description": "Kredi Kartı İle Taksitli Ödeme Alın"
+}
