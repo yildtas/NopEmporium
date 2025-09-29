@@ -179,6 +179,55 @@ public class PaymentGarantiPosController : BasePaymentController
             throw new NopException("GarantiPos module cannot be loaded");
         return processor;
     }
+
+    /// <summary>
+    /// Sepetteki ürünlerin benzersiz kategori listesini getirir.
+    /// </summary>
+    private async Task<IList<Category>> GetDistinctCartCategoriesAsync(IList<ShoppingCartItem> cartItems)
+    {
+        var result = new List<Category>();
+        var seen = new HashSet<int>();
+
+        foreach (var item in cartItems)
+        {
+            var product = await _productService.GetProductByIdAsync(item.ProductId);
+            var productCategories = await _categoryService.GetProductCategoriesByProductIdAsync(product.Id, false);
+
+            foreach (var pc in productCategories)
+            {
+                if (pc == null)
+                    continue;
+
+                if (seen.Add(pc.CategoryId))
+                {
+                    var category = await _categoryService.GetCategoryByIdAsync(pc.CategoryId);
+                    if (category != null)
+                        result.Add(category);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// Verilen kategori listesi için kategori bazlı taksit kuralını uygular. Uygulanırsa true döner.
+    /// </summary>
+    private async Task<bool> TryApplyCategoryInstallmentsAsync(InstallmentViewModel model,
+        IEnumerable<Category> categories,
+        IList<PaymentGarantiCategoryInstallment> allCategoryInstallments)
+    {
+        var matched = allCategoryInstallments
+            .Where(ci => categories.Any(c => c.Id == ci.CategoryId))
+            .ToList();
+
+        if (matched.Count == 0)
+            return false;
+
+        await GetInstallmentAsync(model, matched);
+        await SessionExt.SetAsync(_httpContextAccessor.HttpContext.Session, "InstallmentViewModel", model);
+        return true;
+    }
     #endregion
 
     #region Configure
@@ -466,34 +515,36 @@ public class PaymentGarantiPosController : BasePaymentController
             string hashData = HelperOptions.Sha1(securityData).ToUpper();
 
             string requestXml = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
-<GVPSRequest>
- <Mode>{mode}</Mode>
- <Version>{settings.Version}</Version>
- <Terminal>
-  <ProvUserID>{settings.TerminalProvUserId}</ProvUserID>
-  <HashData>{hashData}</HashData>
-  <UserID>{settings.TerminalUserId}</UserID>
-  <ID>{settings.TerminalId}</ID>
-  <MerchantID>{settings.MerchantId}</MerchantID>
- </Terminal>
- <Customer>
-  <IPAddress>{_webHelper.GetCurrentIpAddress()}</IPAddress>
-  <EmailAddress>{customerEmail}</EmailAddress>
- </Customer>
- <Order>
-  <OrderID>{Guid.NewGuid():N}</OrderID>
-  <GroupID></GroupID>
-  <Description></Description>
- </Order>
- <Transaction>
-  <Type>bininq</Type>
-  <Amount>{amount}</Amount>
-  <BINInq>
-   <Group>A</Group>
-   <CardType>A</CardType>
-  </BINInq>
- </Transaction>
-</GVPSRequest>";
+
+                <GVPSRequest>
+                 <Mode>{mode}</Mode>
+                 <Version>{settings.Version}</Version>
+                 <Terminal>
+                  <ProvUserID>{settings.TerminalProvUserId}</ProvUserID>
+                  <HashData>{hashData}</HashData>
+                  <UserID>{settings.TerminalUserId}</UserID>
+                  <ID>{settings.TerminalId}</ID>
+                  <MerchantID>{settings.MerchantId}</MerchantID>
+                 </Terminal>
+                 <Customer>
+                  <IPAddress>{_webHelper.GetCurrentIpAddress()}</IPAddress>
+                  <EmailAddress>{customerEmail}</EmailAddress>
+                 </Customer>
+                 <Order>
+                  <OrderID>{Guid.NewGuid():N}</OrderID>
+                  <GroupID></GroupID>
+                  <Description></Description>
+                 </Order>
+                 <Transaction>
+                  <Type>bininq</Type>
+                  <Amount>{amount}</Amount>
+                  <BINInq>
+                   <Group>A</Group>
+                   <CardType>A</CardType>
+                  </BINInq>
+                 </Transaction>
+                </GVPSRequest>";
+
             var data = "data=" + requestXml.Trim();
             var client = _httpClientFactory.CreateClient();
             var paymentUrl = settings.BankUrl;
@@ -550,46 +601,55 @@ public class PaymentGarantiPosController : BasePaymentController
 
     /// <summary>
     /// Kategori bazlı özel taksit oranı var ise onları uygular; yoksa genel banka taksit listesini kullanır.
-    /// Birden fazla kategori çakışmasında kullanıcıya bilgilendirme mesajı eklenir.
+    /// Basit ve anlaşılır akış: Kart bilgileri -> kategori listesi -> karar -> oranları ekle.
     /// </summary>
-    private async Task PrepareInstallmentByCategoryOrDefault(InstallmentViewModel installmentInfo, IList<ShoppingCartItem> cartItems, PaymentGarantiBin binCode)
+    private async Task PrepareInstallmentByCategoryOrDefault(InstallmentViewModel model, IList<ShoppingCartItem> cartItems, PaymentGarantiBin bin)
     {
-        installmentInfo.CardType = binCode.CardType;
-        installmentInfo.CardAssociation = binCode.CardAssociation;
-        installmentInfo.CardFamily = binCode.Product;
+        // Kart bilgileri
+        model.CardType = bin.CardType;
+        model.CardAssociation = bin.CardAssociation;
+        model.CardFamily = bin.Product;
 
-        var categoryList = new List<Category>();
-        var categoryInstallments = await _paymentPosService.GetBankInstallmentCategoryList();
-        if (categoryInstallments.Count > 0)
+        // Kategori bazlı oranlar var mı?
+        var categoryRates = await _paymentPosService.GetBankInstallmentCategoryList();
+        if (categoryRates.Count == 0)
         {
-            foreach (var item in cartItems)
+            var generalRates = (IList<PaymentGarantiInstallment>)await _paymentPosService.GetBankInstallmentList();
+            await GetInstallmentAsync(model, generalRates);
+            return;
+        }
+
+        // Sepetteki benzersiz kategoriler
+        var categories = await GetDistinctCartCategoriesAsync(cartItems);
+
+        // Birden fazla kategori: kullanıcıyı bilgilendir, genel oranları uygula
+        if (categories.Count > 1)
+        {
+            var firstName = categories.FirstOrDefault()?.Name;
+            model.InfoMessage += firstName + " Ürünlerindeki komisyondan faydalanmak için diğer ürünleri sepetten çıkarın ve tekrar ödemeyi deneyin. İstemiyorsanız devam edebilirsiniz.";
+
+            var generalRates = (IList<PaymentGarantiInstallment>)await _paymentPosService.GetBankInstallmentList();
+            await GetInstallmentAsync(model, generalRates);
+            return;
+        }
+
+        // Tek kategori: eşleşen kategori oranlarını uygula
+        if (categories.Count == 1)
+        {
+            var catId = categories[0].Id;
+            var matched = categoryRates.Where(ci => ci.CategoryId == catId).ToList();
+            if (matched.Count > 0)
             {
-                var product = await _productService.GetProductByIdAsync(item.ProductId);
-                foreach (var productCategory in await _categoryService.GetProductCategoriesByProductIdAsync(product.Id, false))
-                {
-                    categoryList.Add(await _categoryService.GetCategoryByIdAsync(productCategory.CategoryId));
-                }
-            }
-            if (categoryList.Count > 1)
-            {
-                var categoryName = categoryList.FirstOrDefault();
-                installmentInfo.InfoMessage += categoryName?.Name + " Ürünlerindeki Komisyondan faydalanmak için diğer ürünleri sepetten Çıkarın ve Tekrar Ödemeyi Deneyin.İstemiyorsanız Devam Edebilirsiniz";
-            }
-            else
-            {
-                var paymentCategoryInstallments = (from category in categoryList
-                                                   from categoryInstallment in categoryInstallments
-                                                   where categoryInstallment.CategoryId == category.Id
-                                                   select categoryInstallment).ToList();
-                if (paymentCategoryInstallments.Count > 0)
-                {
-                    await GetInstallmentAsync(installmentInfo, paymentCategoryInstallments);
-                    await SessionExt.SetAsync(_httpContextAccessor.HttpContext.Session, "InstallmentViewModel", installmentInfo);
-                    return;
-                }
+                await GetInstallmentAsync(model, matched);
+                return;
             }
         }
-        await GetInstallmentAsync(installmentInfo, (IList<PaymentGarantiInstallment>)await _paymentPosService.GetBankInstallmentList());
+
+        // Hiç eşleşme yoksa genel oranları uygula
+        {
+            var generalRates = (IList<PaymentGarantiInstallment>)await _paymentPosService.GetBankInstallmentList();
+            await GetInstallmentAsync(model, generalRates);
+        }
     }
 
     #region Installment CRUD
