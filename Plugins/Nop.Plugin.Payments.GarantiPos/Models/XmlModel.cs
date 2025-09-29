@@ -1,7 +1,3 @@
-// Warning: Some assembly references could not be resolved automatically. This might lead to incorrect decompilation of some parts,
-// for ex. property getter/setter access. To get optimal decompilation results, please manually add the missing references to the list of loaded assemblies.
-// Nop.Plugin.Payments.GarantiPos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// Nop.Plugin.Payments.GarantiPos.Models.XmlModel
 using System;
 
 public class XmlModel
@@ -46,29 +42,11 @@ public class XmlModel
 
 	public string RefreshTime { get; set; }
 
-	public string MotoInd
-	{
-		get
-		{
-			return "N";
-		}
-		protected set
-		{
-			MotoInd = value;
-		}
-	}
+	// Garanti dokümantasyonuna göre MOTO iþlemi deðil -> her zaman 'N'
+	public string MotoInd => "N";
 
-	public string TimeStamp
-	{
-		get
-		{
-			return DateTime.Now.ToString();
-		}
-		protected set
-		{
-			TimeStamp = value;
-		}
-	}
+	// Banka tarafýnda timestamp genellikle string olarak kullanýlýr
+	public string TimeStamp => DateTime.Now.ToString();
 
 	public string SecurityData { get; set; }
 

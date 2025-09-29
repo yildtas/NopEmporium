@@ -34,23 +34,20 @@ namespace Nop.Plugin.Payments.GarantiPos.Services
 
             var plugin = await _paymentPluginManager.LoadPluginBySystemNameAsync(GarantiPosDefault.SystemName);
             if (plugin is null)
-                return; // Eklenti bulunamadıysa sessizce çık.
+                return;
 
             var systemName = plugin.PluginDescriptor.SystemName;
-            var isActive = _paymentPluginManager.IsPluginActive(plugin);
+            var activeList = _paymentSettings.ActivePaymentMethodSystemNames;
+            var isActive = activeList.Contains(systemName);
 
             if (garantiPosSettings.Enable && !isActive)
             {
-                if (!_paymentSettings.ActivePaymentMethodSystemNames.Contains(systemName))
-                    _paymentSettings.ActivePaymentMethodSystemNames.Add(systemName);
-
+                activeList.Add(systemName);
                 await _settingService.SaveSettingAsync(_paymentSettings, storeScope);
             }
             else if (!garantiPosSettings.Enable && isActive)
             {
-                if (_paymentSettings.ActivePaymentMethodSystemNames.Contains(systemName))
-                    _paymentSettings.ActivePaymentMethodSystemNames.Remove(systemName);
-
+                activeList.Remove(systemName);
                 await _settingService.SaveSettingAsync(_paymentSettings, storeScope);
             }
         }

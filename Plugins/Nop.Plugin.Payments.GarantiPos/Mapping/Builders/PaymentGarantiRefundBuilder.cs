@@ -1,4 +1,3 @@
-
 using FluentMigrator.Builders;
 using FluentMigrator.Builders.Create.Table;
 using Nop.Data.Mapping.Builders;
@@ -8,8 +7,15 @@ namespace Nop.Plugin.Payments.GarantiPos.Mapping.Builders;
 
 public class PaymentGarantiRefundBuilder : NopEntityBuilder<PaymentGarantiRefund>
 {
-	public override void MapEntity(CreateTableExpressionBuilder table)
-	{
-		((IColumnTypeSyntax<ICreateTableColumnOptionOrWithColumnSyntax>)(object)((ICreateTableWithColumnSyntax)((IColumnOptionSyntax<ICreateTableColumnOptionOrWithColumnSyntax, ICreateTableColumnOptionOrForeignKeyCascadeOrWithColumnSyntax>)(object)((IColumnTypeSyntax<ICreateTableColumnOptionOrWithColumnSyntax>)(object)((ICreateTableWithColumnSyntax)((IColumnOptionSyntax<ICreateTableColumnOptionOrWithColumnSyntax, ICreateTableColumnOptionOrForeignKeyCascadeOrWithColumnSyntax>)(object)((IColumnTypeSyntax<ICreateTableColumnOptionOrWithColumnSyntax>)(object)((ICreateTableWithColumnSyntax)((IColumnOptionSyntax<ICreateTableColumnOptionOrWithColumnSyntax, ICreateTableColumnOptionOrForeignKeyCascadeOrWithColumnSyntax>)(object)((IColumnTypeSyntax<ICreateTableColumnOptionOrWithColumnSyntax>)(object)((ICreateTableWithColumnSyntax)((IColumnOptionSyntax<ICreateTableColumnOptionOrWithColumnSyntax, ICreateTableColumnOptionOrForeignKeyCascadeOrWithColumnSyntax>)(object)((IColumnTypeSyntax<ICreateTableColumnOptionOrWithColumnSyntax>)(object)((ICreateTableWithColumnSyntax)((IColumnOptionSyntax<ICreateTableColumnOptionOrWithColumnSyntax, ICreateTableColumnOptionOrForeignKeyCascadeOrWithColumnSyntax>)(object)((IColumnTypeSyntax<ICreateTableColumnOptionOrWithColumnSyntax>)(object)((ICreateTableWithColumnSyntax)((IColumnOptionSyntax<ICreateTableColumnOptionOrWithColumnSyntax, ICreateTableColumnOptionOrForeignKeyCascadeOrWithColumnSyntax>)(object)((IColumnOptionSyntax<ICreateTableColumnOptionOrWithColumnSyntax, ICreateTableColumnOptionOrForeignKeyCascadeOrWithColumnSyntax>)(object)((IColumnTypeSyntax<ICreateTableColumnOptionOrWithColumnSyntax>)(object)table.WithColumn("Id")).AsInt32()).Identity()).PrimaryKey()).WithColumn("Amount")).AsDecimal()).NotNullable()).WithColumn("CustomerId")).AsInt32()).NotNullable()).WithColumn("OrderId")).AsInt32()).NotNullable()).WithColumn("PaymentTransactionId")).AsString()).Nullable()).WithColumn("PaymentId")).AsString()).NotNullable()).WithColumn("CreatedOnUtc")).AsDateTime();
-	}
+    public override void MapEntity(CreateTableExpressionBuilder table)
+    {
+        table
+            .WithColumn(nameof(PaymentGarantiRefund.Id)).AsInt32().PrimaryKey().Identity()
+            .WithColumn(nameof(PaymentGarantiRefund.Amount)).AsDecimal(18, 2).NotNullable()
+            .WithColumn(nameof(PaymentGarantiRefund.CustomerId)).AsInt32().NotNullable()
+            .WithColumn(nameof(PaymentGarantiRefund.OrderId)).AsInt32().NotNullable()
+            .WithColumn(nameof(PaymentGarantiRefund.PaymentTransactionId)).AsString().Nullable()
+            .WithColumn(nameof(PaymentGarantiRefund.PaymentId)).AsString().NotNullable()
+            .WithColumn(nameof(PaymentGarantiRefund.CreatedOnUtc)).AsDateTime();
+    }
 }
