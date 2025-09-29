@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Plugins\\Nop.Plugin.Payments.GarantiPos\\Nop.Plugin.Payments.GarantiPos.csproj": {}
+    "D:\\Projects\\Other\\NopEmporium\\Plugins\\Nop.Plugin.Payments.GarantiPos\\Nop.Plugin.Payments.GarantiPos.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+    "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
       "version": "4.70.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Core\\Nop.Core.csproj",
+        "projectUniqueName": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj",
         "projectName": "Nop.Core",
-        "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Core\\Nop.Core.csproj",
-        "packagesPath": "C:\\Users\\yildirim.t\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Core\\obj\\",
+        "projectPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj",
+        "packagesPath": "C:\\Users\\wa.yildirimt\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\yildirim.t\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wa.yildirimt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -124,20 +124,20 @@
         }
       }
     },
-    "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Data\\Nop.Data.csproj": {
+    "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj": {
       "version": "4.70.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Data\\Nop.Data.csproj",
+        "projectUniqueName": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj",
         "projectName": "Nop.Data",
-        "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Data\\Nop.Data.csproj",
-        "packagesPath": "C:\\Users\\yildirim.t\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Data\\obj\\",
+        "projectPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj",
+        "packagesPath": "C:\\Users\\wa.yildirimt\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\yildirim.t\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wa.yildirimt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -153,8 +153,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-                "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Core\\Nop.Core.csproj"
+              "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+                "projectPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj"
               }
             }
           }
@@ -228,20 +228,20 @@
         }
       }
     },
-    "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Services\\Nop.Services.csproj": {
+    "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj": {
       "version": "4.70.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Services\\Nop.Services.csproj",
+        "projectUniqueName": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj",
         "projectName": "Nop.Services",
-        "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Services\\Nop.Services.csproj",
-        "packagesPath": "C:\\Users\\yildirim.t\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Services\\obj\\",
+        "projectPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj",
+        "packagesPath": "C:\\Users\\wa.yildirimt\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\yildirim.t\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wa.yildirimt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -257,11 +257,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-                "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Core\\Nop.Core.csproj"
+              "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+                "projectPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj"
               },
-              "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Data\\Nop.Data.csproj": {
-                "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Data\\Nop.Data.csproj"
+              "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj": {
+                "projectPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj"
               }
             }
           }
@@ -355,20 +355,20 @@
         }
       }
     },
-    "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Plugins\\Nop.Plugin.Payments.GarantiPos\\Nop.Plugin.Payments.GarantiPos.csproj": {
+    "D:\\Projects\\Other\\NopEmporium\\Plugins\\Nop.Plugin.Payments.GarantiPos\\Nop.Plugin.Payments.GarantiPos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Plugins\\Nop.Plugin.Payments.GarantiPos\\Nop.Plugin.Payments.GarantiPos.csproj",
+        "projectUniqueName": "D:\\Projects\\Other\\NopEmporium\\Plugins\\Nop.Plugin.Payments.GarantiPos\\Nop.Plugin.Payments.GarantiPos.csproj",
         "projectName": "Nop.Plugin.Payments.GarantiPos",
-        "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Plugins\\Nop.Plugin.Payments.GarantiPos\\Nop.Plugin.Payments.GarantiPos.csproj",
-        "packagesPath": "C:\\Users\\yildirim.t\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Plugins\\Nop.Plugin.Payments.GarantiPos\\obj\\",
+        "projectPath": "D:\\Projects\\Other\\NopEmporium\\Plugins\\Nop.Plugin.Payments.GarantiPos\\Nop.Plugin.Payments.GarantiPos.csproj",
+        "packagesPath": "C:\\Users\\wa.yildirimt\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\Other\\NopEmporium\\Plugins\\Nop.Plugin.Payments.GarantiPos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\yildirim.t\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wa.yildirimt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -384,8 +384,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Presentation\\Nop.Web\\Nop.Web.csproj": {
-                "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Presentation\\Nop.Web\\Nop.Web.csproj"
+              "D:\\Projects\\Other\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj": {
+                "projectPath": "D:\\Projects\\Other\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj"
               }
             }
           }
@@ -425,20 +425,20 @@
         }
       }
     },
-    "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
+    "D:\\Projects\\Other\\NopEmporium\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
       "version": "4.70.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj",
+        "projectUniqueName": "D:\\Projects\\Other\\NopEmporium\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj",
         "projectName": "Nop.Web.Framework",
-        "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj",
-        "packagesPath": "C:\\Users\\yildirim.t\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Presentation\\Nop.Web.Framework\\obj\\",
+        "projectPath": "D:\\Projects\\Other\\NopEmporium\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj",
+        "packagesPath": "C:\\Users\\wa.yildirimt\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\Other\\NopEmporium\\Presentation\\Nop.Web.Framework\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\yildirim.t\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wa.yildirimt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -454,14 +454,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-                "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Core\\Nop.Core.csproj"
+              "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+                "projectPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj"
               },
-              "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Data\\Nop.Data.csproj": {
-                "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Data\\Nop.Data.csproj"
+              "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj": {
+                "projectPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj"
               },
-              "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Services\\Nop.Services.csproj": {
-                "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Services\\Nop.Services.csproj"
+              "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj": {
+                "projectPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj"
               }
             }
           }
@@ -519,20 +519,20 @@
         }
       }
     },
-    "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Presentation\\Nop.Web\\Nop.Web.csproj": {
+    "D:\\Projects\\Other\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj": {
       "version": "4.70.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Presentation\\Nop.Web\\Nop.Web.csproj",
+        "projectUniqueName": "D:\\Projects\\Other\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj",
         "projectName": "Nop.Web",
-        "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Presentation\\Nop.Web\\Nop.Web.csproj",
-        "packagesPath": "C:\\Users\\yildirim.t\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Presentation\\Nop.Web\\obj\\",
+        "projectPath": "D:\\Projects\\Other\\NopEmporium\\Presentation\\Nop.Web\\Nop.Web.csproj",
+        "packagesPath": "C:\\Users\\wa.yildirimt\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\Other\\NopEmporium\\Presentation\\Nop.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\yildirim.t\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wa.yildirimt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -548,17 +548,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Core\\Nop.Core.csproj": {
-                "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Core\\Nop.Core.csproj"
+              "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj": {
+                "projectPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Core\\Nop.Core.csproj"
               },
-              "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Data\\Nop.Data.csproj": {
-                "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Data\\Nop.Data.csproj"
+              "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj": {
+                "projectPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Data\\Nop.Data.csproj"
               },
-              "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Services\\Nop.Services.csproj": {
-                "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Libraries\\Nop.Services\\Nop.Services.csproj"
+              "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj": {
+                "projectPath": "D:\\Projects\\Other\\NopEmporium\\Libraries\\Nop.Services\\Nop.Services.csproj"
               },
-              "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
-                "projectPath": "D:\\Projects\\Other\\Pazar.Bimasraf.com\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj"
+              "D:\\Projects\\Other\\NopEmporium\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
+                "projectPath": "D:\\Projects\\Other\\NopEmporium\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj"
               }
             }
           }

@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Nop Solutions, Ltd")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("The project contains a set of core classes for testing")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("4.70.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("4.70.0+28af805db7cc70fedc11062b40ec92a9db74e88a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("4.70.0+68b05130499be9dcba04126da8c2625565642bde")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nop.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nop.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("4.70.0.0")]

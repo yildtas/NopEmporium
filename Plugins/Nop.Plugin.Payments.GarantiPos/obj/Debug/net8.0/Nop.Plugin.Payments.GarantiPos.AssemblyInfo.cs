@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Nop Solutions, Ltd")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc8fa57a91edd014e9374836d217fd26b525e2b5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68b05130499be9dcba04126da8c2625565642bde")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nop.Plugin.Payments.GarantiPos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nop.Plugin.Payments.GarantiPos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
