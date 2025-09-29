@@ -29,8 +29,8 @@ public class EventConsumer : IConsumer<PageRenderingEvent>
             return;
 
         var routeName = eventMessage.GetRouteName(false) ?? string.Empty;
-        if (!routeName.Equals(GarantiPosDefault.CheckoutRouteName, StringComparison.OrdinalIgnoreCase) &&
-            !routeName.Equals(GarantiPosDefault.OnePageCheckoutRouteName, StringComparison.OrdinalIgnoreCase))
+        // Checkout ile ilgili tüm sayfalarda kaynaklarý enjekte et (route adý farklýlýk riskine karþý)
+        if (string.IsNullOrWhiteSpace(routeName) || !routeName.Contains("Checkout", StringComparison.OrdinalIgnoreCase))
             return;
 
         // Yardýmcý bazý durumlarda null olabilir
@@ -42,11 +42,12 @@ public class EventConsumer : IConsumer<PageRenderingEvent>
         helper.AddCssFileParts(GarantiPosDefault.CardCardStylePath);
         helper.AddCssFileParts(GarantiPosDefault.InstallmentTableStylePath);
 
-        // Scriptler (footer)
-        helper.AddScriptParts(ResourceLocation.Footer, GarantiPosDefault.JqueryScriptPath);
+        // Çekirdek framework baðýmlýlýklarý (HEAD): Vue -> v-mask -> axios
+        helper.AddScriptParts(ResourceLocation.Head, GarantiPosDefault.VuePath);
+        helper.AddScriptParts(ResourceLocation.Head, GarantiPosDefault.VueMaskPath);
+        helper.AddScriptParts(ResourceLocation.Head, GarantiPosDefault.AxiosPath);
+
+        // Opsiyonel bildirim kütüphanesi (Footer'da kalabilir)
         helper.AddScriptParts(ResourceLocation.Footer, GarantiPosDefault.SweetAlertScriptPath);
-        helper.AddScriptParts(ResourceLocation.Footer, GarantiPosDefault.VuePath);
-        helper.AddScriptParts(ResourceLocation.Footer, GarantiPosDefault.VueMaskPath);
-        helper.AddScriptParts(ResourceLocation.Footer, GarantiPosDefault.AxiosPath);
     }
 }

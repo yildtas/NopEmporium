@@ -205,7 +205,7 @@
         el: "#app",
         data() {
             return {
-                currentCardBackground: Math.floor(Math.random() * 25 + 1), // just for fun :D
+                currentCardBackground: Math.floor(Math.random() * 25 + 1),
                 cardName: "",
                 cardNumber: "",
                 cardMonth: "",
@@ -275,10 +275,11 @@
                 }
             },
             cardNumber() {
+                const digits = this.cardNumber.replace(/\s/g, '');
                 if (!this.binControl) {
                     this.getInstallment();
                 }
-                if (this.cardNumber < 5) {
+                if (digits.length < 6) {
                     this.binControl = false;
                 }
             }
@@ -307,9 +308,9 @@
                 vm.isInputFocused = false;
             },
             keyupInput(e) {
-
                 if (e.key === "Backspace") {
-                    if (this.cardNumber.length < 6) {
+                    const digits = this.cardNumber.replace(/\s/g, '');
+                    if (digits.length < 6) {
                         this.installmentItems = [
                             {
                                Amount: '@(Model.Total)',
@@ -327,7 +328,8 @@
             },
             keydownInput(e) {
                 if (e.key === "Backspace") {
-                    if (this.cardNumber.length < 6) {
+                    const digits = this.cardNumber.replace(/\s/g, '');
+                    if (digits.length < 6) {
                         this.installmentItems = [
                             {
                               Amount: '@(Model.Total)',
@@ -344,23 +346,14 @@
                 }
             },
             changeInputNumber(e) {
-
                 if (e.type === "change") {
-                    var binNumber = this.cardNumber.slice(0, 7).replace(" ", "");
-                    if (binNumber > 6) {
-                        axios({
-                            baseURL: '/Plugins/PaymentGarantiPos/GetInstallment?binNumber=' + binNumber,
-                            method: 'get',
-                            data: null,
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json',
-                                'X-Response-View': 'Json'
-                            }
+                    const bin = this.cardNumber.replace(/\s/g, '').slice(0, 6);
+                    if (bin.length >= 6) {
+                        axios.get('/Plugins/PaymentGarantiPos/GetInstallment', {
+                            params: { binNumber: bin }
                         }).then(response => {
                             this.creditCardType = response.data.CardFamily;
                             this.installmentItems = response.data.InstallmentItems;
-
                         }).catch(error => {
                             console.log(error);
                         });
@@ -369,22 +362,14 @@
                 }
             },
             getInstallment() {
-                if (this.cardNumber.length > 6) {
-                    var binNumber = this.cardNumber.slice(0, 7).replace(" ", "");
-                    console.log(binNumber);
-                    axios({
-                        baseURL: '/Plugins/PaymentGarantiPos/GetInstallment?binNumber=' + binNumber,
-                        method: 'get',
-                        data: null,
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                            'X-Response-View': 'Json'
-                        }
+                const digits = this.cardNumber.replace(/\s/g, '');
+                if (digits.length >= 6) {
+                    const bin = digits.slice(0, 6);
+                    axios.get('/Plugins/PaymentGarantiPos/GetInstallment', {
+                        params: { binNumber: bin }
                     }).then(response => {
                         this.creditCardType = response.data.CardFamily;
                         this.installmentItems = response.data.InstallmentItems;
-
                     }).catch(error => {
                         console.log(error);
                     });
@@ -395,8 +380,6 @@
             installmentClick(e) {
                 let installment = e.target.attributes.getNamedItem('data-id').value;
                 this.numberOfInstallment = installment;
-                console.log(this.numberOfInstallment);
-                console.log(installment);
                 document.getElementById("NumberOfInstallment").value = installment;
             }
 
