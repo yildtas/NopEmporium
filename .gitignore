@@ -18,6 +18,7 @@ _ReSharper*/
 # --- Build artifacts ---
 [Bb]in/
 [Oo]bj/
+[Dd]ebug/
 [Ll]og/
 [Ll]ogs/
 TestResults/
