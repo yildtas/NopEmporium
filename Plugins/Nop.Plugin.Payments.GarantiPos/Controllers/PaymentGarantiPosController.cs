@@ -506,48 +506,75 @@ public class PaymentGarantiPosController : BasePaymentController
         if (binCode == null)
         {
             // Bankaya BIN sorgusu
-            string amount = (installmentInfo.TotalAmount * 100m).ToString("0.##", new CultureInfo("en-US"));
+            int amountInt = (int)Math.Round(installmentInfo.TotalAmount * 100m); // kuruş cinsinden
+            string amount = amountInt.ToString(CultureInfo.InvariantCulture);
+
             string mode = settings.TestMode ? "TEST" : "PROD";
-            string customerEmail = (customer == null && customer?.Email == null) ? (await _customerService.GetCustomerBillingAddressAsync(customer)).Email : customer.Email;
+
+            // Email fallback
+            string customerEmail;
+            if (customer == null || string.IsNullOrEmpty(customer.Email))
+            {
+                var billing = await _customerService.GetCustomerBillingAddressAsync(customer);
+                customerEmail = billing?.Email ?? "test@example.com";
+            }
+            else
+            {
+                customerEmail = customer.Email;
+            }
+
+            // OrderId: hem hash’te hem XML’de aynı kullanılmalı
             string orderId = Guid.NewGuid().ToString("N");
-            string hashedPassword = HelperOptions.Sha1(settings.Password + HelperOptions.IsRequireZero(settings.TerminalId, 9).ToLower());
+
+            // TerminalId padding (9 hane)
+            string terminalIdPadded9 = settings.TerminalId.PadLeft(9, '0');
+
+            // HashedPassword = SHA1(provisionPassword + terminalId_padded9).ToUpper()
+            string hashedPassword = HelperOptions.Sha1(settings.Password + terminalIdPadded9);
+
+            // HashData = SHA1(orderId + terminalId + binNumber + amount + hashedPassword).ToUpper()
             string securityData = $"{orderId}{settings.TerminalId}{binNumber}{amount}{hashedPassword}";
-            string hashData = HelperOptions.Sha1(securityData).ToUpper();
+            string hashData = HelperOptions.Sha1(securityData).ToUpperInvariant();
 
             string requestXml = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
-
                 <GVPSRequest>
-                 <Mode>{mode}</Mode>
-                 <Version>{settings.Version}</Version>
-                 <Terminal>
-                  <ProvUserID>{settings.TerminalProvUserId}</ProvUserID>
-                  <HashData>{hashData}</HashData>
-                  <UserID>{settings.TerminalUserId}</UserID>
-                  <ID>{settings.TerminalId}</ID>
-                  <MerchantID>{settings.MerchantId}</MerchantID>
-                 </Terminal>
-                 <Customer>
-                  <IPAddress>{_webHelper.GetCurrentIpAddress()}</IPAddress>
-                  <EmailAddress>{customerEmail}</EmailAddress>
-                 </Customer>
-                 <Order>
-                  <OrderID>{Guid.NewGuid():N}</OrderID>
-                  <GroupID></GroupID>
-                  <Description></Description>
-                 </Order>
-                 <Transaction>
-                  <Type>bininq</Type>
-                  <Amount>{amount}</Amount>
-                  <BINInq>
-                   <Group>A</Group>
-                   <CardType>A</CardType>
-                  </BINInq>
-                 </Transaction>
+                  <Mode>{mode}</Mode>
+                  <Version>{settings.Version}</Version>
+                  <Terminal>
+                    <ProvUserID>{settings.TerminalProvUserId}</ProvUserID>
+                    <HashData>{hashData}</HashData>
+                    <UserID>{settings.TerminalUserId}</UserID>
+                    <ID>{settings.TerminalId}</ID>
+                    <MerchantID>{settings.MerchantId}</MerchantID>
+                  </Terminal>
+                  <Customer>
+                    <IPAddress>{_webHelper.GetCurrentIpAddress()}</IPAddress>
+                    <EmailAddress>{customerEmail}</EmailAddress>
+                  </Customer>
+                  <Order>
+                    <OrderID>{orderId}</OrderID>
+                    <GroupID></GroupID>
+                    <Description></Description>
+                  </Order>
+                  <Transaction>
+                    <Type>bininq</Type>
+                    <Amount>{amount}</Amount>
+                    <BINInq>
+                      <Group>A</Group>
+                      <CardType>A</CardType>
+                      <BinNumber>{binNumber}</BinNumber>
+                    </BINInq>
+                  </Transaction>
                 </GVPSRequest>";
+
 
             var data = "data=" + requestXml.Trim();
             var client = _httpClientFactory.CreateClient();
-            var paymentUrl = settings.BankUrl;
+
+            string paymentHost = settings.TestMode ? "sanalposprovtest.garantibbva.com.tr" : "sanalposprov.garantibbva.com.tr";
+            string paymentPath = "/VPServlet"; // veya banka dökümanına göre farklı path
+            string paymentUrl = $"https://{paymentHost}{paymentPath}";
+
             client.BaseAddress = new Uri(paymentUrl);
             var content = new StringContent(data, Encoding.UTF8, "application/x-www-form-urlencoded");
             var responseString = await (await client.PostAsync(paymentUrl, content)).Content.ReadAsStringAsync();
@@ -603,19 +630,19 @@ public class PaymentGarantiPosController : BasePaymentController
     /// Kategori bazlı özel taksit oranı var ise onları uygular; yoksa genel banka taksit listesini kullanır.
     /// Basit ve anlaşılır akış: Kart bilgileri -> kategori listesi -> karar -> oranları ekle.
     /// </summary>
-    private async Task PrepareInstallmentByCategoryOrDefault(InstallmentViewModel model, IList<ShoppingCartItem> cartItems, PaymentGarantiBin bin)
+    private async Task PrepareInstallmentByCategoryOrDefault(InstallmentViewModel installmentInfo, IList<ShoppingCartItem> cartItems, PaymentGarantiBin binCode)
     {
         // Kart bilgileri
-        model.CardType = bin.CardType;
-        model.CardAssociation = bin.CardAssociation;
-        model.CardFamily = bin.Product;
+        installmentInfo.CardType = binCode.CardType;
+        installmentInfo.CardAssociation = binCode.CardAssociation;
+        installmentInfo.CardFamily = binCode.Product;
 
         // Kategori bazlı oranlar var mı?
         var categoryRates = await _paymentPosService.GetBankInstallmentCategoryList();
         if (categoryRates.Count == 0)
         {
             var generalRates = (IList<PaymentGarantiInstallment>)await _paymentPosService.GetBankInstallmentList();
-            await GetInstallmentAsync(model, generalRates);
+            await GetInstallmentAsync(installmentInfo, generalRates);
             return;
         }
 
@@ -626,10 +653,10 @@ public class PaymentGarantiPosController : BasePaymentController
         if (categories.Count > 1)
         {
             var firstName = categories.FirstOrDefault()?.Name;
-            model.InfoMessage += firstName + " Ürünlerindeki komisyondan faydalanmak için diğer ürünleri sepetten çıkarın ve tekrar ödemeyi deneyin. İstemiyorsanız devam edebilirsiniz.";
+            installmentInfo.InfoMessage += firstName + " Ürünlerindeki komisyondan faydalanmak için diğer ürünleri sepetten çıkarın ve tekrar ödemeyi deneyin. İstemiyorsanız devam edebilirsiniz.";
 
             var generalRates = (IList<PaymentGarantiInstallment>)await _paymentPosService.GetBankInstallmentList();
-            await GetInstallmentAsync(model, generalRates);
+            await GetInstallmentAsync(installmentInfo, generalRates);
             return;
         }
 
@@ -640,7 +667,7 @@ public class PaymentGarantiPosController : BasePaymentController
             var matched = categoryRates.Where(ci => ci.CategoryId == catId).ToList();
             if (matched.Count > 0)
             {
-                await GetInstallmentAsync(model, matched);
+                await GetInstallmentAsync(installmentInfo, matched);
                 return;
             }
         }
@@ -648,7 +675,7 @@ public class PaymentGarantiPosController : BasePaymentController
         // Hiç eşleşme yoksa genel oranları uygula
         {
             var generalRates = (IList<PaymentGarantiInstallment>)await _paymentPosService.GetBankInstallmentList();
-            await GetInstallmentAsync(model, generalRates);
+            await GetInstallmentAsync(installmentInfo, generalRates);
         }
     }
 
@@ -981,7 +1008,7 @@ public class PaymentGarantiPosController : BasePaymentController
         return View("~/Plugins/Payments.GarantiPos/Views/BankBin/Create.cshtml", model);
     }
 
-    [Area ("Admin")]
+    [Area("Admin")]
     [AutoValidateAntiforgeryToken]
     [AuthorizeAdmin(false)]
     public async Task<IActionResult> EditAsync(int id)
