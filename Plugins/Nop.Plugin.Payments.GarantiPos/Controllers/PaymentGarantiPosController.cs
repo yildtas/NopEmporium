@@ -526,47 +526,45 @@ public class PaymentGarantiPosController : BasePaymentController
             // OrderId: hem hash’te hem XML’de aynı kullanılmalı
             string orderId = Guid.NewGuid().ToString("N");
 
-            // TerminalId padding (9 hane)
-            string terminalIdPadded9 = settings.TerminalId.PadLeft(9, '0');
+            // Banka formülü: "0" + terminalId ve binNumber yok
+            string hashedPassword = HelperOptions.Sha1Upper(settings.Password + "0" + settings.TerminalId);
 
-            // HashedPassword = SHA1(provisionPassword + terminalId_padded9).ToUpper()
-            string hashedPassword = HelperOptions.Sha1(settings.Password + terminalIdPadded9);
+            string securityData = string.Concat(orderId, settings.TerminalId, amount, hashedPassword);
+            string hashData = HelperOptions.Sha1Upper(securityData); // zaten Upper HEX dönüyor
 
-            // HashData = SHA1(orderId + terminalId + binNumber + amount + hashedPassword).ToUpper()
-            string securityData = $"{orderId}{settings.TerminalId}{binNumber}{amount}{hashedPassword}";
-            string hashData = HelperOptions.Sha1(securityData).ToUpperInvariant();
-
-            string requestXml = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
-                <GVPSRequest>
-                  <Mode>{mode}</Mode>
-                  <Version>{settings.Version}</Version>
-                  <Terminal>
-                    <ProvUserID>{settings.TerminalProvUserId}</ProvUserID>
-                    <HashData>{hashData}</HashData>
-                    <UserID>{settings.TerminalUserId}</UserID>
-                    <ID>{settings.TerminalId}</ID>
-                    <MerchantID>{settings.MerchantId}</MerchantID>
-                  </Terminal>
-                  <Customer>
-                    <IPAddress>{_webHelper.GetCurrentIpAddress()}</IPAddress>
-                    <EmailAddress>{customerEmail}</EmailAddress>
-                  </Customer>
-                  <Order>
-                    <OrderID>{orderId}</OrderID>
-                    <GroupID></GroupID>
-                    <Description></Description>
-                  </Order>
-                  <Transaction>
-                    <Type>bininq</Type>
-                    <Amount>{amount}</Amount>
-                    <BINInq>
-                      <Group>A</Group>
-                      <CardType>A</CardType>
-                      <BinNumber>{binNumber}</BinNumber>
-                    </BINInq>
-                  </Transaction>
-                </GVPSRequest>";
-
+            // Build XML with AppendFormat for readability
+            StringBuilder sb = new StringBuilder(512);
+            sb.AppendLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            sb.AppendLine("<GVPSRequest>");
+            sb.AppendFormat("<Mode>{0}</Mode>", mode);
+            sb.AppendFormat("<Version>{0}</Version>", settings.Version);
+            sb.AppendLine("<Terminal>");
+            sb.AppendFormat("<ProvUserID>{0}</ProvUserID>", settings.TerminalProvUserId);
+            sb.AppendFormat("<HashData>{0}</HashData>", hashData);
+            sb.AppendFormat("<UserID>{0}</UserID>", settings.TerminalUserId);
+            sb.AppendFormat("<ID>{0}</ID>", settings.TerminalId);
+            sb.AppendFormat("<MerchantID>{0}</MerchantID>", settings.MerchantId);
+            sb.AppendLine("</Terminal>");
+            sb.AppendLine("<Customer>");
+            sb.AppendFormat("<IPAddress>{0}</IPAddress>", _webHelper.GetCurrentIpAddress());
+            sb.AppendFormat("<EmailAddress>{0}</EmailAddress>", customerEmail);
+            sb.AppendLine("</Customer>");
+            sb.AppendLine("<Order>");
+            sb.AppendFormat("<OrderID>{0}</OrderID>", orderId);
+            sb.AppendLine("<GroupID></GroupID>");
+            sb.AppendLine("<Description></Description>");
+            sb.AppendLine("</Order>");
+            sb.AppendLine("<Transaction>");
+            sb.AppendLine("<Type>bininq</Type>");
+            sb.AppendFormat("<Amount>{0}</Amount>", amount);
+            sb.AppendLine("<BINInq>");
+            sb.AppendLine("<Group>A</Group>");
+            sb.AppendLine("<CardType>A</CardType>");
+            sb.AppendFormat("<BinNumber>{0}</BinNumber>", binNumber);
+            sb.AppendLine("</BINInq>");
+            sb.AppendLine("</Transaction>");
+            sb.AppendLine("</GVPSRequest>");
+            string requestXml = sb.ToString();
 
             var data = "data=" + requestXml.Trim();
             var client = _httpClientFactory.CreateClient();
@@ -890,7 +888,7 @@ public class PaymentGarantiPosController : BasePaymentController
         return View("~/Plugins/Payments.GarantiPos/Views/Category/Edit.cshtml", model);
     }
 
-    [Area("Admin")]
+    [Area ("Admin")]
     [AutoValidateAntiforgeryToken]
     [AuthorizeAdmin(false)]
     [HttpPost]

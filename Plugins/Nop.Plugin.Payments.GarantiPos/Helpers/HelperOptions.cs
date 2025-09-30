@@ -1,4 +1,4 @@
-using Nop.Core;
+﻿using Nop.Core;
 using Nop.Core.Domain.Orders;
 using Nop.Services.Directory;
 using Nop.Services.Orders;
@@ -63,6 +63,16 @@ public class HelperOptions
             "DKK" => 208,
             _ => 949
         };
+    }
+
+    public static string Sha1Upper(string text)
+    {
+        using var sha1 = SHA1.Create();
+        var bytes = Encoding.UTF8.GetBytes(text);// ASCII girdilerde UTF-8 ≡ ISO-8859-9
+        var hash = sha1.ComputeHash(bytes);
+        var sb = new StringBuilder(hash.Length * 2);
+        foreach (var b in hash) sb.Append(b.ToString("X2")); // direkt uppercase hex
+        return sb.ToString();
     }
 
     public static string Sha1(string text)
