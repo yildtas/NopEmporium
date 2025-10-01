@@ -384,6 +384,12 @@ public class GarantiPosProcessor : BasePlugin, IPaymentMethod, IAdminMenuPlugin
                 ["Plugins.Payments.GarantiPos.Field.AdditionalFee.hint"] = "AdditionalFee",
                 ["Plugins.Payments.GarantiPos.Field.AdditionalFeePercentage"] = "AdditionalFeePercentage",
                 ["Plugins.Payments.GarantiPos.Field.AdditionalFeePercentage.hint"] = "AdditionalFeePercentage",
+                // Yeni alan etiketleri
+                ["Plugins.Payments.GarantiPos.Field.Bank3DUrl"] = "3D Ödeme URL",
+                ["Plugins.Payments.GarantiPos.Field.Bank3DUrl.hint"] = "Bankanın 3D ödeme geçidi URL'si",
+                ["Plugins.Payments.GarantiPos.Field.BankNone3DUrl"] = "3D Olmayan İşlem URL",
+                ["Plugins.Payments.GarantiPos.Field.BankNone3DUrl.hint"] = "BIN sorgu vb. 3D olmayan servis URL'si",
+                // Grid ve CRUD metinleri
                 ["Plugins.Payments.GarantiPos.BankBin.Added"] = "Bin Kodu Eklendi",
                 ["Plugins.Payments.GarantiPos.BankBin.Updated"] = "Bin Kodu Güncellendi",
                 ["Plugins.Payments.GarantiPos.BankBin.Deleted"] = "Bin Kodu Silindi",
