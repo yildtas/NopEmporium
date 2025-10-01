@@ -45,7 +45,10 @@ namespace Nop.Plugin.Payments.GarantiPos
         public bool TestMode { get; set; }
 
         /// <summary>Banka 3D gateway URL (test / prod).</summary>
-        public string BankUrl { get; set; }
+        public string Bank3DUrl { get; set; }
+
+        /// <summary>3D olmayan işlemler için (ör. BIN sorgu) base URL.</summary>
+        public string BankNone3DUrl { get; set; }
 
         /// <summary>API sürümü (ör: v0.01)</summary>
         public string Version { get; set; }

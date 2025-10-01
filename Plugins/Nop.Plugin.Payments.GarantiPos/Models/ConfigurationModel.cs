@@ -26,8 +26,11 @@ public record ConfigurationModel : BaseNopModel
     [NopResourceDisplayName("Plugins.Payments.GarantiPos.Field.TestMode")]
     public bool TestMode { get; set; }
 
-    [NopResourceDisplayName("Plugins.Payments.GarantiPos.Field.BankUrl")]
-    public string BankUrl { get; set; }
+    [NopResourceDisplayName("Plugins.Payments.GarantiPos.Field.Bank3DUrl")]
+    public string Bank3DUrl { get; set; }
+
+    [NopResourceDisplayName("Plugins.Payments.GarantiPos.Field.BankNone3DUrl")]
+    public string BankNone3DUrl { get; set; }
 
     [NopResourceDisplayName("Plugins.Payments.GarantiPos.Field.Version")]
     public string Version { get; set; }

@@ -258,7 +258,8 @@ public class PaymentGarantiPosController : BasePaymentController
             Version = settings.Version,
             AdditionalFee = settings.AdditionalFee,
             AdditionalFeePercentage = settings.AdditionalFeePercentage,
-            BankUrl = settings.BankUrl,
+            Bank3DUrl = settings.Bank3DUrl,
+            BankNone3DUrl = settings.BankNone3DUrl,
             NopCommerceNumber = settings.NopCommerceNumber,
             Enable = settings.Enable
         };
@@ -294,7 +295,8 @@ public class PaymentGarantiPosController : BasePaymentController
         settings.SecurityLevel = model.SecurityLevel;
         settings.AdditionalFee = model.AdditionalFee;
         settings.AdditionalFeePercentage = model.AdditionalFeePercentage;
-        settings.BankUrl = model.BankUrl;
+        settings.Bank3DUrl = model.Bank3DUrl;
+        settings.BankNone3DUrl = model.BankNone3DUrl;
         settings.NopCommerceNumber = model.NopCommerceNumber;
         settings.Enable = model.Enable;
 
@@ -569,9 +571,8 @@ public class PaymentGarantiPosController : BasePaymentController
             var data = "data=" + requestXml.Trim();
             var client = _httpClientFactory.CreateClient();
 
-            string paymentHost = settings.TestMode ? "sanalposprovtest.garantibbva.com.tr" : "sanalposprov.garantibbva.com.tr";
-            string paymentPath = "/VPServlet"; // veya banka dökümanına göre farklı path
-            string paymentUrl = $"https://{paymentHost}{paymentPath}";
+            // Use configured non-3D URL
+            var paymentUrl = settings.BankNone3DUrl;
 
             client.BaseAddress = new Uri(paymentUrl);
             var content = new StringContent(data, Encoding.UTF8, "application/x-www-form-urlencoded");

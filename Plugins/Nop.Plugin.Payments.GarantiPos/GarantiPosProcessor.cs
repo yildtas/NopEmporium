@@ -207,7 +207,7 @@ public class GarantiPosProcessor : BasePlugin, IPaymentMethod, IAdminMenuPlugin
             ExpireYear = HelperOptions.EncodeExpireYear(processPayment.CreditCardExpireYear),
             CardCode = processPayment.CreditCardCvv2,
             TxnType = "sales",
-            PaymentUrl = settings.BankUrl
+            PaymentUrl = settings.Bank3DUrl
         };
         // Banka genelde tutarı kuruş *100 formatında ister.
         model.Amount = (total * 100m).ToString("0.##", new CultureInfo("en-US"));
@@ -344,7 +344,8 @@ public class GarantiPosProcessor : BasePlugin, IPaymentMethod, IAdminMenuPlugin
             TerminalUserId = "SANALUSER",
             TestMode = true,
             Version = "v0.01",
-            BankUrl = "https://sanalposprovtest.garantibbva.com.tr/servlet/gt3dengine"
+            Bank3DUrl = "https://sanalposprovtest.garantibbva.com.tr/servlet/gt3dengine",
+            BankNone3DUrl = "https://sanalposprovtest.garantibbva.com.tr/VPServlet"
         };
         await _settingService.SaveSettingAsync(setting, 0);
 
