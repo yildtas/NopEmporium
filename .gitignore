@@ -1,3 +1,8 @@
+# ==========================
+# .gitignore for .NET / VS / Rider
+# NopCommerce + Razor Pages
+# ==========================
+
 # --- OS / IDE ---
 # Visual Studio
 .vs/
@@ -8,6 +13,7 @@
 
 # Rider / ReSharper
 .idea/
+*.sln.iml
 _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user
@@ -18,7 +24,11 @@ _ReSharper*/
 # --- Build artifacts ---
 [Bb]in/
 [Oo]bj/
-[Dd]ebug/
+[Dd]ebug*/
+[Rr]elease*/
+[xX]64/
+[xX]86/
+[Aa][Rr][Mm]*/
 [Ll]og/
 [Ll]ogs/
 TestResults/
@@ -31,18 +41,25 @@ packages/
 *.snupkg
 *.nuget.props
 *.nuget.targets
+.nuget/
 
 # Publish / dist
 publish/
 out/
+artifacts/
+[Pp]ublish*/
 
 # Coverage
 *.coverage
 *.coveragexml
 *.opencover.xml
+Coverage*/
 
-# Node
+# Node / frontend
 node_modules/
+# lock files are usually committed; comment out if needed
+# package-lock.json
+# yarn.lock
 
 # Secrets / certificates
 *.pfx
@@ -65,12 +82,13 @@ node_modules/
 *.swp
 *.swo
 
-# macOS / Windows
+# OS
 .DS_Store
 Thumbs.db
 
 # --- ASP.NET Core / config ---
 appsettings.Development.json
+appsettings.*.local.json
 **/Properties/PublishProfiles/*.pubxml.user
 **/*.pubxml.user
 
@@ -87,3 +105,11 @@ Presentation/Nop.Web/wwwroot/images/thumbs/
 Presentation/Nop.Web/Plugins/
 # Optional: local logs folder if present
 Presentation/Nop.Web/Logs/
+
+# Plugin project outputs (extra safety; bin/obj already ignored globally)
+Plugins/**/[Bb]in/
+Plugins/**/[Oo]bj/
+
+# Libman/lib caches (uncomment if you don't want to track restored libraries)
+# Presentation/Nop.Web/wwwroot/lib/
+# Presentation/Nop.Web/wwwroot/lib_npm/
