@@ -71,8 +71,34 @@ public class BankBinService : IBankBinService
         return await _bankBinRepository.GetAllAsync((Func<IQueryable<PaymentGarantiBin>, IQueryable<PaymentGarantiBin>>)(q => q));
     }
 
-    public async Task<IPagedList<PaymentGarantiBin>> GetBankBinPageList(int pageIndex = 0, int pageSize = int.MaxValue)
+    public async Task<IPagedList<PaymentGarantiBin>> GetBankBinPageList(
+        string binNumber = null,
+        string bankCode = null,
+        string cardType = null,
+        string product = null,
+        string cardAssociation = null,
+        string bankName = null,
+        string installmentInd = null,
+        int pageIndex = 0,
+        int pageSize = int.MaxValue)
     {
-        return await _bankBinRepository.GetAllPagedAsync((Func<IQueryable<PaymentGarantiBin>, IQueryable<PaymentGarantiBin>>)(q => q), pageIndex: pageIndex, pageSize: pageSize);
+        return await _bankBinRepository.GetAllPagedAsync(query =>
+        {
+            if (!string.IsNullOrWhiteSpace(binNumber))
+                query = query.Where(b => b.BinNumber.Contains(binNumber));
+            if (!string.IsNullOrWhiteSpace(bankCode))
+                query = query.Where(b => b.BankCode.Contains(bankCode));
+            if (!string.IsNullOrWhiteSpace(cardType))
+                query = query.Where(b => b.CardType.Contains(cardType));
+            if (!string.IsNullOrWhiteSpace(product))
+                query = query.Where(b => b.Product.Contains(product));
+            if (!string.IsNullOrWhiteSpace(cardAssociation))
+                query = query.Where(b => b.CardAssociation.Contains(cardAssociation));
+            if (!string.IsNullOrWhiteSpace(bankName))
+                query = query.Where(b => b.BankName.Contains(bankName));
+            if (!string.IsNullOrWhiteSpace(installmentInd))
+                query = query.Where(b => b.InstallmentInd.Contains(installmentInd));
+            return query;
+        }, pageIndex: pageIndex, pageSize: pageSize);
     }
 }

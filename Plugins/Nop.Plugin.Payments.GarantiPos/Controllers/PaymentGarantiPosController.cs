@@ -951,7 +951,16 @@ public class PaymentGarantiPosController : BasePaymentController
         if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             return await AccessDeniedDataTablesJson();
 
-        var bins = await _bankBinService.GetBankBinPageList(searchModel.Page - 1, searchModel.PageSize);
+        var bins = await _bankBinService.GetBankBinPageList(
+            searchModel.BinNumber,
+            searchModel.BankCode,
+            searchModel.CardType,
+            searchModel.Product,
+            searchModel.CardAssociation,
+            searchModel.BankName,
+            searchModel.InstallmentInd,
+            searchModel.Page - 1,
+            searchModel.PageSize);
 
         var listModel = new BankBinListModel();
         var dataProjection = bins.Select(bin => new BankBinModel
@@ -962,6 +971,7 @@ public class PaymentGarantiPosController : BasePaymentController
             CardType = bin.CardType,
             BankName = bin.BankName,
             Product = bin.Product,
+            InstallmentInd = bin.InstallmentInd,
             Id = bin.Id
         });
 

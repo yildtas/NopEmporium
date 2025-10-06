@@ -1,5 +1,5 @@
 ﻿.wrapper {
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     display: flex;
     padding: 0 15px;
 }
@@ -25,10 +25,10 @@
 
 .card-form__inner {
     background: #fff;
-    box-shadow: 0 30px 60px 0 rgba(90, 116, 148, 0.4);
+    box-shadow: 0 0px 5px 0 rgba(90,116,148,.4);
     border-radius: 10px;
     padding: 35px;
-    padding-top: 180px;
+    /*padding-top: 180px;*/
 }
 
 @media screen and (max-width: 480px) {
@@ -144,7 +144,7 @@
 
 @media screen and (max-width: 360px) {
     .card-item {
-        height: 180px;
+        /*height: 180px;*/
     }
 }
 
@@ -583,7 +583,7 @@
 
 .card-input__input {
     width: 100%;
-    height: 50px;
+    /*height: 50px;*/
     border-radius: 5px;
     box-shadow: none;
     border: 1px solid #ced6e0;

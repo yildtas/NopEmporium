@@ -1,4 +1,3 @@
-
 using Nop.Core;
 using Nop.Plugin.Payments.GarantiPos.Domains;
 
@@ -24,5 +23,14 @@ public interface IBankBinService
 
 	Task<IList<PaymentGarantiBin>> GetBankBinList();
 
-	Task<IPagedList<PaymentGarantiBin>> GetBankBinPageList(int pageIndex = 0, int pageSize = int.MaxValue);
+	Task<IPagedList<PaymentGarantiBin>> GetBankBinPageList(
+        string binNumber = null,
+        string bankCode = null,
+        string cardType = null,
+        string product = null,
+        string cardAssociation = null,
+        string bankName = null,
+        string installmentInd = null,
+        int pageIndex = 0,
+        int pageSize = int.MaxValue);
 }
