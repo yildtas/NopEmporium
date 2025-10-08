@@ -29,8 +29,11 @@ using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Models.Extensions;
 using Nop.Web.Framework.Mvc.Filters;
 using System.Globalization;
+using System.Net;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Xml;
+using static SkiaSharp.HarfBuzz.SKShaper;
 using SessionExt = Nop.Core.Http.Extensions.SessionExtensions;
 
 /// <summary>
@@ -127,9 +130,13 @@ public class PaymentGarantiPosController : BasePaymentController
     private async Task CancelOrderAsync(Order order, string message = "")
     {
         await _orderProcessingService.ReOrderAsync(order); // sepet geri yükleme
+
         await _orderProcessingService.CancelOrderAsync(order, true);
+
         order.PaymentStatus = (PaymentStatus)10; // custom pending benzeri
-        _notificationService.ErrorNotification("Bir Hata Oldu Yeniden Deneyiniz" + message, true);
+
+        _notificationService.ErrorNotification(message, true);
+
         await _logger.InsertLogAsync((LogLevel)20, "Ödeme Alınamadı.", string.Empty, (Customer)null);
     }
 
@@ -328,9 +335,10 @@ public class PaymentGarantiPosController : BasePaymentController
         string procReturnCode = form["procreturncode"]; // 00 başarılı
         string mdStatus = form["mdstatus"]; // 1,2,3,4 -> başarılı kabul edilen durumlar
         string mdStatusText = form["mderrormessage"]; // bilgilendirme
-        string securityData = HelperOptions.Sha1(provisionPassword + HelperOptions.IsRequireZero(terminalId, 9)).ToUpper();
+        string securityData = HelperOptions.Sha1Upper(provisionPassword + "0" + terminalId);
+
         string hashDataFromBank = form["secure3dhash"];
-        string localHash = HelperOptions.Sha512(orderGuidStr + terminalId + amountStr + currencyCode + securityData);
+        string hashData = HelperOptions.Sha512(orderGuidStr + terminalId + amountStr + currencyCode + securityData);
 
         var paymentOrder = await _paymentPosService.GetPosOrderGuid(new Guid(orderGuidStr));
         var order = await _orderService.GetOrderByGuidAsync(paymentOrder.OrderNumber);
@@ -338,11 +346,136 @@ public class PaymentGarantiPosController : BasePaymentController
         var targetCurrency = await _currencyService.GetCurrencyByIdAsync(_currencySettings.PrimaryStoreCurrencyId);
         var sourceCurrency = await _currencyService.GetCurrencyByCodeAsync(paymentOrder.BasketId);
 
-        if (hashDataFromBank == localHash)
+        // mdStatus 1..4 arası ve işlem sonucu 00 ise başarılı ödeme
+        if (mdStatus == "1" || mdStatus == "2" || mdStatus == "3" || mdStatus == "4")
         {
-            // mdStatus 1..4 arası ve işlem sonucu 00 ise başarılı ödeme
-            if ((mdStatus == "1" || mdStatus == "2" || mdStatus == "3" || mdStatus == "4") && procReturnCode == "00")
+            string responseHashparams = form["hashparams"];
+            string responseHash = form["hash"];
+            string digestData = string.Empty;
+            char[] separator = new char[] { ':' };
+            string[] paramList = responseHashparams.Split(separator);
+
+            foreach (string param in paramList)
             {
+                if (form.ContainsKey(param))
+                {
+                    var value = form[param].ToString();
+                    digestData += string.IsNullOrEmpty(value) ? string.Empty : value;
+                }
+            }
+
+            digestData += garantiPaySettings.StoreKey;
+            string hashCalculated = HelperOptions.Sha512(digestData);
+
+            if (!responseHash.Equals(hashCalculated))
+            {
+                _notificationService.ErrorNotification("3D işlem onayı alınamadı. Lütfen bilgilerinizi kontrol ettikten sonra tekrar deneyiniz.", true);
+
+                // Başarısız veya hash uyuşmadı – ödeme adımına geri dön.
+                if (_orderSettings.OnePageCheckoutEnabled)
+                {
+                    return RedirectToAction("OpcSavePaymentInfo", "Checkout");
+                }
+
+                return RedirectToAction("PaymentMethod", "Checkout");
+            }
+
+            string mode = form["mode"];
+            string apiVersion = form["apiversion"];
+            string terminalProvUserId = form["terminalprovuserid"];
+            string terminalUserId = form["terminaluserid"];
+            string clientId = form["clientid"];
+            string terminalMerchantid = form["terminalmerchantid"];
+            string customerIpaddress = form["customeripaddress"];
+            string txntype = form["txntype"];
+            string txnInstallmentCount = form["txninstallmentcount"];
+            string txnAmount = form["txnamount"];
+            string cavv = form["cavv"];
+            string eci = form["eci"];
+            string oId = form["oid"];
+            string xid = form["xid"];
+            string md = form["md"];
+
+            #region GVPS XML
+            StringBuilder gvpsXml = new StringBuilder();
+            gvpsXml.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            gvpsXml.Append("<GVPSRequest>");
+            gvpsXml.AppendFormat("<Mode>{0}</Mode>", mode);
+            gvpsXml.AppendFormat("<Version>{0}</Version>", apiVersion);
+            gvpsXml.Append("<Terminal>");
+            gvpsXml.AppendFormat("<ProvUserID>{0}</ProvUserID>", terminalProvUserId);
+            gvpsXml.AppendFormat("<HashData>{0}</HashData>", hashData);
+            gvpsXml.AppendFormat("<UserID>{0}</UserID>", terminalUserId);
+            gvpsXml.AppendFormat("<ID>{0}</ID>", clientId);
+            gvpsXml.AppendFormat("<MerchantID>{0}</MerchantID>", terminalMerchantid);
+            gvpsXml.Append("</Terminal>");
+            gvpsXml.Append("<Customer>");
+            gvpsXml.AppendFormat("<IPAddress>{0}</IPAddress>", customerIpaddress);
+            gvpsXml.AppendFormat("<EmailAddress>{0}</EmailAddress>", "");
+            gvpsXml.Append("</Customer>");
+            gvpsXml.Append("<Order>");
+            gvpsXml.AppendFormat("<OrderID>{0}</OrderID>", oId);
+            gvpsXml.Append("<GroupID/>");
+            gvpsXml.Append("</Order>");
+            gvpsXml.Append("<Transaction>");
+            gvpsXml.AppendFormat("<Type>{0}</Type>", txntype);
+            gvpsXml.AppendFormat("<InstallmentCnt>{0}</InstallmentCnt>", txnInstallmentCount);
+            gvpsXml.AppendFormat("<Amount>{0}</Amount>", txnAmount);
+            gvpsXml.AppendFormat("<CurrencyCode>{0}</CurrencyCode>", currencyCode);
+            gvpsXml.AppendFormat("<CardholderPresentCode>{0}</CardholderPresentCode>", 13);
+            gvpsXml.AppendFormat("<MotoInd>{0}</MotoInd>", "N");
+            gvpsXml.Append("<Secure3D>");
+            gvpsXml.AppendFormat("<AuthenticationCode>{0}</AuthenticationCode>", cavv);
+            gvpsXml.AppendFormat("<SecurityLevel>{0}</SecurityLevel>", eci);
+            gvpsXml.AppendFormat("<TxnID>{0}</TxnID>", xid);
+            gvpsXml.AppendFormat("<Md>{0}</Md>", md);
+            gvpsXml.Append("</Secure3D>");
+            gvpsXml.Append("</Transaction>");
+            gvpsXml.Append("</GVPSRequest>");
+            #endregion
+
+            string gelenXml = "";
+
+            string data = "data=" + gvpsXml.ToString();
+
+            WebRequest webRequest = WebRequest.Create(_garantiPosSettings.BankNone3DUrl);
+            webRequest.Method = "POST";
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(data);
+            webRequest.ContentType = "application/x-www-form-urlencoded";
+            webRequest.ContentLength = byteArray.Length;
+
+            Stream dataStream = webRequest.GetRequestStream();
+            dataStream.Write(byteArray, 0, byteArray.Length);
+            dataStream.Close();
+
+            WebResponse webResponse = webRequest.GetResponse();
+            dataStream = webResponse.GetResponseStream();
+
+            StreamReader reader = new StreamReader(dataStream);
+            gelenXml = reader.ReadToEnd();
+
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.LoadXml(gelenXml);
+
+            #region Payment Process result
+            XmlElement xEReasonCode = xDoc.SelectSingleNode("//GVPSResponse/Transaction/Response/ReasonCode") as XmlElement;
+            XmlElement xEErrorMsg = xDoc.SelectSingleNode("//GVPSResponse/Transaction/Response/ErrorMsg") as XmlElement;
+            XmlElement xESysErrMsg = xDoc.SelectSingleNode("//GVPSResponse/Transaction/Response/SysErrMsg") as XmlElement;
+            XmlElement xERetrefNum = xDoc.SelectSingleNode("//GVPSResponse/Transaction/RetrefNum") as XmlElement;
+            XmlElement xEAuthCode = xDoc.SelectSingleNode("//GVPSResponse/Transaction/AuthCode") as XmlElement;
+
+            procReturnCode = xEReasonCode != null ? xEReasonCode.InnerText : "";
+            string hostRefNum = xERetrefNum != null ? xERetrefNum.InnerText : "";
+            string hostMessage = xESysErrMsg != null ? xESysErrMsg.InnerText : "";
+            string errorMessage = xEErrorMsg != null ? xEErrorMsg.InnerText : "";
+            string authCode = xEAuthCode != null ? xEAuthCode.InnerText : "";
+
+            #endregion
+
+            if (gelenXml.Contains("<ReasonCode>00</ReasonCode>") && gelenXml.Contains("<Message>Approved</Message>"))
+            {
+                //3D işlem onayı alındı. İşlem Başarılı
                 await _orderProcessingService.MarkOrderAsPaidAsync(order);
 
                 if (paymentOrder.PaidPrice.HasValue)
@@ -374,32 +507,136 @@ public class PaymentGarantiPosController : BasePaymentController
                 _notificationService.SuccessNotification("Ödemeniz Alınmıştır.", true);
                 return RedirectToRoute("CheckoutCompleted", new { orderId = order.Id });
             }
-
-            // mdStatus değerine göre başarısızlık nedeni
-            switch (mdStatus)
+            else
             {
-                case "5":
-                    await CancelOrderAsync(order, "Doğrulama yapılamıyor");
-                    break;
-                case "6":
-                    await CancelOrderAsync(order, "3-D Secure Hatası");
-                    break;
-                case "7":
-                    await CancelOrderAsync(order, "Sistem Hatası");
-                    break;
-                case "8":
-                    await CancelOrderAsync(order, "Bilinmeyen Kart No");
-                    break;
-                case "0":
-                    await CancelOrderAsync(order, "Doğrulama Başarısız, 3-D Secure imzası geçersiz.");
-                    break;
+                //3D işlem onayı alınamadı
+                errorMessage = GetGarantiErrorMessage(procReturnCode);
+
+                _notificationService.ErrorNotification(errorMessage, true);
+
+                // Başarısız veya hash uyuşmadı – ödeme adımına geri dön.
+                if (_orderSettings.OnePageCheckoutEnabled)
+                {
+                    return RedirectToAction("OpcSavePaymentInfo", "Checkout");
+                }
+
+                return RedirectToAction("PaymentMethod", "Checkout");
             }
         }
 
+        // mdStatus değerine göre başarısızlık nedeni
+        await CancelOrderAsync(order, "3D işlem onayı alınamadı. 3D şifrenizi yanlış girmiş olabilirsiniz veya kartınız 3D'ye kayıtlı olmayabilir.");
+
         // Başarısız veya hash uyuşmadı – ödeme adımına geri dön.
         if (_orderSettings.OnePageCheckoutEnabled)
+        {
             return RedirectToAction("OpcSavePaymentInfo", "Checkout");
+        }
+
         return RedirectToAction("PaymentMethod", "Checkout");
+    }
+
+    private string GetGarantiErrorMessage(string procReturnCode)
+    {
+        switch (procReturnCode.TrimStart('0'))
+        {
+            case "1":
+                return "Bankanızdan provizyon alınız.";
+            case "2":
+                return "Bankanızdan VISA kartınız için provizyon alınız.";
+            case "4"://Karta El koyunuz!!!
+            case "7"://KartaElKoyunuz.
+            case "9"://KartYenilenmiş.Müşteridenisteyin
+            case "18"://Kapalı kart
+            case "34"://MuhtemelenÇalıntıKart!!!ElKoyunuz.
+            case "36"://SınırlandırılmışKart!!ElKoyunuz.
+            case "37"://LütfenBankaGüvenliğiniArayınız.
+            case "38"://ŞifreGirişLimitiAşıldı!!ElKoyunuz.
+            case "41"://KayıpKart!!!KartaElKoyunuz.
+            case "43"://ÇalıntıKart!!!KartaElKoyunuz.
+                return "İşleminiz gerçekleştiremiyoruz. Detaylı bilgi için lütfen bankanızla görüşün. ";
+            case "5"://İşlem onaylanmadı.
+                return "İşleminiz onaylanmadı. Kredi kartı bilgilerinizi kontrol ettikten sonra tekrar deneyiniz.";
+            case "6"://İsteminiz Kabul Edilmedi.
+                return "İsteminiz kabul edilmedi. Kredi kartı bilgilerinizi kontrol ettikten sonra tekrar deneyiniz.";
+            case "33"://KartınSüresiDolmuş!KartaElKoyunuz.
+                return "Kartınızın süresi dolmuş. Detaylı bilgi için lütfen bankanızla görüşün. ";
+            case "11":
+                return "İşleminiz gerçekleştirildi (VIP). Bankanızı arayarak teyit ediniz. ";
+            case "13"://Geçersiz tutar.
+                return "Gönderdiğiniz tutar geçerli formatta değil. Kredi kartı bilgilerinizi kontrol ettikten sonra tekrar deneyiniz.";
+            case "14"://kart numarası hatalı
+            case "15"://Bankası bulunamadı.
+            case "55"://ŞifresiHatalı.
+            case "56"://BuKartMevcutDeğil.
+            case "3":
+                return "Kredi kartı bilgileriniz hatalı. Kredi kartı bilgilerinizi kontrol ettikten sonra tekrar deneyiniz. ";
+            case "16":
+                return "Kredi kartınızın bakiyesi yetersiz. Başka bir kredi kartı ile tekrar deneyiniz.";
+            case "19"://BirKereDahaProvizyonTalepEdiniz.
+                return "İşleminizi gerçekleştiremiyoruz. Birkez daha provizyon talep ediniz.";
+            case "17"://İşlemİptalEdildi.
+            case "25"://BöyleBirBilgiBulunamadı.
+            case "28"://Orijinalirededilmiş/Dosyaservisdışı.
+            case "30"://MesajınFormatıHatalı.
+            case "31"://Issuersign-onolmamış.
+            case "77"://Orjinalişlemileuyumsuzbilgialındı.
+            case "78"://AccountBalanceNotAvailable.
+            case "81"://Şifreleme/YabancıNetworkhatası.
+            case "83"://ŞifreDoğrulanamıyor./İletişimhatası.
+            case "89"://Authenticationhatası.
+                return "İşleminizi gerçekleştiremiyoruz. Kredi kartı bilgilerinizi kontrol ettikten sonra tekrar deneyiniz.";
+            case "21":
+            case "29"://İptalyapılamadı.(Orjinalibulunamadı)
+                return "İşlem iptal edilemedi. Lütfen daha sonra tekrar deneyiniz.";
+            case "32":
+                return "İşleminiz kısmen gerçekleştirildi. Hata ile ilgili lütfen bizimle irtibata geçiniz.";
+            case "39"://Kredihesabıtanımsız.
+            case "51"://Hesapmüsaitdeğil.
+            case "52"://ÇekHesabıTanımsız.
+            case "53"://HesapTanımsız.
+                return "Hesabınız tanımsız. Başka bir kredi kartı ile tekrar deneyiniz.";
+            case "54":
+                return "Kartınızın son kullanım tarihi hatalı. Başka bir kredi kartı ile tekrar deneyiniz.";
+            case "57":
+                return "İşleminizi gerçekleştiremiyoruz. Debit kart veya kart sahibine acık olmayan bir işlem deniyor olabilirsiniz. ";
+            case "58":
+                return "İşleminizi gerçekleştiremiyoruz. Mevcut Sanal POS yetkileri kısıtlanmış olabilir.";
+            case "61":
+                return "İşleminizi gerçekleştiremiyoruz. Para çekme limitiniz aşılıyor.";
+            case "63":
+                return "İşleminizi gerçekleştiremiyoruz. Bu işlemi yapmaya yetkili değilsiniz.";
+            case "64":
+                return "İşleminizi gerçekleştiremiyoruz. Kartınız takside uygun değil.";
+            case "65":
+                return "İşleminizi gerçekleştiremiyoruz. Günlük işlem adediniz dolmuş.";
+            case "75":
+            case "76":
+                return "İşleminizi gerçekleştiremiyoruz. Şifre giriş limitiniz aşıldı.";
+            case "80":
+                return "İşleminizi gerçekleştiremiyoruz. Tarih bilginiz hatalı.";
+            case "82":
+                return "Kredi kartı güvenlik kodu hatalı. Kredi kartı bilgilerinizi kontrol ettikten sonra tekrar deneyiniz.";
+            case "12":
+                return "İşleminizi gerçekleştiremiyoruz. Kredi kartı bilgilerinizi kontrol ettikten sonra tekrar deneyiniz.";
+            case "86":
+            case "88":
+                return "İşleminizi gerçekleştiremiyoruz. Şifreniz doğrulanamıyor.";
+            case "90":
+                return "İşleminizi gerçekleştiremiyoruz. Günsonu işlemleri yapılıyor.";
+            case "95":
+                return "İşleminizi gerçekleştiremiyoruz. Günlük toplamlar hatalı.";
+            case "91":
+            case "92":
+            case "96":
+                return "Bankanızdan cevap alınamıyor. Lütfen daha sonra tekrar deneyiniz.";
+            case "93":
+                return "Hukiki nedenlerden dolayı işleminiz reddedildi. Detaylı bilgi için lütfen bankanızla görüşün.";
+            case "214":
+                return "Iade tutari, satis tutarindan büyük olamaz";
+            default:
+                return "İşleminizi gerçekleştiremiyoruz. Kredi kartı bilgilerinizi kontrol ettikten sonra tekrar deneyiniz.";
+        }
     }
 
     /// <summary>
@@ -419,16 +656,22 @@ public class PaymentGarantiPosController : BasePaymentController
             model.MdStatus = form["mdstatus"];
             model.Clientid = form["clientid"];
             var orderGuidStr = form["oid"];
+            string procReturnCode = form["procreturncode"]; // 00 başarılı
+
             var paymentOrder = await _paymentPosService.GetPosOrderGuid(new Guid(orderGuidStr));
             var order = await _orderService.GetOrderByGuidAsync(paymentOrder.OrderNumber);
 
             // Eski kod && kullanıyordu (asla true olmuyor), burada OR mantığı daha anlamlı.
-            if (model.ErrorMessage == string.Empty || model.ErrorMessage == "Not authenticated detail=( ) vendorCode=")
-                model.Message = "Kartınız İnternet Kapalı yada işlem Yapılamıyor Başka Bir Kartla Deneyiniz";
+            //if (model.ErrorMessage == string.Empty || model.ErrorMessage == "Not authenticated detail=( ) vendorCode=")
+            //    model.Message = "Kartınız İnternet Kapalı yada işlem Yapılamıyor Başka Bir Kartla Deneyiniz";
 
-            model.Message = $"MdErrorMessage{model.MdErrrorMessage}ErrorMessage{model.ErrorMessage} Ref No: {model.MdStatus}";
-            if (model.ErrorMessage.Contains("0809"))
-                model.MdStatus += "Bayi Kodu ve Kredi Kartı numaranız sisteme kayıtlı olmadığı için işleminiz gerçekleşmemiştir. Lütfen müşteri temsilciniz ile iletişime geçiniz. ";
+            //model.Message = $"MdErrorMessage{model.MdErrrorMessage}ErrorMessage{model.ErrorMessage} Ref No: {model.MdStatus}";
+
+            //if (model.ErrorMessage.Contains("0809"))
+            //    model.MdStatus += "Bayi Kodu ve Kredi Kartı numaranız sisteme kayıtlı olmadığı için işleminiz gerçekleşmemiştir. Lütfen müşteri temsilciniz ile iletişime geçiniz. ";
+
+            model.Message = "3D işlem onayı alınamadı. " +
+                "3D şifrenizi yanlış girmiş olabilirsiniz veya kartınız 3D'ye kayıtlı olmayabilir.";
 
             await CancelOrderAsync(order, model.Message);
 
@@ -889,7 +1132,7 @@ public class PaymentGarantiPosController : BasePaymentController
         return View("~/Plugins/Payments.GarantiPos/Views/Category/Edit.cshtml", model);
     }
 
-    [Area ("Admin")]
+    [Area("Admin")]
     [AutoValidateAntiforgeryToken]
     [AuthorizeAdmin(false)]
     [HttpPost]
