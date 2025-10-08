@@ -30,10 +30,8 @@ using Nop.Web.Framework.Models.Extensions;
 using Nop.Web.Framework.Mvc.Filters;
 using System.Globalization;
 using System.Net;
-using System.ServiceModel.Channels;
 using System.Text;
 using System.Xml;
-using static SkiaSharp.HarfBuzz.SKShaper;
 using SessionExt = Nop.Core.Http.Extensions.SessionExtensions;
 
 /// <summary>
@@ -470,6 +468,16 @@ public class PaymentGarantiPosController : BasePaymentController
             string hostMessage = xESysErrMsg != null ? xESysErrMsg.InnerText : "";
             string errorMessage = xEErrorMsg != null ? xEErrorMsg.InnerText : "";
             string authCode = xEAuthCode != null ? xEAuthCode.InnerText : "";
+
+            // Log with customerId and parsed bank response fields
+            try
+            {
+                var customer = order != null ? await _customerService.GetCustomerByIdAsync(order.CustomerId) : null;
+                var shortMessage = "GarantiPos 3D Payment Process Result";
+                var fullMessage = $"CustomerId: {order?.CustomerId}, OrderId: {order?.Id}, ProcReturnCode: {procReturnCode}, HostRefNum: {hostRefNum}, HostMessage: {hostMessage}, ErrorMessage: {errorMessage}, AuthCode: {authCode}";
+                await _logger.InsertLogAsync(LogLevel.Information, shortMessage, fullMessage, customer);
+            }
+            catch { /* ignore logging failures */ }
 
             #endregion
 
