@@ -212,7 +212,29 @@ public class GarantiPosProcessor : BasePlugin, IPaymentMethod, IAdminMenuPlugin
         // Banka genelde tutarı kuruş *100 formatında ister.
         model.Amount = (total * 100m).ToString("0.##", new CultureInfo("en-US"));
         // Hash veri bütünlüğü ve sahtecilik önleme için.
-        model.HashData = HelperOptions.GetHashData(settings.Password, model.TerminalId, model.OrderId, Convert.ToInt32(model.InstallmentCount), model.StoreKey, Convert.ToUInt64(model.Amount), currencyCode, model.SuccessUrl, model.TxnType, model.ErrorrUrl);
+        try
+        {
+            int.TryParse(model.InstallmentCount, out var installmentCount);
+
+            if (installmentCount == 0)
+            {
+                model.InstallmentCount = "";
+            }
+            model.HashData = HelperOptions.GetHashData(settings.Password,
+                model.TerminalId,
+                model.OrderId,
+                model.InstallmentCount,
+                model.StoreKey,
+                model.Amount,
+                currencyCode,
+                model.SuccessUrl,
+                model.TxnType,
+                model.ErrorrUrl);
+        }
+        catch (Exception ex)
+        {
+
+        }
 
         // Otomatik post edilecek form HTML
         var strForm = PreparePostForm(model.PaymentUrl, new NameValueCollection
@@ -337,13 +359,13 @@ public class GarantiPosProcessor : BasePlugin, IPaymentMethod, IAdminMenuPlugin
             AdditionalFeePercentage = false,
             CompanyName = string.Empty,
             Password = "123qweASD/",
-            SecurityLevel = "3D_FULL",
+            SecurityLevel = "3D",
             StoreKey = "12345678",
             TerminalId = "30691297",
             TerminalProvUserId = "PROVAUT",
             TerminalUserId = "SANALUSER",
             TestMode = true,
-            Version = "v0.01",
+            Version = "512",
             Bank3DUrl = "https://sanalposprovtest.garantibbva.com.tr/servlet/gt3dengine",
             BankNone3DUrl = "https://sanalposprovtest.garantibbva.com.tr/VPServlet"
         };

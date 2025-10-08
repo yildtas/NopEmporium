@@ -97,9 +97,10 @@ public class HelperOptions
         return sb.ToString().ToUpperInvariant();
     }
 
-    public static string GetHashData(string provisionPassword, string terminalId, string orderId, int installmentCount, string storeKey, ulong amount, int currencyCode, string successUrl, string type, string errorUrl)
+    public static string GetHashData(string provisionPassword, string terminalId, string orderId, string installmentCount, string storeKey, string amount, int currencyCode, string successUrl, string type, string errorUrl)
     {
-        var securityData = Sha1(provisionPassword + "0" + terminalId);
+        var securityData = Sha1Upper(provisionPassword + "0" + terminalId);
+       
         return Sha512(terminalId + orderId + amount + currencyCode + successUrl + errorUrl + type + installmentCount + storeKey + securityData).ToUpperInvariant();
     }
 
